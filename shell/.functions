@@ -13,8 +13,7 @@ pyclean() {
 # substitute watson command to make stop project after custom script
 watson() { 
     if [[ $@ == "stop" ]]; then 
-        command ~/scripts/jwatson-stop.py; 
-        $(which watson) stop; 
+        command ~/scripts/jwatson-stop.py; $(which watson) stop; 
     else 
         command watson "$@"; 
     fi 

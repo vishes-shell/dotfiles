@@ -31,3 +31,8 @@
 - create:
   - ~/projects
   - ~/github
+
+- pipx:
+  file: python/requirements-pipx.txt
+  stdout: false
+  stderr: true
