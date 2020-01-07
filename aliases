@@ -1,0 +1,38 @@
+# Easier navigation: .., ..., ~ and -
+alias ..="cd .."
+alias cd..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# mv, rm, cp
+alias mv='mv -v'
+alias rm='rm -i -v'
+alias cp='cp -v'
+
+alias ag='ag -f --hidden'
+
+alias ls="exa"
+
+alias l="exa -lahF"
+
+
+# lock the screen (when going afk)
+alias afk="/system/library/coreservices/menu\ extras/user.menu/contents/resources/cgsession -suspend"
+
+
+# reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${shell} -l"
+
+# faster is better
+alias v="nvim"
+
+# sometimes :exit is easier
+alias :exit="exit"
+
+# cache is so annoying
+alias rm_pycache="find . | grep -E '(__pycache__|\.pyc|\.pyo$)' | xargs rm -rf"
+
+
+# substitute watson command to make stop project after custom script
+watson() { if [[ $@ == "stop" ]]; then command ~/scripts/jwatson-stop.py; /Library/Frameworks/Python.framework/Versions/3.7/bin/watson stop; else command watson "$@"; fi; }
