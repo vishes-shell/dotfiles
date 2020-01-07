@@ -30,9 +30,8 @@ alias v="nvim"
 # sometimes :exit is easier
 alias :exit="exit"
 
-# cache is so annoying
-alias rm_pycache="find . | grep -E '(__pycache__|\.pyc|\.pyo$)' | xargs rm -rf"
+# show local ip
+alias localip="ipconfig getifaddr en0"
 
-
-# substitute watson command to make stop project after custom script
-watson() { if [[ $@ == "stop" ]]; then command ~/scripts/jwatson-stop.py; /Library/Frameworks/Python.framework/Versions/3.7/bin/watson stop; else command watson "$@"; fi; }
+# copy public key to clipboard
+alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
