@@ -35,3 +35,5 @@ alias localip="ipconfig getifaddr en0"
 
 # copy public key to clipboard
 alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+
+alias cb="kitty +kitten clipboard"
