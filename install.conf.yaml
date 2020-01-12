@@ -1,18 +1,15 @@
-- defaults:
-    link:
-      create: true
-      relink: true
-
-
 - clean: ['~', '~/.config']
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
 
 
 - link:
     ~/.shell:
-      path: true
+      path: shell
       create: true
     ~/.config:
-      path: true
+      path: config
       create: true
 
     ~/.ipython/profile_default/ipython_config.py: ipython/ipython_config.py
@@ -22,17 +19,21 @@
     ~/.bashrc:
     ~/.tridactylrc:
 
-
-- shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - [brew cleanup, Cleaning up]
-
-
 - create:
   - ~/projects
   - ~/github
 
+- pip:
+    file: python/requirements.txt
+    binary: /usr/local/bin/pip3
+    user: true
+    stdout: true
+    stderr: true
+
 - pipx:
-  file: python/requirements-pipx.txt
-  stdout: false
-  stderr: true
+    file: python/requirements-pipx.txt
+    stdout: true
+    stderr: true
+
+- shell:
+  - [brew cleanup, Cleaning up]

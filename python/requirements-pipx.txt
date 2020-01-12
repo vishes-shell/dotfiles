@@ -1,1 +1,4 @@
 td-watson
+pre-commit
+black
+mypy
