@@ -1,6 +1,5 @@
 " First, setup global variables
 let s:config_dir = substitute(expand('<sfile>:p:h'), '\', '/', 'g')
-" let s:config_dir = "~/.dotfiles/config/nvim"
 let s:bundle_dir = s:config_dir . "/.cache/dein"
 let s:dein_dir = s:bundle_dir . "/repos/github.com/Shougo/dein.vim"
 let s:do_update = 0
@@ -24,6 +23,7 @@ if dein#load_state(s:bundle_dir)
     call dein#add('editorconfig/editorconfig-vim')
     call dein#add('vim-python/python-syntax')
     call dein#add('luochen1990/rainbow')
+    call dein#add('davidhalter/jedi-vim')
 
     call dein#add('junegunn/fzf.vim')
 
@@ -168,3 +168,15 @@ let g:quickfix_height = 8
 let g:asyncrun_status = ''  " asyncrun is lazy loaded
 " automatically open quickfix at height value g:quickfix_height
 let g:asyncrun_open = g:quickfix_height
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Jedi
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jedi#completions_enabled = 0
+let g:jedi#goto_command = "gd"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command = "<leader>?"
+let g:jedi#usages_command = "gu"
+let g:jedi#rename_command = "<leader>r"

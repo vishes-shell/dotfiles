@@ -3,3 +3,4 @@ pre-commit
 black
 mypy
 python-language-server
+isort
