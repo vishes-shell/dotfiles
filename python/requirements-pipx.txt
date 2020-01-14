@@ -5,3 +5,4 @@ mypy
 python-language-server
 isort
 ipython
+~/.scripts/gh/

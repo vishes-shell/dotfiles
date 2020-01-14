@@ -19,6 +19,10 @@
     ~/.bashrc:
     ~/.tridactylrc:
 
+    ~/.scripts:
+      path: scripts
+      create: true
+
 - create:
   - ~/projects
   - ~/github
