@@ -48,8 +48,8 @@ nnoremap <silent> <leader>? :History<cr>
 nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<cr>
 nnoremap <silent> <leader>. :AgIn<space>
 
-nnoremap <silent> K :call SearchWordWithAg()<cr>
-vnoremap <silent> K :call SearchVisualSelectionWithAg()<cr>
+nnoremap F :call SearchWordWithAg()<cr>
+vnoremap <silent> F :call SearchVisualSelectionWithAg()<cr>
 vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>

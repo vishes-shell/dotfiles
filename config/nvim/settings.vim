@@ -136,7 +136,6 @@ let g:netrw_list_hide='__pycache__'
 let g:python3_host_prog = '/usr/local/bin/python3'
 let python_highlight_all = 1
 au FileType python syn keyword pythonDecorator True None False self
-au FileType python map <buffer> F :set foldmethod=indent<cr>
 au FileType python set cindent
 au FileType python set cinkeys-=0#
 au FileType python set indentkeys-=0#

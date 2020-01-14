@@ -23,7 +23,6 @@ if dein#load_state(s:bundle_dir)
     call dein#add('editorconfig/editorconfig-vim')
     call dein#add('vim-python/python-syntax')
     call dein#add('luochen1990/rainbow')
-    call dein#add('davidhalter/jedi-vim')
 
     call dein#add('junegunn/fzf.vim')
 
@@ -31,6 +30,8 @@ if dein#load_state(s:bundle_dir)
     call dein#add('skywind3000/asyncrun.vim', {'on_cmd': ['AsyncRun', 'AsyncStop']})
     call dein#add('tpope/vim-commentary')
     call dein#add('tpope/vim-vinegar')
+
+    call dein#add('SirVer/ultisnips')
 
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
@@ -45,7 +46,11 @@ if dein#load_state(s:bundle_dir)
 
     call dein#add('idanarye/vim-merginal')
 
-    call dein#add('neovim/nvim-lsp')
+    call dein#add('prabirshrestha/async.vim')
+    call dein#add('prabirshrestha/asyncomplete.vim')
+    call dein#add('prabirshrestha/asyncomplete-lsp.vim')
+    call dein#add('prabirshrestha/vim-lsp')
+    call dein#add('mattn/vim-lsp-settings')
 
     call dein#end()
     call dein#save_state()
@@ -118,7 +123,7 @@ highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
 highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#F5F5F5
 let g:ale_warn_about_trailing_whitespace = 0
 let g:ale_maximum_file_size = 1024 * 1024
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_set_balloons_legacy_echo = 1
 let g:ale_c_parse_compile_commands = 1
 
@@ -171,12 +176,7 @@ let g:asyncrun_open = g:quickfix_height
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Jedi
+" => UltiSnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jedi#completions_enabled = 0
-let g:jedi#goto_command = "gd"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "<leader>?"
-let g:jedi#usages_command = "gu"
-let g:jedi#rename_command = "<leader>r"
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsExpandTrigger='S-<tab>'
