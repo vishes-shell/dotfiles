@@ -32,6 +32,7 @@ if dein#load_state(s:bundle_dir)
     call dein#add('tpope/vim-vinegar')
 
     call dein#add('SirVer/ultisnips')
+    call dein#add('jiangmiao/auto-pairs')
 
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')

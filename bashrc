@@ -1,5 +1,0 @@
-source "$HOME/.shell/.exports"
-source "$HOME/.shell/.aliases"
-source "$HOME/.shell/.functions"
-source "$HOME/.aliases"
-. "$HOME/.shell/.click-complete.sh"

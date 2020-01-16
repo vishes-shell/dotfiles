@@ -1,21 +1,28 @@
 _gh_completion() {
-    local IFS=$'
-'
-    COMPREPLY=( $( env COMP_WORDS="${COMP_WORDS[*]}" \
-                   COMP_CWORD=$COMP_CWORD \
-                   _GH_COMPLETE=complete $1 ) )
-    return 0
-}
+    local -a completions
+    local -a completions_with_descriptions
+    local -a response
+    response=("${(@f)$( env COMP_WORDS="${words[*]}" \
+                        COMP_CWORD=$((CURRENT-1)) \
+                        _GH_COMPLETE="complete_zsh" \
+                        gh )}")
 
-_gh_completionetup() {
-    local COMPLETION_OPTIONS=""
-    local BASH_VERSION_ARR=(${BASH_VERSION//./ })
-    # Only BASH version 4.4 and later have the nosort option.
-    if [ ${BASH_VERSION_ARR[0]} -gt 4 ] || ([ ${BASH_VERSION_ARR[0]} -eq 4 ] && [ ${BASH_VERSION_ARR[1]} -ge 4 ]); then
-        COMPLETION_OPTIONS="-o nosort"
+    for key descr in ${(kv)response}; do
+      if [[ "$descr" == "_" ]]; then
+          completions+=("$key")
+      else
+          completions_with_descriptions+=("$key":"$descr")
+      fi
+    done
+
+    if [ -n "$completions_with_descriptions" ]; then
+        _describe -V unsorted completions_with_descriptions -U -Q
     fi
 
-    complete $COMPLETION_OPTIONS -F _gh_completion gh
+    if [ -n "$completions" ]; then
+        compadd -U -V unsorted -Q -a completions
+    fi
+    compstate[insert]="automenu"
 }
 
-_gh_completionetup;
+compdef _gh_completion gh;
