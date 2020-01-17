@@ -38,7 +38,6 @@ if dein#load_state(s:bundle_dir)
     call dein#add('vim-airline/vim-airline-themes')
     call dein#add('rakr/vim-one')
 
-    call dein#add('rhysd/git-messenger.vim')
     call dein#add('cohama/agit.vim')
     call dein#add('tpope/vim-fugitive')
     call dein#add('idanarye/vim-merginal')
@@ -52,6 +51,8 @@ if dein#load_state(s:bundle_dir)
     call dein#add('prabirshrestha/asyncomplete-lsp.vim')
     call dein#add('prabirshrestha/vim-lsp')
     call dein#add('mattn/vim-lsp-settings')
+
+    call dein#add('machakann/vim-highlightedyank')
 
     call dein#end()
     call dein#save_state()
