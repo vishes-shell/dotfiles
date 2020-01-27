@@ -3,6 +3,8 @@ pre-commit
 black
 mypy
 python-language-server
-isort
+isort[pyproject]
 ipython
 ~/.scripts/gh/
+flake8
+pylint
