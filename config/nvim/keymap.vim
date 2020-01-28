@@ -18,6 +18,9 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Return forward jumping
+unmap <C-i>
+
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
