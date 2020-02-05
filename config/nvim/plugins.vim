@@ -54,6 +54,13 @@ if dein#load_state(s:bundle_dir)
 
     call dein#add('machakann/vim-highlightedyank')
 
+    call dein#add('easymotion/vim-easymotion')
+    call dein#add('vimwiki/vimwiki')
+
+    call dein#add('janko/vim-test')
+
+    call dein#add('ludovicchabant/vim-gutentags')
+
     call dein#end()
     call dein#save_state()
 endif
@@ -96,6 +103,8 @@ let g:fzf_colors =
 let g:fzf_commits_log_options = "--branches=* --color=always --format='%C(auto)%h%d %s %C(green)%cr (%C(cyan)%an)'"
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+let g:fzf_tags_command = 'ctags -R --fields=+l --languages=python --python-kinds=-iv'
 
 
 
@@ -182,3 +191,35 @@ let g:asyncrun_open = g:quickfix_height
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsExpandTrigger='S-<tab>'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Easymotion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1
+nmap s <Plug>(easymotion-overwin-f2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+hi link EasyMotionTarget SpecialChar
+hi link EasyMotionShade  LineNr
+hi link EasyMotionTarget2First String
+hi link EasyMotionTarget2Second String
+hi link EasyMotionIncSearch Directory
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-test
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let test#strategy = 'neovim'
+let test#strategy = {
+    \ 'nearest': 'neovim',
+    \ 'file': 'neovim',
+    \ 'suite': 'asyncrun',
+\}
+let test#python#runner = 'pytest'
+let g:test#preserve_screen = 1
+if has('nvim')
+  tmap <C-o> <C-\><C-n>
+endif
+let test#python#pytest#options = '--reuse-db'

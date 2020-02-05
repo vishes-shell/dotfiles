@@ -19,10 +19,10 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Return forward jumping
-unmap <C-i>
+" unmap <C-i>
 
 
-" Useful mappings for managing tabs
+ " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
@@ -44,11 +44,9 @@ vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 nmap <F8> :TagbarToggle<CR>
 
 map <C-p> :Files<cr>
-nnoremap <silent> <Leader><Leader> :Files <C-R>=expand('%:h')<cr><cr>
 nnoremap <silent> <leader>a :Buffers<cr>
 nnoremap <silent> <leader>A :Windows<cr>
 nnoremap <silent> <leader>? :History<cr>
-nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<cr>
 nnoremap <silent> <leader>. :AgIn<space>
 
 nnoremap F :call SearchWordWithAg()<cr>
@@ -57,8 +55,12 @@ vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
 nnoremap <silent> <leader>ft :Filetypes<CR>
+nnoremap <silent> <leader>h :History:<CR>
 
 noremap <leader>s :Ag<space>
+noremap <leader>r :Commands<CR>
+noremap <leader>f :Tags<CR>
+noremap <leader>c :History:<CR>
 
 " Fugitive mapping
 nnoremap <leader>gs :Gstatus<cr>
