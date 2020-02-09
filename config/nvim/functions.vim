@@ -32,3 +32,5 @@ command! -nargs=+ -complete=dir AgIn call s:ag_in(<f-args>)
 com! FormatJSON %!python -m json.tool
 
 command! -nargs=0 RemoveStringWrap .s/str(\([a-zA-Z._]*\))/\1/
+
+command! GpushNew :Gpush origin -u HEAD

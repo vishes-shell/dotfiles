@@ -46,7 +46,7 @@ set selectmode=mouse
 set clipboard=
 
 if has('nvim') &&  matchstr(execute('silent version'), 'NVIM v\zs[^\n-]*') >= '0.4.0'
-    set inccommand=nosplit
+    set inccommand=split
     set wildoptions+=pum
     set signcolumn=yes:2
     set pumblend=10
@@ -64,6 +64,7 @@ set updatetime=400
 set so=7
 
 set wildmenu
+set cursorline " Highlight the active line.
 
 "Always show current position
 set ruler
