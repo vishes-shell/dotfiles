@@ -22,12 +22,11 @@ map <C-l> <C-W>l
 " unmap <C-i>
 
 
- " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tn :TestNearest<cr>
+map <leader>tf :TestFile<cr>
+map <leader>ts :TestSuite<cr>
+map <leader>tl :TestLast<cr>
+map <leader>tv :TestVisit<cr>
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
@@ -44,10 +43,9 @@ vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 nmap <F8> :TagbarToggle<CR>
 
 map <C-p> :Files<cr>
-nnoremap <silent> <leader>a :Buffers<cr>
-nnoremap <silent> <leader>A :Windows<cr>
 nnoremap <silent> <leader>? :History<cr>
 nnoremap <silent> <leader>. :AgIn<space>
+nnoremap <silent> ; :Buffers<cr>
 
 nnoremap F :call SearchWordWithAg()<cr>
 vnoremap <silent> F :call SearchVisualSelectionWithAg()<cr>
