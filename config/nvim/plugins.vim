@@ -38,13 +38,10 @@ if dein#load_state(s:bundle_dir)
     call dein#add('vim-airline/vim-airline-themes')
     call dein#add('rakr/vim-one')
 
-    call dein#add('cohama/agit.vim')
     call dein#add('tpope/vim-fugitive')
-    call dein#add('idanarye/vim-merginal')
+    call dein#add('airblade/vim-gitgutter')
 
     call dein#add('nicwest/vim-http')
-
-    call dein#add('idanarye/vim-merginal')
 
     call dein#add('prabirshrestha/async.vim')
     call dein#add('prabirshrestha/asyncomplete.vim')
@@ -141,7 +138,6 @@ let g:ale_c_parse_compile_commands = 1
 " Options for different linters.
 let g:ale_python_mypy_ignore_invalid_syntax = 1
 let g:ale_python_mypy_options = '--incremental'
-let g:ale_typescript_tslint_ignore_empty_files = 1
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 
@@ -175,7 +171,7 @@ let g:ale_set_highlights = 0
 let g:ale_fix_on_save = 1
 
 let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+let g:ale_set_quickfix = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => AsyncRun
