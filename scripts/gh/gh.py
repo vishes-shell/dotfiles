@@ -4,7 +4,6 @@ import click
 
 
 def get_projects(ctx, args, incomplete):
-    print(incomplete)
     return [d for d in os.listdir(os.path.expanduser("~/github/")) if incomplete in d]
 
 
