@@ -123,6 +123,7 @@ set nofoldenable
 
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
+set nowritebackup
 set nowb
 set noswapfile
 

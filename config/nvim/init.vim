@@ -5,7 +5,6 @@ execute("source " . s:config_dir . "/plugins.vim")
 execute("source " . s:config_dir . "/settings.vim")
 execute("source " . s:config_dir . "/functions.vim")
 execute("source " . s:config_dir . "/keymap.vim")
-execute("source " . s:config_dir . "/lsp.vim")
 execute("source " . s:config_dir . "/ab.vim")
 
 filetype plugin indent on
