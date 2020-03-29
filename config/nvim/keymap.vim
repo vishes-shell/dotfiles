@@ -3,6 +3,7 @@ nmap <leader>w :w!<cr>
 nmap <leader>q :close<cr>
 nmap <leader>wq :wq<cr>
 nmap <leader>o :only<cr>
+nmap <leader>e :e<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -24,7 +25,7 @@ map <C-l> <C-W>l
 
 map <leader>tn :TestNearest<cr>
 map <leader>tf :TestFile<cr>
-map <leader>ts :TestSuite<cr>
+" map <leader>ts :TestSuite<cr>
 map <leader>tl :TestLast<cr>
 map <leader>tv :TestVisit<cr>
 
