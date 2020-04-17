@@ -26,4 +26,10 @@ source "$HOME/.shell/.aliases"
 source "$HOME/.shell/.functions"
 source "$HOME/.aliases"
 
+# . "$HOME/.completions/gh-complete.sh"
+# . "$HOME/.completions/watson-complete.sh"
+
 autoload -Uz compinit && compinit
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

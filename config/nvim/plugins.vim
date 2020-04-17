@@ -22,17 +22,16 @@ if dein#load_state(s:bundle_dir)
     call dein#add('dense-analysis/ale')
     call dein#add('editorconfig/editorconfig-vim')
     call dein#add('vim-python/python-syntax')
+    call dein#add('Vimjas/vim-python-pep8-indent')
     call dein#add('luochen1990/rainbow')
 
     call dein#add('junegunn/fzf.vim')
 
-    " call dein#add('ervandew/supertab')
     call dein#add('skywind3000/asyncrun.vim', {'on_cmd': ['AsyncRun', 'AsyncStop']})
     call dein#add('tpope/vim-commentary')
     call dein#add('tpope/vim-vinegar')
 
     call dein#add('SirVer/ultisnips')
-    call dein#add('jiangmiao/auto-pairs')
 
     call dein#add('vim-airline/vim-airline')
     call dein#add('vim-airline/vim-airline-themes')
@@ -44,10 +43,6 @@ if dein#load_state(s:bundle_dir)
     call dein#add('nicwest/vim-http')
 
     call dein#add('prabirshrestha/async.vim')
-    " call dein#add('prabirshrestha/asyncomplete.vim')
-    " call dein#add('prabirshrestha/asyncomplete-lsp.vim')
-    " call dein#add('prabirshrestha/vim-lsp')
-    " call dein#add('mattn/vim-lsp-settings')
     
     call dein#add('neoclide/coc.nvim', {'merged':0, 'build': 'yarn install --frozen-lockfile'})
     call dein#add('machakann/vim-highlightedyank')
@@ -60,6 +55,8 @@ if dein#load_state(s:bundle_dir)
     call dein#add('ludovicchabant/vim-gutentags')
 
     call dein#add('junegunn/goyo.vim')
+
+    call dein#add('liuchengxu/vista.vim')
 
     call dein#end()
     call dein#save_state()
@@ -104,7 +101,7 @@ let g:fzf_commits_log_options = "--branches=* --color=always --format='%C(auto)%
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-let g:fzf_tags_command = 'ctags -R --fields=+l --languages=python --python-kinds=-iv'
+let g:fzf_tags_command = 'ctags -R --output-format=json --fields=+l --languages=python --python-kinds=-iv'
 
 
 
@@ -167,8 +164,10 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 0
 
-let g:ale_python_black_use_global = 1
-let g:ale_python_mypy_use_global = 1
+let g:ale_python_black_use_global = 0
+let g:ale_python_mypy_use_global = 0
+let g:ale_python_pylint_use_global = 0
+let g:ale_python_flake8_use_global = 0
 
 let g:ale_set_highlights = 0
 let g:ale_fix_on_save = 1
@@ -197,15 +196,18 @@ let g:UltiSnipsExpandTrigger='S-<tab>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_use_smartsign_us = 1
-nmap s <Plug>(easymotion-overwin-f2)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+let g:EasyMotion_add_search_history = 0
+nmap s <Plug>(easymotion-sn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+" map <Leader>j <Plug>(easymotion-j)
+" map <Leader>k <Plug>(easymotion-k)
 
 hi link EasyMotionTarget SpecialChar
 hi link EasyMotionShade  LineNr
 hi link EasyMotionTarget2First String
 hi link EasyMotionTarget2Second String
-hi link EasyMotionIncSearch Directory
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-test
@@ -277,3 +279,11 @@ nmap <silent> gr <Plug>(coc-references)
 
 
 let g:goyo_width=90
+
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }

@@ -11,6 +11,9 @@
     ~/.config:
       path: config
       create: true
+    ~/.completions:
+      path: completions
+      create: true
 
     ~/.ipython/profile_default/ipython_config.py: ipython/ipython_config.py
     ~/.ipython/profile_default/ipython_kernel_config.py: ipython/ipython_kernel_config.py
@@ -19,10 +22,14 @@
     ~/.bashrc:
     ~/.zshrc:
     ~/.tridactylrc:
+    ~/.inputrc:
 
     ~/.scripts:
       path: scripts
       create: true
+
+    /usr/local/share/zsh/site-functions/_watson: completions/watson-complete.sh
+    /usr/local/share/zsh/site-functions/_gh: completions/gh-complete.sh
 
 - create:
   - ~/projects

@@ -53,12 +53,11 @@ vnoremap <silent> F :call SearchVisualSelectionWithAg()<cr>
 vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
-nnoremap <silent> <leader>ft :Filetypes<CR>
+" nnoremap <silent> <leader>ft :Filetypes<CR>
 nnoremap <silent> <leader>h :History:<CR>
 
 noremap <leader>s :Ag<space>
 noremap <leader>r :Commands<CR>
-noremap <leader>f :Tags<CR>
 noremap <leader>c :History:<CR>
 
 " Fugitive mapping
@@ -70,6 +69,8 @@ nnoremap <leader>gt :Git tag<space>
 nnoremap <leader>gph :AsyncRun git push<cr>
 nnoremap <leader>gpt :Git push --tags<cr>
 nnoremap <leader>gf :AsyncRun git fetch<cr>
+
+nnoremap <leader>f :Vista finder<CR>
 
 nnoremap <tab>   :tabnext<cr>
 nnoremap <S-tab> :tabNext<cr>
