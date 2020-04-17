@@ -1,0 +1,9 @@
+{
+    "python.jediEnabled": false,
+    "diagnostic.displayByAle": true,
+    "diagnostic.virtualText": true,
+    "python.analysis.diagnosticEnabled": false,
+    "python.linting.enabled":false,
+    "coc.preferences.formatOnType": false,
+    "coc.preferences.formatOnSaveFiletypes": ["json"]
+}
