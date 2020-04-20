@@ -99,8 +99,6 @@ let g:fzf_colors =
 
 let g:fzf_commits_log_options = "--branches=* --color=always --format='%C(auto)%h%d %s %C(green)%cr (%C(cyan)%an)'"
 
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-
 let g:fzf_tags_command = 'ctags -R --output-format=json --fields=+l --languages=python --python-kinds=-iv'
 
 

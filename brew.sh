@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-if [ "$(uname -s)" != "Darwin" ]; then
-	exit 0
-fi
-
 echo " > Install Xcode tools"
 xcode-select --install
 
@@ -52,3 +48,12 @@ sudo xcodebuild -license
 echo " > Install helper utils"
 brew install tree
 brew install wget
+
+echo " > Install YouTube-dl"
+brew install youtube-dl
+
+echo " > Install ffmpeg"
+brew install ffmpeg
+
+echo " > Install poetry"
+brew install poetry

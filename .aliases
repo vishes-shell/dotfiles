@@ -31,9 +31,16 @@ alias v="nvim"
 alias :exit="exit"
 
 # show local ip
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # copy public key to clipboard
 alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
 alias cb="kitty +kitten clipboard"
+
+alias p="cd ~/projects"
+alias g="git"
+
+alias reload="exec ${SHELL} -l"

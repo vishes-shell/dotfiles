@@ -21,15 +21,16 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source "$HOME/.shell/.exports"
-source "$HOME/.shell/.aliases"
-source "$HOME/.shell/.functions"
+source "$HOME/.exports"
 source "$HOME/.aliases"
-
-# . "$HOME/.completions/gh-complete.sh"
-# . "$HOME/.completions/watson-complete.sh"
+source "$HOME/.functions"
+source "$HOME/.fzf.zsh"
 
 autoload -Uz compinit && compinit
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
+
+export REPORTTIME=10
+
