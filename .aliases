@@ -44,3 +44,9 @@ alias p="cd ~/projects"
 alias g="git"
 
 alias reload="exec ${SHELL} -l"
+
+alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+
+function title { echo -en "\033]0;$(basename $(dirname $1))/$(basename ${PWD})\007"; }
+function cd { dir=$1; if [ -z "$dir" ]; then dir=~; fi; builtin cd "$dir" && title `pwd`; }

@@ -57,3 +57,26 @@ brew install ffmpeg
 
 echo " > Install poetry"
 brew install poetry
+
+echo " > Install postgres"
+brew install postgresql
+ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+createuser -s postgres
+
+echo " > Install pgcli"
+brew install pgcli
+
+echo " > Install bat"
+brew install bat
+
+echo " > Install pre-commit"
+brew install pre-commit
+
+echo " > Install gettext"
+brew install gettext
+
+echo " > Install watson"
+brew install watson
+
+echo " > Install redis"
+brew install redis

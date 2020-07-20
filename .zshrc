@@ -32,5 +32,11 @@ export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
 
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/gettext/lib"
+export CPPFLAGS="-I/usr/local/opt/gettext/include"
+
+
 export REPORTTIME=10
 
+export PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
