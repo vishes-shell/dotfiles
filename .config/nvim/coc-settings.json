@@ -1,9 +1,17 @@
 {
     "python.jediEnabled": false,
-    "diagnostic.displayByAle": true,
     "diagnostic.virtualText": true,
     "python.analysis.diagnosticEnabled": false,
-    "python.linting.enabled":false,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
     "coc.preferences.formatOnType": false,
-    "coc.preferences.formatOnSaveFiletypes": ["json"]
+    "coc.preferences.formatOnSaveFiletypes": [
+        "json",
+        "python"
+    ],
+    "python.workspaceSymbols.tagFilePath": "${workspaceFolder}/tags",
+    "python.venvFolders": [
+        ".venv"
+    ],
+    "python.analysis.typeCheckingMode": "basic"
 }

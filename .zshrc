@@ -13,11 +13,9 @@ set -o vi
 
 plugins=(
   gitfast
-  django
   brew
   vi-mode
   fzf
-  poetry
 )
 
 source $ZSH/oh-my-zsh.sh

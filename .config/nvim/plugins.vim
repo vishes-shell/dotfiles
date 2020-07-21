@@ -60,6 +60,11 @@ if dein#load_state(s:bundle_dir)
 
     call dein#add('nicwest/vim-http')
 
+    call dein#add('tpope/vim-dadbod')
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('kristijanhusak/vim-dadbod-ui')
+    call dein#add('kristijanhusak/vim-dadbod-completion')
+
     call dein#end()
     call dein#save_state()
 endif
@@ -162,7 +167,7 @@ let g:ale_linters = {
 
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_save = 1
+let g:ale_lint_on_save = 0
 let g:ale_lint_on_enter = 0
 
 let g:ale_python_black_use_global = 0
@@ -171,7 +176,7 @@ let g:ale_python_pylint_use_global = 0
 let g:ale_python_flake8_use_global = 0
 
 let g:ale_set_highlights = 0
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
@@ -288,3 +293,10 @@ let g:vista#renderer#icons = {
 \   "function": "\uf794",
 \   "variable": "\uf71b",
 \  }
+
+
+let g:completion_chain_complete_list = {
+    \   'sql': [
+    \    {'complete_items': ['vim-dadbod-completion']},
+    \   ],
+    \ ]}
