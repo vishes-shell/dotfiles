@@ -58,6 +58,8 @@ if dein#load_state(s:bundle_dir)
 
     call dein#add('liuchengxu/vista.vim')
 
+    call dein#add('nicwest/vim-http')
+
     call dein#end()
     call dein#save_state()
 endif
@@ -111,6 +113,7 @@ let g:airline_highlighting_cache = 1
 let g:airline_detect_spelllang=0
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#coc#enabled = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
