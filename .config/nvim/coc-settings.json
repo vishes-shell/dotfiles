@@ -4,6 +4,7 @@
     "python.analysis.diagnosticEnabled": false,
     "python.linting.enabled": true,
     "python.formatting.provider": "black",
+    "pyright.disableCompletion": false,
     "coc.preferences.formatOnType": false,
     "coc.preferences.formatOnSaveFiletypes": [
         "json",

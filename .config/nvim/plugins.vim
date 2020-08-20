@@ -65,6 +65,8 @@ if dein#load_state(s:bundle_dir)
     call dein#add('kristijanhusak/vim-dadbod-ui')
     call dein#add('kristijanhusak/vim-dadbod-completion')
 
+    call dein#add('sbdchd/neoformat')
+
     call dein#end()
     call dein#save_state()
 endif
@@ -299,4 +301,12 @@ let g:completion_chain_complete_list = {
     \   'sql': [
     \    {'complete_items': ['vim-dadbod-completion']},
     \   ],
-    \ ]}
+    \ }
+
+
+let g:neoformat_enabled_python = ['isort', 'black']
+let g:neoformat_run_all_formatters = 1
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
