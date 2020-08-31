@@ -10,15 +10,6 @@ pyclean() {
     find . | grep -E "(__pycache__|\.py[cod]$)" | xargs rm -rf
 }
 
-# substitute watson command to make stop project after custom script
-watson() { 
-    if [[ $@ == "stop" ]]; then 
-        command ~/scripts/jwatson-stop.py; $(which watson) stop; 
-    else 
-        command watson "$@"; 
-    fi 
-}
-
 # `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
 # the `.git` directory, listing directories first. The output gets piped into
 # `less` with options to preserve color and line numbers, unless the output is
