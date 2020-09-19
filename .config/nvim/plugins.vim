@@ -40,11 +40,8 @@ if dein#load_state(s:bundle_dir)
     call dein#add('tpope/vim-fugitive')
     call dein#add('airblade/vim-gitgutter')
 
-    call dein#add('nicwest/vim-http')
-
     call dein#add('prabirshrestha/async.vim')
     
-    call dein#add('neoclide/coc.nvim', {'merged':0, 'build': 'yarn install --frozen-lockfile'})
     call dein#add('machakann/vim-highlightedyank')
 
     call dein#add('easymotion/vim-easymotion')
@@ -56,16 +53,7 @@ if dein#load_state(s:bundle_dir)
 
     call dein#add('junegunn/goyo.vim')
 
-    call dein#add('liuchengxu/vista.vim')
-
     call dein#add('nicwest/vim-http')
-
-    call dein#add('tpope/vim-dadbod')
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('kristijanhusak/vim-dadbod-ui')
-    call dein#add('kristijanhusak/vim-dadbod-completion')
-
-    call dein#add('sbdchd/neoformat')
 
     call dein#end()
     call dein#save_state()
@@ -120,7 +108,6 @@ let g:airline_highlighting_cache = 1
 let g:airline_detect_spelllang=0
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#coc#enabled = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -139,49 +126,77 @@ highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
 highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#F5F5F5
 let g:ale_warn_about_trailing_whitespace = 0
 let g:ale_maximum_file_size = 1024 * 1024
-let g:ale_completion_enabled = 0
+let g:ale_completion_enabled = 1
+let g:ale_code_actions_enabled = 1
 let g:ale_set_balloons_legacy_echo = 1
 let g:ale_c_parse_compile_commands = 1
 
+
 " Options for different linters.
-let g:ale_python_mypy_ignore_invalid_syntax = 1
-let g:ale_python_mypy_options = '--incremental'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
-
-" Use newer clang versions where available.
-if executable('clang-6.0')
-    let g:ale_c_clang_executable = 'clang-6.0'
-    let g:ale_cpp_clang_executable = 'clang-6.0'
-endif
-
-if executable('clangd-6.0')
-    let g:ale_c_clangd_executable = 'clangd-6.0'
-    let g:ale_cpp_clangd_executable = 'clangd-6.0'
-endif
 
 let g:ale_fixers = {
 \   'python': ['isort', 'black']
 \}
-let g:ale_linters = {
-\   'python': ['mypy', 'flake8', 'pylint']
+let b:ale_linters = {
+\   'python': ['flake8', 'pyright']
 \}
+
 
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_save = 0
 let g:ale_lint_on_enter = 0
 
-let g:ale_python_black_use_global = 0
-let g:ale_python_mypy_use_global = 0
-let g:ale_python_pylint_use_global = 0
-let g:ale_python_flake8_use_global = 0
+let g:ale_python_black_use_global = 1
+let g:ale_python_pylint_use_global = 1
+let g:ale_python_flake8_use_global = 1
 
-let g:ale_set_highlights = 0
-let g:ale_fix_on_save = 0
+let g:ale_set_highlights = 1
+let g:ale_fix_on_save = 1
 
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
+let g:ale_pattern_options_enabled = 1
+let g:ale_pattern_options = {
+\   'site-packages/.*$': {
+\       'ale_enabled': 0,
+\       '&modifiable': 0,
+\   },
+\   '\v\.min\.(js|css)$': {
+\       'ale_linters': [],
+\       'ale_fixers': [],
+\   },
+\   'node_modules': {
+\       'ale_fixers': [],
+\   },
+\}
+
+let b:ale_completion_excluded_words = ['and', 'or', 'if']
+let b:ale_python_pyright_config = {
+\   'python': {
+\       'analysis': {
+\           'typeCheckingMode': 'basic',
+\           'logLevel': 'warning',
+\       },
+\   },
+\}
+let b:ale_completion_excluded_words = [
+\   'do',
+\   'doc',
+\   'super',
+\]
+if expand('%:e') is# 'pyi'
+    let b:ale_linters = ['pyright']
+endif
+let g:ale_disable_lsp = v:false
+set omnifunc=ale#completion#OmniFunc
+
+nmap <silent> gd <Plug>(ale_go_to_definition)
+nmap <silent> gr <Plug>(ale_find_references)
+noremap <silent> [d :ALEPrevious<cr>
+noremap <silent> ]d :ALENext<cr>
+noremap <silent> gd :ALEGoToDefinition<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => AsyncRun
@@ -233,80 +248,6 @@ if has('nvim')
 endif
 let test#python#pytest#options = '--reuse-db'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Coc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TextEdit might fail if hidden is not set.
-set hidden
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if has('patch8.1.1068')
-  " Use `complete_info` if your (Neo)Vim version supports it.
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-
 let g:goyo_width=90
 
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#enable_icon = 1
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\   "variable": "\uf71b",
-\  }
 
-
-let g:completion_chain_complete_list = {
-    \   'sql': [
-    \    {'complete_items': ['vim-dadbod-completion']},
-    \   ],
-    \ }
-
-
-let g:neoformat_enabled_python = ['isort', 'black']
-let g:neoformat_run_all_formatters = 1
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END

@@ -91,3 +91,48 @@ noremap  L  $
 
 noremap <C-U> kkkkkkkkkkkkkkkkkkkkk
 noremap <C-D> jjjjjjjjjjjjjjjjjjjjj
+
+" Make pressing Enter accept a completion entry.
+function! SmartEnter()
+    if pumvisible()
+        return "\<C-y>"
+    endif
+
+    return "\<CR>"
+endfunction
+
+" Use Tab and Shift+Tab for either completion or SnipMate.
+function! SmartTab() abort
+    if pumvisible()
+        let l:keys = "\<C-n>"
+
+        if get(b:, 'ale_last_completion_count') is 1
+            let l:keys .= "\<Left>\<Right>"
+        endif
+
+        return l:keys
+    endif
+
+    return snipMate#TriggerSnippet()
+endfunction
+
+function! SmartShiftTab() abort
+    if pumvisible()
+        return "\<C-p>"
+    endif
+
+    return snipMate#BackwardsSnippet()
+endfunction
+
+function! SmartInsertCompletion() abort
+    if pumvisible()
+        return "\<C-n>"
+    endif
+
+    return "\<C-c>a\<C-n>"
+endfunction
+
+inoremap <silent> <CR> <C-R>=SmartEnter()<CR>
+inoremap <silent> <Tab> <C-R>=SmartTab()<CR>
+inoremap <silent> <S-Tab> <C-R>=SmartShiftTab()<CR>
+inoremap <silent> <C-n> <C-R>=SmartInsertCompletion()<CR>
