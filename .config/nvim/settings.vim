@@ -58,7 +58,7 @@ filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
-set updatetime=400
+set updatetime=300
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7

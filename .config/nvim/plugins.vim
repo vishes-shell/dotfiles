@@ -1,63 +1,30 @@
-" First, setup global variables
-let s:config_dir = substitute(expand('<sfile>:p:h'), '\', '/', 'g')
-let s:bundle_dir = s:config_dir . "/.cache/dein"
-let s:dein_dir = s:bundle_dir . "/repos/github.com/Shougo/dein.vim"
-let s:do_update = 0
+call plug#begin()
 
+Plug 'dense-analysis/ale'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'vim-python/python-syntax'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'luochen1990/rainbow'
+Plug 'junegunn/fzf.vim'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'
+Plug 'SirVer/ultisnips'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'rakr/vim-one'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'machakann/vim-highlightedyank'
+Plug 'easymotion/vim-easymotion'
+Plug 'vimwiki/vimwiki'
+Plug 'janko/vim-test'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'junegunn/goyo.vim'
+Plug 'nicwest/vim-http'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" If dein isn't already there, install it
-if !isdirectory(s:dein_dir)
-    call mkdir(fnamemodify(s:dein_dir, "h"), "p")
-    execute '!git clone --depth 1 --branch master "https://github.com/Shougo/dein.vim" "' . s:dein_dir . '"'
-    let s:do_update = 1
-endif
-execute("set runtimepath+=" . s:dein_dir)
-
-if dein#load_state(s:bundle_dir)
-    call dein#begin(s:bundle_dir)
-
-    call dein#add('https://github.com/Shougo/dein.vim',   {'hook_done_update': 'execute "UpdateRemotePlugins"'})
-
-    " syntax and formating
-    call dein#add('dense-analysis/ale')
-    call dein#add('editorconfig/editorconfig-vim')
-    call dein#add('vim-python/python-syntax')
-    call dein#add('Vimjas/vim-python-pep8-indent')
-    call dein#add('luochen1990/rainbow')
-
-    call dein#add('junegunn/fzf.vim')
-
-    call dein#add('skywind3000/asyncrun.vim', {'on_cmd': ['AsyncRun', 'AsyncStop']})
-    call dein#add('tpope/vim-commentary')
-    call dein#add('tpope/vim-vinegar')
-
-    call dein#add('SirVer/ultisnips')
-
-    call dein#add('vim-airline/vim-airline')
-    call dein#add('vim-airline/vim-airline-themes')
-    call dein#add('rakr/vim-one')
-
-    call dein#add('tpope/vim-fugitive')
-    call dein#add('airblade/vim-gitgutter')
-
-    call dein#add('prabirshrestha/async.vim')
-    
-    call dein#add('machakann/vim-highlightedyank')
-
-    call dein#add('easymotion/vim-easymotion')
-    call dein#add('vimwiki/vimwiki')
-
-    call dein#add('janko/vim-test')
-
-    call dein#add('ludovicchabant/vim-gutentags')
-
-    call dein#add('junegunn/goyo.vim')
-
-    call dein#add('nicwest/vim-http')
-
-    call dein#end()
-    call dein#save_state()
-endif
+call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -127,21 +94,18 @@ highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
 highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#F5F5F5
 let g:ale_warn_about_trailing_whitespace = 0
 let g:ale_maximum_file_size = 1024 * 1024
-let g:ale_completion_enabled = 1
-let g:ale_code_actions_enabled = 1
-let g:ale_set_balloons_legacy_echo = 1
+let g:ale_completion_enabled = 0
+let g:ale_code_actions_enabled = 0
+let g:ale_set_balloons_legacy_echo = 0
 let g:ale_c_parse_compile_commands = 1
 
 
 " Options for different linters.
 let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_insert_leave = 0
 
 let g:ale_fixers = {
 \   'python': ['isort', 'black']
-\}
-let b:ale_linters = {
-\   'python': ['flake8', 'pyright']
 \}
 
 
@@ -153,8 +117,9 @@ let g:ale_lint_on_enter = 0
 let g:ale_python_black_use_global = 1
 let g:ale_python_pylint_use_global = 1
 let g:ale_python_flake8_use_global = 1
+let g:ale_python_isort_use_global = 1
 
-let g:ale_set_highlights = 1
+let g:ale_set_highlights = 0
 let g:ale_fix_on_save = 1
 
 let g:ale_pattern_options_enabled = 1
@@ -172,31 +137,7 @@ let g:ale_pattern_options = {
 \   },
 \}
 
-let b:ale_completion_excluded_words = ['and', 'or', 'if']
-let b:ale_python_pyright_config = {
-\   'python': {
-\       'analysis': {
-\           'typeCheckingMode': 'basic',
-\           'logLevel': 'warning',
-\       },
-\   },
-\}
-let b:ale_completion_excluded_words = [
-\   'do',
-\   'doc',
-\   'super',
-\]
-if expand('%:e') is# 'pyi'
-    let b:ale_linters = ['pyright']
-endif
-let g:ale_disable_lsp = v:false
-set omnifunc=ale#completion#OmniFunc
-
-nmap <silent> gd <Plug>(ale_go_to_definition)
-nmap <silent> gr <Plug>(ale_find_references)
-noremap <silent> [d :ALEPrevious<cr>
-noremap <silent> ]d :ALENext<cr>
-noremap <silent> gd :ALEGoToDefinition<cr>
+let g:ale_disable_lsp = 1
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
