@@ -19,7 +19,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'easymotion/vim-easymotion'
 Plug 'vimwiki/vimwiki'
 Plug 'janko/vim-test'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'junegunn/goyo.vim'
 Plug 'nicwest/vim-http'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -42,6 +41,7 @@ command! -bang -nargs=? -complete=dir Files
 command! -bang -nargs=* Ag
 \ call fzf#vim#ag(<q-args>,
 \                 '--hidden',
+\                 '--ignore .git',
 \                 <bang>0 ? fzf#vim#with_preview('up:60%')
 \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
 \                 <bang>0)
@@ -64,7 +64,7 @@ let g:fzf_colors =
 
 let g:fzf_commits_log_options = "--branches=* --color=always --format='%C(auto)%h%d %s %C(green)%cr (%C(cyan)%an)'"
 
-let g:fzf_tags_command = 'ctags -R --output-format=json --fields=+l --languages=python --python-kinds=-iv'
+let g:fzf_tags_command = 'ctags -R --fields=+l --languages=python --python-kinds=-iv'
 
 
 

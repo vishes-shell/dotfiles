@@ -57,6 +57,8 @@ nnoremap <silent> <leader>ga :BCommits<CR>
 nnoremap <silent> <leader>h :History:<CR>
 
 noremap <leader>s :Ag<space>
+noremap <leader>l :BLines<CR>
+noremap <leader>t :BTags<CR>
 noremap <leader>r :Commands<CR>
 noremap <leader>c :History:<CR>
 

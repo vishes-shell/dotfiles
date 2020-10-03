@@ -1,20 +1,12 @@
 {
     "coc.preferences.extensionUpdateCheck": "daily",
-    "python.jediEnabled": false,
     "diagnostic.virtualText": true,
     "diagnostic.checkCurrentLine": true,
     "suggest.timeout": 5000,
-    "python.analysis.diagnosticEnabled": false,
-    "python.linting.enabled": true,
-    "python.formatting.provider": "black",
     "pyright.disableCompletion": false,
     "coc.preferences.formatOnType": false,
     "coc.preferences.formatOnSaveFiletypes": [
-        "json",
-    ],
-    "python.workspaceSymbols.tagFilePath": "${workspaceFolder}/tags",
-    "python.venvFolders": [
-        ".venv"
+        "json"
     ],
     "python.analysis.typeCheckingMode": "basic"
 }

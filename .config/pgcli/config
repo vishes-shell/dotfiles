@@ -33,7 +33,7 @@ expand = False
 auto_expand = False
 
 # If set to True, table suggestions will include a table alias
-generate_aliases = False
+generate_aliases = True
 
 # log_file location.
 # In Unix/Linux: ~/.config/pgcli/log
