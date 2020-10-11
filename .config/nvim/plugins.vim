@@ -176,12 +176,7 @@ hi link EasyMotionTarget2Second String
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-test
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let test#strategy = 'neovim'
-let test#strategy = {
-    \ 'nearest': 'neovim',
-    \ 'file': 'neovim',
-    \ 'suite': 'asyncrun',
-\}
+let test#strategy = 'asyncrun_background_term'
 let test#python#runner = 'pytest'
 let g:test#preserve_screen = 1
 if has('nvim')

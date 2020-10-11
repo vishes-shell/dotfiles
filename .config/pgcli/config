@@ -171,10 +171,6 @@ Token.Output.EvenRow = ""
 # Named queries are queries you can execute by name.
 [named queries]
 
-# DSN to call by -D option
-[alias_dsn]
-# example_dsn = postgresql://[user[:password]@][netloc][:port][/dbname]
-
 # Format for number representation
 # for decimal "d" - 12345678, ",d" - 12,345,678
 # for float "g" - 123456.78, ",g" - 123,456.78
