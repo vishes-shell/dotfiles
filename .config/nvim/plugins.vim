@@ -22,6 +22,7 @@ Plug 'janko/vim-test'
 Plug 'junegunn/goyo.vim'
 Plug 'nicwest/vim-http'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'stsewd/fzf-checkout.vim'
 
 call plug#end()
 

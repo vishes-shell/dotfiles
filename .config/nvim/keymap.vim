@@ -63,12 +63,11 @@ noremap <leader>c :History:<CR>
 
 " Fugitive mapping
 nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>go :Git checkout<space>
+nnoremap <leader>gb :GBranches<cr>
 nnoremap <leader>gpl :AsyncRun git pull<cr>
 nnoremap <leader>gm :Gmerge origin/
-nnoremap <leader>gt :Git tag<space>
 nnoremap <leader>gph :AsyncRun git push<cr>
-nnoremap <leader>gpt :Git push --tags<cr>
+nnoremap <leader>gpr :AsyncRun git push -u origin HEAD<cr>
 nnoremap <leader>gf :AsyncRun git fetch<cr>
 
 nnoremap <leader>f :Vista finder<CR>
