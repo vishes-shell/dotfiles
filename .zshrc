@@ -16,6 +16,7 @@ plugins=(
   brew
   vi-mode
   fzf
+  zsh-completions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -38,3 +39,4 @@ export CPPFLAGS="-I/usr/local/opt/gettext/include"
 export REPORTTIME=10
 
 export PROMPT_COMMAND='echo -ne "\033]0;$(basename ${PWD})\007"'
+source $(brew --prefix)/share/zsh/site-functions/_todoist_fzf

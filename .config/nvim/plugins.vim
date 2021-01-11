@@ -23,6 +23,10 @@ Plug 'junegunn/goyo.vim'
 Plug 'nicwest/vim-http'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'stsewd/fzf-checkout.vim'
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 
@@ -187,4 +191,4 @@ let test#python#pytest#options = '--reuse-db'
 
 let g:goyo_width=90
 
-
+nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>

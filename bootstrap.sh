@@ -2,7 +2,9 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin master
+if [ "$1" == "--pull" -o "$1" == "-p" ]; then
+  git pull origin master
+fi;
 
 
 function doIt() {
