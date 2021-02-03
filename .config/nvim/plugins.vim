@@ -38,6 +38,7 @@ set rtp+=/usr/local/opt/fzf
 
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 let $FZF_PREVIEW_COMMAND="bat --style=numbers,changes --color=always {}"
+let g:fzf_preview_command = 'bat --color=always --plain {-1}'
 let g:fzf_layout = { 'window': '-tabnew' }
 
 command! -bang -nargs=? -complete=dir Files
@@ -191,4 +192,5 @@ let test#python#pytest#options = '--reuse-db'
 
 let g:goyo_width=90
 
-nnoremap <silent> <space><space> :<C-u>CocFzfList<CR>
+nnoremap <silent> <space><space> :<C-u>CocFzfList commands<CR>
+nnoremap <silent> <space>d :<C-u>CocFzfList diagnostics<CR>
