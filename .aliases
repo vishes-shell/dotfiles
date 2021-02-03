@@ -50,3 +50,7 @@ alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.
 
 function title { echo -en "\033]0;$(basename $(dirname $1))/$(basename ${PWD})\007"; }
 function cd { dir=$1; if [ -z "$dir" ]; then dir=~; fi; builtin cd "$dir" && title `pwd`; }
+
+
+# https://sw.kovidgoyal.net/kitty/faq.html#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
+alias ssh="kitty +kitten ssh"
