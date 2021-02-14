@@ -17,16 +17,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'machakann/vim-highlightedyank'
 Plug 'easymotion/vim-easymotion'
-Plug 'vimwiki/vimwiki'
 Plug 'janko/vim-test'
 Plug 'junegunn/goyo.vim'
 Plug 'nicwest/vim-http'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 
 call plug#end()
 

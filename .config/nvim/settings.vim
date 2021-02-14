@@ -117,6 +117,7 @@ set colorcolumn=88
 " Automatically split words at the margin.
 " au FileType markdown setlocal wrap
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown tw=80 fo+=t colorcolumn=80
+set formatoptions-=t
 
 " Disable folding because it's annoying.
 set nofoldenable
