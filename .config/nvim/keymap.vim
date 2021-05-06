@@ -57,12 +57,13 @@ nnoremap <silent> <leader>h :History:<CR>
 
 noremap <leader>s :Ag<space>
 noremap <leader>l :BLines<CR>
-noremap <leader>t :BTags<CR>
 noremap <leader>r :Commands<CR>
 noremap <leader>c :History:<CR>
+nnoremap <leader>tt :Tags<CR>
+nnoremap <leader>bt :BTags<CR>
 
 " Fugitive mapping
-nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gs :Git<cr>
 nnoremap <leader>gb :GBranches<cr>
 nnoremap <leader>gpl :AsyncRun git pull<cr>
 nnoremap <leader>gm :Gmerge origin/
@@ -70,7 +71,6 @@ nnoremap <leader>gph :AsyncRun git push<cr>
 nnoremap <leader>gpr :AsyncRun git push -u origin HEAD<cr>
 nnoremap <leader>gf :AsyncRun git fetch<cr>
 
-nnoremap <leader>f :Vista finder<CR>
 
 nnoremap <tab>   :tabnext<cr>
 nnoremap <S-tab> :tabNext<cr>
@@ -127,6 +127,9 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd :call CocAction('jumpDefinition')<CR>
+nmap <silent> gD :call CocAction('jumpDefinition', 'vsplit')<CR>
+
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -137,17 +140,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-
 " Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
@@ -155,5 +148,3 @@ nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>

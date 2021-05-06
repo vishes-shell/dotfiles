@@ -9,5 +9,10 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "json"
     ],
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "basic",
+    "sql.formatOptions": {
+        "language": "postgresql",
+        "uppercase": true,
+        "indent": "    "
+    }
 }

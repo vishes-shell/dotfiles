@@ -23,6 +23,8 @@ Plug 'nicwest/vim-http'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+Plug 'chr4/nginx.vim'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -190,3 +192,28 @@ let g:goyo_width=90
 
 nnoremap <silent> <space><space> :<C-u>CocFzfList commands<CR>
 nnoremap <silent> <space>d :<C-u>CocFzfList diagnostics<CR>
+
+let g:gutentags_enabled = 1
+" let g:gutentags_generate_on_missing = 0
+" let g:gutentags_generate_on_new = 0
+let g:gutentags_file_list_command = { 'markers': { '.git': 'git ls-files', '.hg': 'hg files' } }
+" let g:gutentags_ctags_executable_python = 'ctags --languages=python --python-kinds=-i'
+let g:gutentags_define_advanced_commands = 1
+nmap <leader>ct :GutentagsToggleEnabled<CR>
+let g:gutentags_ctags_extra_args= [ '--languages=python',
+\ '--fields=+l',
+\ '--excmd=number',
+\ '--python-kinds=-iv' ]
+
+
+augroup fzf_preview
+  autocmd!
+  autocmd User fzf_preview#initialized call s:fzf_preview_settings()
+augroup END
+
+function! s:fzf_preview_settings() abort
+  let g:fzf_preview_grep_preview_cmd = 'COLORTERM=truecolor ' . g:fzf_preview_grep_preview_cmd
+endfunction
+
+let $BAT_THEME = 'Monokai Extended Origin'
+let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'Monokai Extended Origin'
