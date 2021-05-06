@@ -1,0 +1,14 @@
+[pull]
+	rebase = false
+[http]
+	postBuffer = 157286400
+	version = HTTP/1.1
+
+[includeIf "gitdir:~/github/"]
+    path = .gitconfig-github
+[includeIf "gitdir:~/projects/"]
+    path = .gitconfig-work
+[alias]
+    pushbackdev = push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target=dev 
+	pushbackbranch = push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target=
+
