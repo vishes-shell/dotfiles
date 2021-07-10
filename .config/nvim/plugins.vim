@@ -25,8 +25,47 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'chr4/nginx.vim'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'folke/zen-mode.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'romgrk/nvim-treesitter-context'
+" Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
 call plug#end()
+
+lua << EOF
+  require("zen-mode").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "bash", "python", "toml", "yaml", "json" },
+  highlight = {
+    enable = false,
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+}
+EOF
+
+" lua << EOF
+" require'treesitter-context.config'.setup{
+"     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+" }
+" EOF
+
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

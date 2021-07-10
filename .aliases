@@ -24,8 +24,6 @@ alias afk="/system/library/coreservices/menu\ extras/user.menu/contents/resource
 # reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${shell} -l"
 
-# faster is better
-alias v="nvim"
 
 # sometimes :exit is easier
 alias :exit="exit"
