@@ -15,6 +15,10 @@ bind ? fillcmdline find -?
 bind n findnext 1
 bind N findnext -1
 
+set historyresults 100
+
+set editorcmd /usr/local/bin/vimr --wait --nvim +only
+
 " Remove search highlighting.
 bind ,<Space> nohlsearch
 " Use sensitive case. Smart case would be nice here, but it doesn't work.
