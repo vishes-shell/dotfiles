@@ -1,6 +1,6 @@
 set t_Co=256
 set background=dark
-colorscheme one
+colorscheme dark_catppuccino
 let g:one_allow_italics = 1
 
 if (empty($TMUX))

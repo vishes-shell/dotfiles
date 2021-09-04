@@ -9,26 +9,31 @@ Plug 'junegunn/fzf.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
-Plug 'SirVer/ultisnips'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'rakr/vim-one'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'rakr/vim-one'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'machakann/vim-highlightedyank'
 Plug 'easymotion/vim-easymotion'
 Plug 'janko/vim-test'
 Plug 'junegunn/goyo.vim'
-Plug 'nicwest/vim-http'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'nicwest/vim-http'
 Plug 'stsewd/fzf-checkout.vim'
-Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+" Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'chr4/nginx.vim'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'folke/zen-mode.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'romgrk/nvim-treesitter-context'
 " Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'neovim/nvim-lspconfig'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'Pocco81/Catppuccino.nvim'
+Plug 'itchyny/lightline.vim'
+Plug 'lewis6991/spellsitter.nvim'
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 
 call plug#end()
 
@@ -39,6 +44,15 @@ lua << EOF
     -- refer to the configuration section below
   }
 EOF
+
+lua << EOF
+local lsp = require "lspconfig"
+local coq = require "coq"
+
+lsp.pyright.setup(coq.lsp_ensure_capabilities())
+EOF
+" require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities())
+
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
@@ -55,6 +69,19 @@ require'nvim-treesitter.configs'.setup {
       node_decremental = "grm",
     },
   },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
+    colors = {},
+    termcolors = {}
+  }
+}
+EOF
+
+lua << EOF
+require'spellsitter'.setup {
+    captures = {'comment'}
 }
 EOF
 
@@ -229,8 +256,8 @@ let test#python#pytest#options = '--reuse-db'
 
 let g:goyo_width=90
 
-nnoremap <silent> <space><space> :<C-u>CocFzfList commands<CR>
-nnoremap <silent> <space>d :<C-u>CocFzfList diagnostics<CR>
+" nnoremap <silent> <space><space> :<C-u>CocFzfList commands<CR>
+" nnoremap <silent> <space>d :<C-u>CocFzfList diagnostics<CR>
 
 let g:gutentags_enabled = 1
 " let g:gutentags_generate_on_missing = 0
@@ -256,3 +283,60 @@ endfunction
 
 let $BAT_THEME = 'Monokai Extended Origin'
 let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'Monokai Extended Origin'
+
+let g:coq_settings = { 
+\   'auto_start': v:true,
+\   'display': {
+\       'pum': {'fast_close': v:false}
+\   },
+\   'keymap': {
+\       'recommended': v:true,
+\       'jump_to_mark': '<c-n>',
+\       'manual_complete': "<c-space>",
+\       'bigger_preview': "<c-k>"
+\   }
+\}
+" let g:coq_settings.keymap.jump_to_mark = '<c-n>'
+
+lua << EOF
+local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'pyright' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+  }
+end
+EOF
+
+let g:lightline = {
+\ 'colorsheme': 'dark_catppuccino'
+\ }
