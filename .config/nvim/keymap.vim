@@ -58,7 +58,7 @@ nnoremap <silent> <leader>h :History:<CR>
 noremap <leader>s :Ag<space>
 noremap <leader>l :BLines<CR>
 noremap <leader>r :Commands<CR>
-noremap <leader>c :History:<CR>
+" noremap <leader>c :History:<CR>
 nnoremap <leader>tt :Tags<CR>
 nnoremap <leader>bt :BTags<CR>
 
