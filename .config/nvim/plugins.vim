@@ -34,24 +34,23 @@ Plug 'Pocco81/Catppuccino.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'glepnir/lspsaga.nvim'
 
 call plug#end()
 
 lua << EOF
-  require("zen-mode").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-EOF
+  require("zen-mode").setup {}
+  local lsp = require "lspconfig"
+  -- local coq = require "coq"
+  lsp.pyright.setup({})
+  -- lsp.pyright.setup(coq.lsp_ensure_capabilities())
 
-lua << EOF
-local lsp = require "lspconfig"
-local coq = require "coq"
-
-lsp.pyright.setup(coq.lsp_ensure_capabilities())
+  local saga = require 'lspsaga'
+  saga.init_lsp_saga({
+    code_action_icon = '💡',
+    max_preview_lines = 20
+  })
 EOF
-" require'lspconfig'.pyright.setup(coq.lsp_ensure_capabilities())
 
 
 lua << EOF
@@ -173,8 +172,10 @@ let g:ale_c_parse_compile_commands = 1
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 0
 
+let g:ale_linters = {}
+let g:ale_linters_explicit = 1
 let g:ale_fixers = {
-\   'python': ['isort', 'black']
+\   'python': ['autoflake', 'isort', 'black']
 \}
 
 
@@ -187,11 +188,14 @@ let g:ale_python_black_use_global = 1
 let g:ale_python_pylint_use_global = 1
 let g:ale_python_flake8_use_global = 1
 let g:ale_python_isort_use_global = 1
+let g:ale_python_autoflake_use_global = 1
+
+let g:ale_python_autoflake_options = '--remove-all-unused-imports'
 
 let g:ale_set_highlights = 0
 let g:ale_fix_on_save = 1
 
-let g:ale_pattern_options_enabled = 1
+let g:ale_pattern_options_enabled = 0
 let g:ale_pattern_options = {
 \   'site-packages/.*$': {
 \       'ale_enabled': 0,
@@ -221,8 +225,8 @@ let g:asyncrun_open = g:quickfix_height
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => UltiSnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsExpandTrigger='S-<tab>'
+" let g:UltiSnipsExpandTrigger='<tab>'
+" let g:UltiSnipsExpandTrigger='S-<tab>'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -291,7 +295,7 @@ let g:coq_settings = {
 \   },
 \   'keymap': {
 \       'recommended': v:true,
-\       'jump_to_mark': '<c-n>',
+\       'jump_to_mark': '<c-h>',
 \       'manual_complete': "<c-space>",
 \       'bigger_preview': "<c-k>"
 \   }
@@ -314,12 +318,12 @@ local on_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  -- buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  -- buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -329,14 +333,23 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-  }
-end
+-- local servers = { 'pyright' }
+-- for _, lsp in ipairs(servers) do
+--   nvim_lsp[lsp].setup {
+--     on_attach = on_attach,
+--   }
+-- end
 EOF
 
 let g:lightline = {
 \ 'colorsheme': 'dark_catppuccino'
 \ }
+
+nnoremap <silent>K :Lspsaga hover_doc<CR>
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+nnoremap <silent>gr :Lspsaga rename<CR>
+nnoremap <silent> gd :Lspsaga preview_definition<CR>
+
+nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
+tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
