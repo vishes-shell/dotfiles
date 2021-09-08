@@ -10,5 +10,7 @@
     path = .gitconfig-work
 [alias]
     pushbackdev = push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target=dev 
-	pushbackbranch = push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target=
-
+	pushbackbranch = "!push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target=\"$1\""
+    
+[credential]
+	helper = store
