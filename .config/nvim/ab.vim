@@ -1,2 +1,10 @@
 ab serialziers serializers
 ab reponse response
+ab professsions professions
+ab professsion profession
+ab profesions professions
+ab profesion profession
+ab professsioncourse professioncourse
+ab professsiondiploma professiondiploma
+ab profesioncourse professioncourse
+ab profesiondiploma professiondiploma
