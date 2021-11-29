@@ -1,6 +1,7 @@
 let s:config_dir = expand('<sfile>:p:h')
 " let s:config_dir = "~/.dotfiles/config/nvim"
 
+set termguicolors
 execute("source " . s:config_dir . "/plugins.vim")
 execute("source " . s:config_dir . "/settings.vim")
 execute("source " . s:config_dir . "/functions.vim")
