@@ -7,7 +7,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'luochen1990/rainbow'
 Plug 'junegunn/fzf.vim'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-vinegar'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
@@ -15,14 +15,14 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'machakann/vim-highlightedyank'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 Plug 'janko/vim-test'
 Plug 'junegunn/goyo.vim'
 " Plug 'nicwest/vim-http'
 Plug 'stsewd/fzf-checkout.vim'
 " Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 Plug 'chr4/nginx.vim'
-" Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'folke/zen-mode.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'romgrk/nvim-treesitter-context'
@@ -30,11 +30,19 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'p00f/nvim-ts-rainbow'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'Pocco81/Catppuccino.nvim'
-Plug 'itchyny/lightline.vim'
+Plug 'catppuccin/nvim'
 Plug 'lewis6991/spellsitter.nvim'
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'glepnir/lspsaga.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'famiu/feline.nvim'
+Plug 'nanotee/sqls.nvim'
+Plug 'zhaozg/vim-diagram'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'numToStr/Comment.nvim'
+Plug 'phaazon/hop.nvim'
 
 call plug#end()
 
@@ -50,6 +58,15 @@ lua << EOF
     code_action_icon = '💡',
     max_preview_lines = 20
   })
+
+  lsp.sqls.setup({})
+EOF
+
+lua << EOF
+require'lspconfig'.sqls.setup{
+    cmd = { "sqls", ".config/sqls/config.yml" },
+    picker = 'fzf',
+}
 EOF
 
 
@@ -83,6 +100,84 @@ require'spellsitter'.setup {
     captures = {'comment'}
 }
 EOF
+
+lua << EOF
+require('feline').setup()
+EOF
+
+lua << EOF
+require('gitsigns').setup()
+EOF
+
+lua << EOF
+require('Comment').setup()
+EOF
+
+lua << EOF
+require("hop").setup()
+EOF
+
+lua << EOF
+local catppuccin = require("catppuccin")
+
+-- configure it
+catppuccin.setup(
+    {
+		transparent_background = false,
+		term_colors = false,
+		styles = {
+			comments = "italic",
+			functions = "italic",
+			keywords = "italic",
+			strings = "NONE",
+			variables = "NONE",
+		},
+		integrations = {
+			treesitter = true,
+			native_lsp = {
+				enabled = true,
+				virtual_text = {
+					errors = "italic",
+					hints = "italic",
+					warnings = "italic",
+					information = "italic",
+				},
+				underlines = {
+					errors = "underline",
+					hints = "underline",
+					warnings = "underline",
+					information = "underline",
+				},
+			},
+			lsp_trouble = true,
+			lsp_saga = false,
+			gitgutter = true,
+			gitsigns = true,
+			telescope = false,
+			nvimtree = {
+				enabled = false,
+				show_root = false,
+			},
+			which_key = false,
+			indent_blankline = {
+				enabled = false,
+				colored_indent_levels = false,
+			},
+			dashboard = false,
+			neogit = false,
+			vim_sneak = false,
+			fern = false,
+			barbar = false,
+			bufferline = false,
+			markdown = false,
+			lightspeed = false,
+			ts_rainbow = false,
+			hop = true,
+		},
+	}
+)
+EOF
+
 
 " lua << EOF
 " require'treesitter-context.config'.setup{
@@ -232,20 +327,20 @@ let g:asyncrun_open = g:quickfix_height
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Easymotion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EasyMotion_smartcase = 1
-let g:EasyMotion_use_smartsign_us = 1
-let g:EasyMotion_add_search_history = 0
-nmap s <Plug>(easymotion-sn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+" let g:EasyMotion_smartcase = 1
+" let g:EasyMotion_use_smartsign_us = 1
+" let g:EasyMotion_add_search_history = 0
+" nmap s <Plug>(easymotion-sn)
+" map  n <Plug>(easymotion-next)
+" map  N <Plug>(easymotion-prev)
 
-" map <Leader>j <Plug>(easymotion-j)
-" map <Leader>k <Plug>(easymotion-k)
+" " map <Leader>j <Plug>(easymotion-j)
+" " map <Leader>k <Plug>(easymotion-k)
 
-hi link EasyMotionTarget SpecialChar
-hi link EasyMotionShade  LineNr
-hi link EasyMotionTarget2First String
-hi link EasyMotionTarget2Second String
+" hi link EasyMotionTarget SpecialChar
+" hi link EasyMotionShade  LineNr
+" hi link EasyMotionTarget2First String
+" hi link EasyMotionTarget2Second String
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-test
@@ -295,12 +390,11 @@ let g:coq_settings = {
 \   },
 \   'keymap': {
 \       'recommended': v:true,
-\       'jump_to_mark': '<c-h>',
+\       'jump_to_mark': '<c-n>',
 \       'manual_complete': "<c-space>",
 \       'bigger_preview': "<c-k>"
 \   }
 \}
-" let g:coq_settings.keymap.jump_to_mark = '<c-n>'
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
@@ -319,11 +413,9 @@ local on_attach = function(client, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  -- buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  -- buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -333,17 +425,15 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
--- local servers = { 'pyright' }
--- for _, lsp in ipairs(servers) do
---   nvim_lsp[lsp].setup {
---     on_attach = on_attach,
---   }
--- end
+  local servers = { 'pyright' }
+  for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup {
+      on_attach = on_attach,
+    }
+  end
 EOF
 
-let g:lightline = {
-\ 'colorsheme': 'dark_catppuccino'
-\ }
+let g:lightline = { 'colorsheme': 'catppuccin' }
 
 nnoremap <silent>K :Lspsaga hover_doc<CR>
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
@@ -353,3 +443,6 @@ nnoremap <silent> gd :Lspsaga preview_definition<CR>
 
 nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
 tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
+nnoremap <silent>s :HopPattern<CR>
+
+hi link HopInitHighlight SpecialChar
