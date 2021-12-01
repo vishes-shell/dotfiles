@@ -30,6 +30,7 @@ autocmd BufRead */.git/COMMIT_EDITMSG call s:prepend_task_number()
 command! -nargs=+ -complete=dir AgIn call s:ag_in(<f-args>)
 
 com! FormatJSON %!python3.9 -m json.tool --no-ensure-ascii
+com! FormatSQL %!sqlformat --keywords upper --identifiers lower --reindent --use_space_around_operators -
 
 command! -nargs=0 RemoveStringWrap .s/str(\([a-zA-Z._]*\))/\1/
 
