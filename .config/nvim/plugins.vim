@@ -1,6 +1,6 @@
 call plug#begin()
 
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-python/python-syntax'
 Plug 'Vimjas/vim-python-pep8-indent'
@@ -21,43 +21,42 @@ Plug 'junegunn/goyo.vim'
 " Plug 'nicwest/vim-http'
 Plug 'stsewd/fzf-checkout.vim'
 " Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-Plug 'chr4/nginx.vim'
+" Plug 'chr4/nginx.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'folke/zen-mode.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'SmiteshP/nvim-gps'
 " Plug 'romgrk/nvim-treesitter-context'
 " Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'p00f/nvim-ts-rainbow'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'neovim/nvim-lspconfig'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+" Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'catppuccin/nvim'
 Plug 'lewis6991/spellsitter.nvim'
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'glepnir/lspsaga.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'famiu/feline.nvim'
-Plug 'nanotee/sqls.nvim'
 Plug 'zhaozg/vim-diagram'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'numToStr/Comment.nvim'
 Plug 'phaazon/hop.nvim'
+Plug 'jmckiern/vim-venter'
+Plug 'ibhagwan/fzf-lua'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 
 call plug#end()
 
 lua << EOF
-  require("zen-mode").setup {}
   local lsp = require "lspconfig"
   -- local coq = require "coq"
   lsp.pyright.setup({})
   -- lsp.pyright.setup(coq.lsp_ensure_capabilities())
-
-  local saga = require 'lspsaga'
-  saga.init_lsp_saga({
-    code_action_icon = '💡',
-    max_preview_lines = 20
-  })
 
   lsp.sqls.setup({})
 EOF
@@ -74,7 +73,7 @@ lua << EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "bash", "python", "toml", "yaml", "json" },
   highlight = {
-    enable = false,
+    enable = true,
   },
   incremental_selection = {
     enable = true,
@@ -91,7 +90,13 @@ require'nvim-treesitter.configs'.setup {
     max_file_lines = nil,
     colors = {},
     termcolors = {}
-  }
+  },
+  indent = {
+    enable = true
+  },
+  refactor = {
+    highlight_definitions = { enable = true },
+  },
 }
 EOF
 
@@ -177,6 +182,80 @@ catppuccin.setup(
 	}
 )
 EOF
+
+lua << EOF
+require('fzf-lua').setup{
+    winopts = {
+        height = 0.85,
+        width = 0.9,
+        preview = {
+            hidden = 'hidden',
+        },
+        on_create = function()
+          vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", "<Down>", 
+          { silent = true, noremap = true })
+          vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", "<Up>", 
+          { silent = true, noremap = true })
+        end,
+    },
+    keymap = {
+        builtin = {
+          -- neovim `:tmap` mappings for the fzf win
+          ["<F2>"]        = "toggle-fullscreen",
+          -- Only valid with the 'builtin' previewer
+          ["<F3>"]        = "toggle-preview-wrap",
+          -- Rotate preview clockwise/counter-clockwise
+          ["<F5>"]        = "toggle-preview-ccw",
+          ["<F6>"]        = "toggle-preview-cw",
+          ["<S-left>"]    = "preview-page-reset",
+            ["?"] = "toggle-preview",
+            ["ctrl-J"] = "preview-page-down",
+            ["ctrl-K"]  = "preview-page-up",
+        },
+        fzf = {
+          -- fzf '--bind=' options
+          ["ctrl-z"]      = "abort",
+          ["ctrl-u"]      = "unix-line-discard",
+          ["ctrl-f"]      = "half-page-down",
+          ["ctrl-b"]      = "half-page-up",
+          ["ctrl-a"]      = "beginning-of-line",
+          ["ctrl-e"]      = "end-of-line",
+          ["alt-a"]       = "toggle-all",
+          -- Only valid with fzf previewers (bat/cat/git/etc)
+          ["f3"]          = "toggle-preview-wrap",
+            ["?"] = "toggle-preview",
+            ["ctrl-J"] = "preview-page-down",
+            ["ctrl-K"]  = "preview-page-up",
+        },
+    }
+}
+EOF
+
+lua << EOF
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.formatting.isort,
+        require("null-ls").builtins.formatting.sqlformat,
+        require("null-ls").builtins.formatting.black.with({
+        args = {
+            "$FILENAME",
+            "--quiet",
+            "--fast",
+            }
+        }),
+        require("null-ls").builtins.diagnostics.gitlint,
+    },
+    on_attach = function(client)
+        if client.resolved_capabilities.document_formatting then
+            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+        end
+    end,
+    debug = true
+})
+EOF
+
+set completeopt=menu,menuone,noselect
+
 
 
 " lua << EOF
@@ -396,6 +475,96 @@ let g:coq_settings = {
 \   }
 \}
 
+lua <<EOF
+  -- Setup nvim-cmp.
+  local cmp = require('cmp')
+  local nvim_lsp = require('lspconfig')
+
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+end
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+      end,
+    },
+    mapping = {
+      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+    },
+    completion = {
+        autocomplete = false
+    },
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+  local servers = { 'pyright' }
+  for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup {
+      on_attach = on_attach,
+    capabilities = capabilities
+    }
+  end
+EOF
+
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
@@ -435,14 +604,6 @@ EOF
 
 let g:lightline = { 'colorsheme': 'catppuccin' }
 
-nnoremap <silent>K :Lspsaga hover_doc<CR>
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-nnoremap <silent>gr :Lspsaga rename<CR>
-nnoremap <silent> gd :Lspsaga preview_definition<CR>
-
-nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
-tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
 nnoremap <silent>s :HopPattern<CR>
 
 hi link HopInitHighlight SpecialChar

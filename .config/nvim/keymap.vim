@@ -39,28 +39,40 @@ nmap <M-l> >>
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-" Tagbar settings
-nmap <F8> :TagbarToggle<CR>
+" map <C-p> :Files<cr>
+map <C-p> <cmd>lua require('fzf-lua').files()<CR>
+" nnoremap <silent> <leader>? :History<cr>
+nnoremap <silent> <leader>? <cmd>lua require('fzf-lua').command_history()<CR>
+" nnoremap <silent> <leader>. :AgIn<space>
+" nnoremap <silent> ; :Buffers<cr>
+nnoremap <silent> ; <cmd>lua require('fzf-lua').buffers()<CR>
 
-map <C-p> :Files<cr>
-nnoremap <silent> <leader>? :History<cr>
-nnoremap <silent> <leader>. :AgIn<space>
-nnoremap <silent> ; :Buffers<cr>
-
-nnoremap F :call SearchWordWithAg()<cr>
-vnoremap <silent> F :call SearchVisualSelectionWithAg()<cr>
+" nnoremap F :call SearchWordWithAg()<cr>
+nnoremap F <cmd>lua require('fzf-lua').grep_cword()<CR>
+" vnoremap <silent> F :call SearchVisualSelectionWithAg()<cr>
+vnoremap <silent> F <cmd>lua require('fzf-lua').grep_visual()<CR>
 vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
-nnoremap <silent> <leader>gl :Commits<CR>
-nnoremap <silent> <leader>ga :BCommits<CR>
+" nnoremap <silent> <leader>gl :Commits<CR>
+nnoremap <silent> <leader>gl <cmd>lua require('fzf-lua').git_commits()<CR>
+" nnoremap <silent> <leader>ga :BCommits<CR>
+nnoremap <silent> <leader>ga <cmd>lua require('fzf-lua').git_bcommits()<CR>
 " nnoremap <silent> <leader>ft :Filetypes<CR>
-nnoremap <silent> <leader>h :History:<CR>
+" nnoremap <silent> <leader>h :History:<CR>
+nnoremap <silent> <leader>h <cmd>lua require('fzf-lua').history()<CR>
 
-noremap <leader>s :Ag<space>
-noremap <leader>l :BLines<CR>
-noremap <leader>r :Commands<CR>
+" noremap <leader>s :Ag<space>
+noremap <leader>s <cmd>lua require('fzf-lua').grep()<CR>
+" noremap <leader>l :BLines<CR>
+noremap <leader>l <cmd>lua require('fzf-lua').grep_curbuf()<CR>
+" noremap <leader>r :Commands<CR>
+noremap <leader>r <cmd>lua require('fzf-lua').commands()<CR>
 " noremap <leader>c :History:<CR>
+noremap <leader>c <cmd>lua require('fzf-lua').command_history()<CR>
 nnoremap <leader>tt :Tags<CR>
+" nnoremap <leader>tt <cmd>lua require('fzf-lua').tags()<CR>
+" nnoremap <leader>bt :BTags<CR>
 nnoremap <leader>bt :BTags<CR>
+" nnoremap <leader>bt <cmd>lua require('fzf-lua').btags()<CR>
 
 " Fugitive mapping
 nnoremap <leader>gs :Git<cr>
