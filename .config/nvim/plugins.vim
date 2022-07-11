@@ -71,6 +71,8 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 Plug 'kevinhwang91/promise-async'
 Plug 'kevinhwang91/nvim-ufo'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
 call plug#end()
 
@@ -169,137 +171,13 @@ local bo = vim.bo
 local feline = require("feline")
 local vi_mode = require("feline.providers.vi_mode")
 local git = require("feline.providers.git")
-local theme_colors = require("tokyonight.colors").setup()
 local navic = require("nvim-navic")
 
-local colors = {
-  bg = theme_colors.bg_dark,
-  fg = theme_colors.fg_dark,
-  yellow = theme_colors.yellow,
-  cyan = theme_colors.cyan,
-  darkblue = theme_colors.blue7,
-  green = theme_colors.green,
-  orange = theme_colors.orange,
-  violet = theme_colors.purple,
-  magenta = theme_colors.magenta,
-  blue = theme_colors.blue,
-  red = theme_colors.red,
-}
-
-local vi_mode_colors = {
-  NORMAL = colors.green,
-  INSERT = colors.blue,
-  VISUAL = colors.violet,
-  OP = colors.green,
-  BLOCK = colors.blue,
-  REPLACE = colors.red,
-  ["V-REPLACE"] = colors.red,
-  ENTER = colors.cyan,
-  MORE = colors.cyan,
-  SELECT = colors.orange,
-  COMMAND = colors.magenta,
-  SHELL = colors.green,
-  TERM = colors.blue,
-  NONE = colors.yellow,
-}
-
-local components = {
-  active = {},
-  inactive = {},
-}
-
-components.active[1] = {
-  {
-    provider = "▊ ",
-    hl = {
-      fg = "blue",
-    },
-  },
-  {
-    provider = "vi_mode",
-    hl = function()
-      return {
-        name = vi_mode.get_mode_highlight_name(),
-        fg = vi_mode.get_mode_color(),
-        style = "bold",
-      }
-    end,
-    right_sep = " ",
-    icon = "",
-  },
-  {
-    provider = "git_branch",
-    left_sep = " ",
-    right_sep = " ",
-  },
-  {
-    enabled = function()
-      return vim.bo.filetype ~= ""
-    end,
-    provider = {
-      name = "file_type",
-      opts = {
-        case = "titlecase",
-        filetype_icon = true,
-        colored_icon = false,
-      },
-    },
-    left_sep = " ",
-    right_sep = " ",
-  },
-  {
-    provider = "diagnostic_errors",
-    hl = { fg = "red" },
-  },
-  {
-    provider = "diagnostic_warnings",
-    hl = { fg = "yellow" },
-  },
-  {
-    provider = "diagnostic_hints",
-    hl = { fg = "cyan" },
-  },
-  {
-    provider = "diagnostic_info",
-    hl = { fg = "skyblue" },
-  },
-}
-components.active[2] = {
-  {
-    provider = "position_custom",
-    right_sep = " ",
-  },
-  {
-    provider = "git_diff_added",
-    -- hl = { fg = "green" },
-  },
-  {
-    provider = "git_diff_changed",
-    -- hl = { fg = "orange" },
-  },
-  {
-    provider = "git_diff_removed",
-    -- hl = { fg = "red" },
-  },
-  {
-    enabled = function()
-      return git.git_info_exists()
-    end,
-    right_sep = { str = " ", always_visible = true },
-  },
-  {
-    provider = "scroll_bar",
-    hl = {
-      fg = "skyblue",
-      style = "bold",
-    },
-  },
-}
+local components = require("catppuccin.core.integrations.feline")
 
 feline.setup({
   components = components,
   vi_mode_colors = vi_mode_colors,
-  theme = colors,
   force_inactive = {
     filetypes = {
       "^NvimTree$",
@@ -433,9 +311,6 @@ local winbar_components = {
         opts = {
           type = "unique",
         },
-        hl = {
-          fg = theme_colors.dark5,
-        },
       },
     },
   },
@@ -500,7 +375,7 @@ catppuccin.setup(
 			lsp_saga = true,
 			gitgutter = true,
 			gitsigns = true,
-			telescope = false,
+			telescope = true,
 			nvimtree = {
 				enabled = false,
 				show_root = false,
@@ -527,54 +402,6 @@ catppuccin.setup(
 
 vim.g.catppuccin_flavour = "latte"
 vim.cmd[[colorscheme catppuccin]]
-EOF
-
-lua << EOF
-require('fzf-lua').setup{
-    winopts = {
-        height = 0.85,
-        width = 0.9,
-        preview = {
-            hidden = 'hidden',
-        },
-        on_create = function()
-          vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", "<Down>", 
-          { silent = true, noremap = true })
-          vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", "<Up>", 
-          { silent = true, noremap = true })
-        end,
-    },
-    keymap = {
-        builtin = {
-          -- neovim `:tmap` mappings for the fzf win
-          ["<F2>"]        = "toggle-fullscreen",
-          -- Only valid with the 'builtin' previewer
-          ["<F3>"]        = "toggle-preview-wrap",
-          -- Rotate preview clockwise/counter-clockwise
-          ["<F5>"]        = "toggle-preview-ccw",
-          ["<F6>"]        = "toggle-preview-cw",
-          ["<S-left>"]    = "preview-page-reset",
-            ["?"] = "toggle-preview",
-            ["ctrl-J"] = "preview-page-down",
-            ["ctrl-K"]  = "preview-page-up",
-        },
-        fzf = {
-          -- fzf '--bind=' options
-          ["ctrl-z"]      = "abort",
-          ["ctrl-u"]      = "unix-line-discard",
-          ["ctrl-f"]      = "half-page-down",
-          ["ctrl-b"]      = "half-page-up",
-          ["ctrl-a"]      = "beginning-of-line",
-          ["ctrl-e"]      = "end-of-line",
-          ["alt-a"]       = "toggle-all",
-          -- Only valid with fzf previewers (bat/cat/git/etc)
-          ["f3"]          = "toggle-preview-wrap",
-            ["?"] = "toggle-preview",
-            ["ctrl-J"] = "preview-page-down",
-            ["ctrl-K"]  = "preview-page-up",
-        },
-    }
-}
 EOF
 
 " lua << EOF
@@ -645,6 +472,24 @@ set completeopt=menu,menuone,noselect
 
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
+
+
+lua << EOF
+require('telescope').setup {
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+-- To get fzf loaded and working with telescope, you need to call
+-- load_extension, somewhere after setup function:
+require('telescope').load_extension('fzf')
+EOF
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -991,6 +836,11 @@ EOF
 
 lua <<EOF
 require("luasnip.loaders.from_vscode").lazy_load({paths = "~/.config/nvim/my_snippets"})
+EOF
+
+lua << EOF
+require('telescope').setup{
+}
 EOF
 
 " press <Tab> to expand or jump in a snippet. These can also be mapped separately
