@@ -1,6 +1,6 @@
 set t_Co=256
-set background=dark
-colorscheme catppuccin
+" set background=dark
+" colorscheme catppuccin
 let g:one_allow_italics = 1
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -58,7 +58,7 @@ set cursorline " Highlight the active line.
 set ruler
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=0
 
 " Ignore case when searching
 set ignorecase
@@ -134,3 +134,4 @@ au FileType python set indentkeys-=0#
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 au BufReadPost tmp_g.skillbox.ru_*.txt set filetype=markdown
+au BufReadPost *.tmpl set filetype=markdown

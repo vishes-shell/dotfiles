@@ -35,3 +35,5 @@ com! FormatSQL %!sqlformat --keywords upper --identifiers lower --reindent --use
 command! -nargs=0 RemoveStringWrap .s/str(\([a-zA-Z._]*\))/\1/
 
 command! GpushNew :Gpush origin -u HEAD
+
+nnoremap <C-b> :center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.

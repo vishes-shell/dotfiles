@@ -24,7 +24,12 @@ map <C-l> <C-W>l
 
 
 map <leader>tn :TestNearest<cr>
+command NeoTestNearest lua require("neotest").run.run()
 map <leader>tf :TestFile<cr>
+command NeoTestFile lua require("neotest").run.run(vim.fn.expand("%"))
+command NeoTestStopNearest lua require("neotest").run.stop()
+map <leader>tr :lua require("neotest").output.open({ enter = true })
+map <leader>ts :lua require("neotest").summary.open()
 map <leader>tl :TestLast<cr>
 map <leader>tv :TestVisit<cr>
 
@@ -39,40 +44,19 @@ nmap <M-l> >>
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-" map <C-p> :Files<cr>
-map <C-p> <cmd>lua require('fzf-lua').files()<CR>
-" nnoremap <silent> <leader>? :History<cr>
+map <C-p> <cmd>lua require('fzf-lua').git_files()<CR>
 nnoremap <silent> <leader>? <cmd>lua require('fzf-lua').command_history()<CR>
-" nnoremap <silent> <leader>. :AgIn<space>
-" nnoremap <silent> ; :Buffers<cr>
 nnoremap <silent> ; <cmd>lua require('fzf-lua').buffers()<CR>
 
-" nnoremap F :call SearchWordWithAg()<cr>
 nnoremap F <cmd>lua require('fzf-lua').grep_cword()<CR>
-" vnoremap <silent> F :call SearchVisualSelectionWithAg()<cr>
 vnoremap <silent> F <cmd>lua require('fzf-lua').grep_visual()<CR>
 vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
-" nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>gl <cmd>lua require('fzf-lua').git_commits()<CR>
-" nnoremap <silent> <leader>ga :BCommits<CR>
 nnoremap <silent> <leader>ga <cmd>lua require('fzf-lua').git_bcommits()<CR>
-" nnoremap <silent> <leader>ft :Filetypes<CR>
-" nnoremap <silent> <leader>h :History:<CR>
-nnoremap <silent> <leader>h <cmd>lua require('fzf-lua').history()<CR>
 
-" noremap <leader>s :Ag<space>
 noremap <leader>s <cmd>lua require('fzf-lua').grep()<CR>
-" noremap <leader>l :BLines<CR>
 noremap <leader>l <cmd>lua require('fzf-lua').grep_curbuf()<CR>
-" noremap <leader>r :Commands<CR>
-noremap <leader>r <cmd>lua require('fzf-lua').commands()<CR>
-" noremap <leader>c :History:<CR>
-noremap <leader>c <cmd>lua require('fzf-lua').command_history()<CR>
-nnoremap <leader>tt :Tags<CR>
-" nnoremap <leader>tt <cmd>lua require('fzf-lua').tags()<CR>
-" nnoremap <leader>bt :BTags<CR>
-nnoremap <leader>bt :BTags<CR>
-" nnoremap <leader>bt <cmd>lua require('fzf-lua').btags()<CR>
+nnoremap <leader><leader> <cmd>FzfLua<CR>
 
 " Fugitive mapping
 nnoremap <leader>gs :Git<cr>
@@ -98,9 +82,6 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
-
-noremap  H  ^
-noremap  L  $
 
 noremap <C-U> kkkkkkkkkkkkkkkkkkkkk
 noremap <C-D> jjjjjjjjjjjjjjjjjjjjj
