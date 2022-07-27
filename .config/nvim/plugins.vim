@@ -20,9 +20,8 @@ Plug 'janko/vim-test'
 Plug 'junegunn/goyo.vim'
 " Plug 'nicwest/vim-http'
 Plug 'stsewd/fzf-checkout.vim'
-" Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
-" Plug 'chr4/nginx.vim'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'SmiteshP/nvim-gps'
 " Plug 'romgrk/nvim-treesitter-context'
@@ -42,25 +41,21 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'feline-nvim/feline.nvim'
-Plug 'zhaozg/vim-diagram'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'numToStr/Comment.nvim'
 Plug 'phaazon/hop.nvim'
 Plug 'jmckiern/vim-venter'
-Plug 'ibhagwan/fzf-lua'
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'akinsho/git-conflict.nvim'
-Plug 'olimorris/onedarkpro.nvim'
 Plug 'https://gitlab.com/yorickpeterse/nvim-pqf.git'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'rcarriga/neotest'
 Plug 'rcarriga/neotest-python'
 Plug 'smjonas/inc-rename.nvim'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'SmiteshP/nvim-navic'
 Plug 'lyokha/vim-xkbswitch'
 Plug 'preservim/vim-lexical'
@@ -71,8 +66,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 Plug 'kevinhwang91/promise-async'
 Plug 'kevinhwang91/nvim-ufo'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+Plug 'telyn/vim-mermaid'
 
 call plug#end()
 
@@ -173,10 +167,10 @@ local vi_mode = require("feline.providers.vi_mode")
 local git = require("feline.providers.git")
 local navic = require("nvim-navic")
 
-local components = require("catppuccin.core.integrations.feline")
+local ctp_feline = require('catppuccin.groups.integrations.feline')
 
 feline.setup({
-  components = components,
+  components = ctp_feline,
   vi_mode_colors = vi_mode_colors,
   force_inactive = {
     filetypes = {
@@ -344,60 +338,92 @@ local catppuccin = require("catppuccin")
 
 -- configure it
 catppuccin.setup(
-    {
-		transparent_background = false,
-		term_colors = false,
-		styles = {
-			comments = "italic",
-			functions = "italic",
-			keywords = "italic",
-			strings = "NONE",
-			variables = "NONE",
-		},
-		integrations = {
-			treesitter = true,
-			native_lsp = {
-				enabled = true,
-				virtual_text = {
-					errors = "italic",
-					hints = "italic",
-					warnings = "italic",
-					information = "italic",
-				},
-				underlines = {
-					errors = "underline",
-					hints = "underline",
-					warnings = "underline",
-					information = "underline",
-				},
-			},
-			lsp_trouble = false,
-			lsp_saga = true,
-			gitgutter = true,
-			gitsigns = true,
-			telescope = true,
-			nvimtree = {
-				enabled = false,
-				show_root = false,
-			},
-			which_key = false,
-			indent_blankline = {
-				enabled = false,
-				colored_indent_levels = false,
-			},
-			dashboard = false,
-			neogit = false,
-			vim_sneak = false,
-			fern = false,
-			barbar = false,
-			bufferline = true,
-			markdown = true,
-			lightspeed = false,
-			ts_rainbow = false,
-			hop = true,
-            notify=true,
-		},
-	}
+{
+    dim_inactive = {
+        enabled = false,
+        shade = "dark",
+        percentage = 0.15,
+    },
+    transparent_background = false,
+    term_colors = false,
+    compile = {
+        enabled = false,
+        path = vim.fn.stdpath "cache" .. "/catppuccin",
+        suffix = "_compiled"
+    },
+    styles = {
+        comments = { "italic" },
+        conditionals = { "italic" },
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+    },
+    integrations = {
+        treesitter = true,
+        native_lsp = {
+            enabled = true,
+            virtual_text = {
+                errors = { "italic" },
+                hints = { "italic" },
+                warnings = { "italic" },
+                information = { "italic" },
+            },
+            underlines = {
+                errors = { "underline" },
+                hints = { "underline" },
+                warnings = { "underline" },
+                information = { "underline" },
+            },
+        },
+        coc_nvim = false,
+        lsp_trouble = false,
+        cmp = true,
+        lsp_saga = tru,
+        gitgutter = true,
+        gitsigns = true,
+        telescope = true,
+        nvimtree = {
+            enabled = false,
+            show_root = false,
+            transparent_panel = false,
+        },
+        neotree = {
+            enabled = false,
+            show_root = true,
+            transparent_panel = false,
+        },
+        dap = {
+            enabled = false,
+            enable_ui = false,
+        },
+        which_key = false,
+        indent_blankline = {
+            enabled = true,
+            colored_indent_levels = false,
+        },
+        dashboard = false,
+        neogit = false,
+        vim_sneak = false,
+        fern = false,
+        barbar = false,
+        bufferline = true,
+        markdown = true,
+        lightspeed = false,
+        ts_rainbow = true,
+        hop = false,
+        notify = true,
+        telekasten = false,
+        symbols_outline = false,
+        mini = false,
+    }
+}
 )
 
 vim.g.catppuccin_flavour = "latte"
@@ -474,24 +500,6 @@ set completeopt=menu,menuone,noselect
 " set foldexpr=nvim_treesitter#foldexpr()
 
 
-lua << EOF
-require('telescope').setup {
-  extensions = {
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                       -- the default case_mode is "smart_case"
-    }
-  }
-}
--- To get fzf loaded and working with telescope, you need to call
--- load_extension, somewhere after setup function:
-require('telescope').load_extension('fzf')
-EOF
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -503,7 +511,7 @@ let g:fzf_preview_command = 'bat --color=always --plain {-1}'
 let g:fzf_layout = { 'window': '-tabnew' }
 
 command! -bang -nargs=? -complete=dir Files
-\ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
+\ call fzf#vim#files(<q-args>, '--hidden --ignore .git', fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 command! -bang -nargs=* Ag
 \ call fzf#vim#ag(<q-args>,
@@ -511,6 +519,17 @@ command! -bang -nargs=* Ag
 \                 <bang>0 ? fzf#vim#with_preview('up:60%')
 \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
 \                 <bang>0)
+
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --hidden --glob "!**/.git/**" --smart-case -- '.shellescape(<q-args>), 1,
+"   \   fzf#vim#with_preview(), <bang>0)
+
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "never" '.shellescape(<q-args>).'| tr -d "\017"', 1, fzf#vim#with_preview(), <bang>0)
+endif
 
 
 let g:fzf_colors =
@@ -529,9 +548,6 @@ let g:fzf_colors =
 \ 'header':  ['fg', 'Comment'] }
 
 let g:fzf_commits_log_options = "--color=always --format='%C(auto)%h%d %s %C(green)%cr (%C(cyan)%an)'"
-
-let g:fzf_tags_command = 'ctags -R --fields=+l --languages=python --python-kinds=-iv'
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -672,6 +688,11 @@ let g:gutentags_ctags_extra_args= [ '--languages=python',
 \ '--fields=+l',
 \ '--excmd=number',
 \ '--python-kinds=-iv' ]
+let g:gutentags_cache_dir = expand('~/.cache/tags')
+let g:gutentags_project_root = ['.root']
+let g:gutentags_modules = ['ctags', 'gtags_cscope']
+let g:gutentags_ctags_tagfile = 'tags'
+let g:gutentags_plus_nomap = 1
 
 
 augroup fzf_preview
@@ -683,21 +704,8 @@ function! s:fzf_preview_settings() abort
   let g:fzf_preview_grep_preview_cmd = 'COLORTERM=truecolor ' . g:fzf_preview_grep_preview_cmd
 endfunction
 
-let $BAT_THEME = 'Monokai Extended Origin'
-let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'Monokai Extended Origin'
-
-let g:coq_settings = { 
-\   'auto_start': v:true,
-\   'display': {
-\       'pum': {'fast_close': v:false}
-\   },
-\   'keymap': {
-\       'recommended': v:true,
-\       'jump_to_mark': '<c-n>',
-\       'manual_complete': "<c-space>",
-\       'bigger_preview': "<c-k>"
-\   }
-\}
+let $BAT_THEME = 'Coldark-Cold'
+let $FZF_PREVIEW_PREVIEW_BAT_THEME = 'Coldark-Cold'
 
 lua <<EOF
   -- Setup nvim-cmp.
@@ -836,11 +844,6 @@ EOF
 
 lua <<EOF
 require("luasnip.loaders.from_vscode").lazy_load({paths = "~/.config/nvim/my_snippets"})
-EOF
-
-lua << EOF
-require('telescope').setup{
-}
 EOF
 
 " press <Tab> to expand or jump in a snippet. These can also be mapped separately

@@ -33,9 +33,6 @@ map <leader>ts :lua require("neotest").summary.open()
 map <leader>tl :TestLast<cr>
 map <leader>tv :TestVisit<cr>
 
-" Remap VIM 0 to first non-blank character
-map 0 ^
-
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-h> <<
 nmap <M-j> mz:m+<cr>`z
@@ -44,17 +41,19 @@ nmap <M-l> >>
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-map <C-p> <cmd>lua require('fzf-lua').git_files()<CR>
+map <C-p> <cmd>lua require('fzf-lua').files()<CR>
 nnoremap <silent> <leader>? <cmd>lua require('fzf-lua').command_history()<CR>
+nnoremap <silent> <leader>tt <cmd>Tags<CR>
+nnoremap <silent> <leader>bt <cmd>Btags<CR>
 nnoremap <silent> ; <cmd>lua require('fzf-lua').buffers()<CR>
 
 nnoremap F <cmd>lua require('fzf-lua').grep_cword()<CR>
 vnoremap <silent> F <cmd>lua require('fzf-lua').grep_visual()<CR>
-vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 nnoremap <silent> <leader>gl <cmd>lua require('fzf-lua').git_commits()<CR>
 nnoremap <silent> <leader>ga <cmd>lua require('fzf-lua').git_bcommits()<CR>
+vnoremap <c-r> "hy:%s/<c-r>h//gc<left><left><left>
 
-noremap <leader>s <cmd>lua require('fzf-lua').grep()<CR>
+noremap <leader>s :Find 
 noremap <leader>l <cmd>lua require('fzf-lua').grep_curbuf()<CR>
 nnoremap <leader><leader> <cmd>FzfLua<CR>
 

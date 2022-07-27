@@ -54,3 +54,5 @@ function cd { dir=$1; if [ -z "$dir" ]; then dir=~; fi; builtin cd "$dir" && tit
 alias ssh="kitty +kitten ssh"
 
 alias w='watson'
+
+alias jira-sprints-future="jira sprint list --state future"
