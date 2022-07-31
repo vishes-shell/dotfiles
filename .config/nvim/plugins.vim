@@ -528,9 +528,8 @@ command! -bang -nargs=* Ag
 if executable('rg')
   let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
   set grepprg=rg\ --vimgrep
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "never" '.shellescape(<q-args>).'| tr -d "\017"', 1, fzf#vim#with_preview(), <bang>0)
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, fzf#vim#with_preview(), <bang>0)
 endif
-
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
