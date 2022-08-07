@@ -52,6 +52,18 @@ map('v', '<leader>P', '"+P')
 map('n', '<C-u>', 'kkkkkkkkkkkkkkkkkkkkk')
 map('n', '<C-d>', 'jjjjjjjjjjjjjjjjjjjjj')
 
+-- Global mark I for last edit
+vim.cmd [[autocmd InsertLeave * execute 'normal! mI']]
+
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
 -----------------------------------------------------------
+
+map('n', '<leader>bb', '<cmd>Telescope buffers<cr>')
+map('n', '<leader>f', '<cmd>Telescope git_files<cr>')
+map('n', '<leader>p', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>q', '<cmd>Telescope quickfix<cr>')
+map('n', '<leader>bt', '<cmd>Telescope current_buffer_tags<cr>')
+map('n', '<leader>t', '<cmd>Telescope tags<cr>')
+map('n', '<leader>l', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
+

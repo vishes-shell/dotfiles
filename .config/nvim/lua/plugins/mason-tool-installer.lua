@@ -9,17 +9,14 @@ require('mason-tool-installer').setup({
   ensure_installed = { 
     'alex',
     'codespell',
-    'remark',
+    'remark-language-server',
     'isort',
     'black',
     'vulture',
     'flake8',
     'pylint',
-    'semgrep',
-    'yamllint',
-    'jq',
-    'pyright',
-    'marksman',
-    'lua-language-server',
+    -- 'semgrep',
+    -- 'yamllint',
+    -- 'jq',
   }
 })

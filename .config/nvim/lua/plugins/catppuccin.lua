@@ -5,7 +5,7 @@
 -- Plugin: catppuccin
 -- url: https://github.com/catppuccin/nvim
 
-vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
+vim.g.catppuccin_flavour = "latte" -- latte, frappe, macchiato, mocha
 
 require("catppuccin").setup({
   integrations = {

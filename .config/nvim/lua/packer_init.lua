@@ -51,21 +51,20 @@ return require('packer').startup(function(use)
   }
 
   use {
-    "williamboman/mason.nvim",
-    config = function()
-      require('mason').setup()
-    end
-  }
-  use {
-    "williamboman/mason-lspconfig.nvim",
-  }
-  use {
-    'WhoIsSethDaniel/mason-tool-installer.nvim'
+    {
+      "williamboman/mason.nvim",
+      config = function()
+        require('mason').setup()
+      end
+    },
+    {
+      "williamboman/mason-lspconfig.nvim",
+    },
+    {
+      'WhoIsSethDaniel/mason-tool-installer.nvim'
+    },
   }
 
-  use {
-    "neovim/nvim-lspconfig",
-  }
 
   use {
     'akinsho/bufferline.nvim', 
@@ -87,6 +86,57 @@ return require('packer').startup(function(use)
     config = function()
       require('pqf')
     end
+  }
+
+  use {
+    "petertriho/nvim-scrollbar",
+    requires = 'kevinhwang91/nvim-hlslens',
+    config = function()
+      require("scrollbar").setup()
+    end
+  }
+
+  use { 'glepnir/lspsaga.nvim', branch = 'main' }
+
+  use {
+    "neovim/nvim-lspconfig",
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip'
+  }
+
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
+  use { 
+    { 
+      'nvim-telescope/telescope.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim',
+	'telescope-fzf-native.nvim',
+      },
+      wants = {
+        'plenary.nvim',
+	'telescope-fzf-native.nvim',
+      }
+    },
+    { 
+      'nvim-telescope/telescope-fzf-native.nvim', 
+      run = 'make' 
+    }
   }
 
   use { 'lyokha/vim-xkbswitch' }

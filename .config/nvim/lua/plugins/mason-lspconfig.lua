@@ -6,5 +6,5 @@
 -- url: https://github.com/williamboman/mason-lspconfig.nvim
 
 require("mason-lspconfig").setup({
-    ensure_installed = { "pyright", "marksman", "sumneko_lua" }
+  ensure_installed = { "pyright", "marksman", "sumneko_lua" }
 })
