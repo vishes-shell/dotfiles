@@ -56,11 +56,9 @@ return require('packer').startup(function(use)
       require('mason').setup()
     end
   }
-
   use {
     "williamboman/mason-lspconfig.nvim",
   }
-
   use {
     'WhoIsSethDaniel/mason-tool-installer.nvim'
   }
@@ -76,6 +74,22 @@ return require('packer').startup(function(use)
   }
 
   use { "catppuccin/nvim", as = "catppuccin" }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
+
+  use {
+    'https://gitlab.com/yorickpeterse/nvim-pqf.git',
+    config = function()
+      require('pqf')
+    end
+  }
+
+  use { 'lyokha/vim-xkbswitch' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
