@@ -11,7 +11,9 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- Change leader to a comma
-vim.g.mapleader = ','
+map('', '<space>', '<nop>')
+vim.g.mapleader = ' '
+vim.g.localleader = ' '
 
 -----------------------------------------------------------
 -- Neovim shortcuts
@@ -32,9 +34,6 @@ map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
--- Close all windows and exit from Neovim with <leader> and q
-map('n', '<leader>q', ':qa!<CR>')
-
 -- Copy to clipboard
 map('v', '<leader>y', '"+y')
 map('n', '<leader>y', '"+y')
@@ -49,15 +48,6 @@ map('v', '<leader>P', '"+P')
 -- Small jumps
 map('n', '<C-u>', 'kkkkkkkkkkkkkkkkkkkkk')
 map('n', '<C-d>', 'jjjjjjjjjjjjjjjjjjjjj')
-
--- Move lines
-map('n', '<M-h>', '<<')
-map('n', '<M-j>', 'mz:m+<cr>`z')
-map('n', '<M-k>', 'mz:m-2<cr>`z')
-map('n', '<M-l>', '>>')
-map('v', '<M-j>' ":m'>+<cr>`<my`>mzgv`yo`z")
-mao('v', '<M-k>', ":m'<-2<cr>`>my`<mzgv`yo`z")
-
 
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
