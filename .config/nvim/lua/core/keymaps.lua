@@ -19,6 +19,9 @@ vim.g.localleader = ' '
 -- Neovim shortcuts
 -----------------------------------------------------------
 
+-- Write
+map('n', '<leader>w', ':w<CR>')
+
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>c', ':nohl<CR>')
 
