@@ -138,7 +138,16 @@ telescope.setup {
     live_grep = {
       prompt_title = "Live Ripgrep",
       mappings = default_mappings,
+      additional_args = function(opts)
+        return { '--hidden' }
+      end
     },
+    grep_string = {
+      mappings = default_mappings,
+      additional_args = function(opts)
+        return { '--hidden' }
+      end
+    }
   },
   extensions = {
     fzf = {

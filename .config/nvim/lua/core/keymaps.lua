@@ -19,6 +19,8 @@ map('', '<space>', '<nop>')
 
 -- Write
 map('n', '<leader>w', ':w<CR>')
+-- Close
+map('n', 'leader>q', ':q<cr>')
 
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>l', ':nohl<CR>')
@@ -63,14 +65,14 @@ map('n', '<c-b>', '<cmd>center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#k
 -- Telescope
 map('n', '<leader>bf', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>f', '<cmd>Telescope git_files<cr>')
-map('n', '<leader>p', '<cmd>Telescope live_grep<cr>')
-map('n', '<leader>F', '<cmd>Telescope grep_string<cr>')
+map('n', '<leader>s', '<cmd>Telescope live_grep<cr>')
+map('n', 'F', '<cmd>Telescope grep_string<cr>')
 map('n', '<leader>q', '<cmd>Telescope quickfix<cr>')
 map('n', '<leader>bt', '<cmd>Telescope current_buffer_tags<cr>')
 map('n', '<leader>t', '<cmd>Telescope tags<cr>')
 map('n', '<leader>l', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
 map('n', '<leader><leader>', '<cmd>Telescope<cr>')
-map('n', '-', '<cmd>Telescope file_browser<cr>')
+map('n', '-', '<cmd>Telescope file_browser path=%:p:h<cr>')
 
 
 -- LSP Saga
@@ -107,13 +109,12 @@ map('n', '<leader>a', '<cmd>LSoutlineToggle<cr>')
 
 local term = require("lspsaga.floaterm")
 vim.keymap.set("n", "<A-d>", function()
-  term.open_float_terminal("custom_cli_command")
+  term.open_float_terminal()
+end, { silent = true })
+vim.keymap.set("n", "<leader>g", function()
+  term.open_float_terminal('lazygit')
 end, { silent = true })
 vim.keymap.set("t", "<A-d>", function()
   vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true))
   term.close_float_terminal()
 end, { silent = true })
-
--- UFO
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)

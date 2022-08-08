@@ -15,6 +15,7 @@ require('mason-tool-installer').setup({
     'vulture',
     'flake8',
     'pylint',
+    'vulture',
     -- 'semgrep',
     -- 'yamllint',
     -- 'jq',

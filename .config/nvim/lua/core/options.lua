@@ -1,8 +1,6 @@
 -- Folding
 vim.o.foldcolumn = '1'
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
+vim.o.foldenable = false
 
 -- Tabs
 vim.o.expandtab = true
@@ -18,3 +16,6 @@ vim.o.nobackup = true
 vim.o.nowritebackup = true
 vim.o.nowb = true
 vim.o.noswapfile = true
+
+vim.o.number = true
+vim.o.ruler = true

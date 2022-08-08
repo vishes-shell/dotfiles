@@ -99,12 +99,10 @@ capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true
 }
-  local servers = { 'pyright' }
-  for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
-      on_attach = on_attach,
-      capabilities = capabilities
-    }
-  end
-
-require('ufo').setup()
+local servers = { 'pyright', 'marksman', 'sumneko_lua' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+end

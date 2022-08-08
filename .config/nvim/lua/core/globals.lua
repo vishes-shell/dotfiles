@@ -5,3 +5,5 @@ vim.g.localleader = ' '
 vim.g.python3_host_prof = '/usr/local/bin/python3'
 
 vim.g.XkbSwitchEnabled = 1
+
+vim.g.completeopt = "menu,menuone,noselect,noinsert"
