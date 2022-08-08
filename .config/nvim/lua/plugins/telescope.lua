@@ -146,8 +146,13 @@ telescope.setup {
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = "smart_case",
-    }
+    },
+    file_browser = {
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+    },
   }
 }
 
 telescope.load_extension('fzf')
+telescope.load_extension('file_browser')
