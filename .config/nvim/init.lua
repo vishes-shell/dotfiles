@@ -1,4 +1,6 @@
 require('packer_init')
+
+require('core/globals')
 require('core/options')
 require('core/autocmds')
 require('core/keymaps')
@@ -14,3 +16,5 @@ require('plugins/catppuccin')
 require('plugins/lspconfig')
 require('plugins/telescope')
 require('plugins/lsp_saga')
+require('plugins/lexical')
+require('plugins/luasnip')

@@ -397,7 +397,7 @@ catppuccin.setup(
         coc_nvim = false,
         lsp_trouble = false,
         cmp = true,
-        lsp_saga = tru,
+        lsp_saga = true,
         gitgutter = true,
         gitsigns = true,
         telescope = true,

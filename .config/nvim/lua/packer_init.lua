@@ -49,12 +49,35 @@ return require('packer').startup(function(use)
     end
   }
   use { 'rcarriga/nvim-notify' }
+ --  use {
+ --    'kevinhwang91/nvim-ufo', 
+ --    requires = 'kevinhwang91/promise-async',
+ --    config = function()
+ --      require('ufo').setup({
+ --        provider_selector = function(bufnr, filetype, buftype)
+ --          return {'treesitter', 'indent'}
+	-- end
+ --      })
+ --    end
+ --  }
 
   -- Colors
   use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Modifications
   use 'fedepujol/move.nvim'
+  use {
+    'kylechui/nvim-surround',
+    config = function()
+      require('nvim-surround').setup()
+    end
+  }
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
 
   -- Linters/formatters
   use {
@@ -78,6 +101,7 @@ return require('packer').startup(function(use)
       }
     end
   }
+  use { 'preservim/vim-lexical' }
 
   -- Treesitter
   use {
@@ -137,10 +161,12 @@ return require('packer').startup(function(use)
     { 
       'nvim-telescope/telescope-fzf-native.nvim', 
       run = 'make' 
-    }
+    },
     { "nvim-telescope/telescope-file-browser.nvim" }
   }
 
+
+  -- Keymap
   use { 'lyokha/vim-xkbswitch' }
 
   -- Automatically set up your configuration after cloning packer.nvim

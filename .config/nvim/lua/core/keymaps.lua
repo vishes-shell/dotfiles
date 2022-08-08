@@ -10,10 +10,8 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Change leader to a comma
+-- Leader is space
 map('', '<space>', '<nop>')
-vim.g.mapleader = ' '
-vim.g.localleader = ' '
 
 -----------------------------------------------------------
 -- Neovim shortcuts
@@ -23,7 +21,7 @@ vim.g.localleader = ' '
 map('n', '<leader>w', ':w<CR>')
 
 -- Clear search highlighting with <leader> and c
-map('n', '<leader>c', ':nohl<CR>')
+map('n', '<leader>l', ':nohl<CR>')
 
 -- Disable arrow keys
 map('', '<up>', '<nop>')
@@ -59,10 +57,14 @@ vim.cmd [[autocmd InsertLeave * execute 'normal! mI']]
 -- Applications and Plugins shortcuts
 -----------------------------------------------------------
 
+-- Center
+map('n', '<c-b>', '<cmd>center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.<cr>')
+
 -- Telescope
 map('n', '<leader>bf', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>f', '<cmd>Telescope git_files<cr>')
 map('n', '<leader>p', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>F', '<cmd>Telescope grep_string<cr>')
 map('n', '<leader>q', '<cmd>Telescope quickfix<cr>')
 map('n', '<leader>bt', '<cmd>Telescope current_buffer_tags<cr>')
 map('n', '<leader>t', '<cmd>Telescope tags<cr>')
@@ -76,12 +78,19 @@ local action = require("lspsaga.codeaction")
 
 map('n', 'gh', "<cmd>Lspsaga lsp_finder<CR>")
 
-map('n', 'ca', action.code_action)
-map('v', 'ca', function() vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-U>', true, false, true)) end)
+vim.keymap.set("n", "<leader>ca", action.code_action, { silent = true })
+vim.keymap.set("v", "<leader>ca", function()
+  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
+  action.range_code_action()
+end, { silent = true })
 
 map('n', 'K', '<cmd>Lspsaga hover_doc<cr>')
-map('n', '<c-f>', function() action.smart_scroll_with_saga(1) end)
-map('n', '<c-b>', function() action.smart_scroll_with_saga(-1) end)
+vim.keymap.set("n", "<C-f>", function()
+  action.smart_scroll_with_saga(1)
+end, { silent = true })
+vim.keymap.set("n", "<C-b>", function()
+  action.smart_scroll_with_saga(-1)
+end, { silent = true })
 
 map('n', 'gs', '<cmd>Lspsaga signature_help<cr>')
 
@@ -97,5 +106,14 @@ map('n', ']e', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 map('n', '<leader>a', '<cmd>LSoutlineToggle<cr>')
 
 local term = require("lspsaga.floaterm")
-map("n", "<A-d>", function() term.open_float_terminal() end)
-map("t", "<A-d>", function() vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true)) term.close_float_terminal() end)
+vim.keymap.set("n", "<A-d>", function()
+  term.open_float_terminal("custom_cli_command")
+end, { silent = true })
+vim.keymap.set("t", "<A-d>", function()
+  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true))
+  term.close_float_terminal()
+end, { silent = true })
+
+-- UFO
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)

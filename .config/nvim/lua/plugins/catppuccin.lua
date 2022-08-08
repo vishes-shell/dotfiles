@@ -34,6 +34,9 @@ require("catppuccin").setup({
     ts_rainbow = true,
     notify = true,
     navic = true,
+    lsp_saga = true,
+    markdown = true,
+    telescope = true,
   }
 })
 
