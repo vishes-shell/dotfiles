@@ -19,8 +19,9 @@ map('', '<space>', '<nop>')
 
 -- Write
 map('n', 'W', '<cmd>w<cr>')
+map('n', 'wq', '<cmd>wq<cr>')
 -- Close
-map('n', 'Q', '<cmd>q<cr>')
+map('n', 'qq', '<cmd>q<cr>')
 map('n', 'QA', '<cmd>qa!<cr>')
 
 -- Clear search highlighting with <leader> and c
