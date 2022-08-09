@@ -160,6 +160,8 @@ telescope.setup {
             case_mode = "smart_case",
         },
         file_browser = {
+            hidden=true,
+            respect_gitignore=true,
             hijack_netrw = false,
         },
     }
