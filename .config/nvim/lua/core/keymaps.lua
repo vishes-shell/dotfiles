@@ -67,6 +67,7 @@ map('n', '<c-b>', '<cmd>center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#k
 map('n', '<leader>bf', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>f', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>s', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>c', '<cmd>Telescope git_status<cr>')
 map('n', 'F', '<cmd>Telescope grep_string<cr>')
 map('n', '<leader>qf', '<cmd>Telescope quickfix<cr>')
 map('n', '<leader>bt', '<cmd>Telescope current_buffer_tags<cr>')
@@ -122,8 +123,10 @@ end, { silent = true })
 
 
 -- Neotest
-map('n', '<leader>tn', '<cmd>lua require("neotest").run.run()<cr>')
+map('n', '<leader>tn', '<cmd>lua require("neotest").run.run({env = { ENV_NAME = "test" }})<cr>')
+map('n', '<leader>TN', '<cmd>lua require("neotest").run.run({"--create-db", env = { ENV_NAME = "test" }})<cr>')
+map('n', '<leader>tf', '<cmd>lua require("neotest").run.run({vim.fn.expand("%"), env = { ENV_NAME = "test" }})<cr>')
+map('n', '<leader>TF', '<cmd>lua require("neotest").run.run({vim.fn.expand("%"), "--create-db", env = { ENV_NAME = "test" }})<cr>')
 map('n', '<leader>ts', '<cmd>lua require("neotest").summary.open()<cr>')
 map('n', '<leader>to', '<cmd>lua require("neotest").output.open({enter=true})<cr>')
-map('n', '<leader>tf', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>')
 map('n', '<leader>te', '<cmd>lua require("neotest").run.stop()<cr>')
