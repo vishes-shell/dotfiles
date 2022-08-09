@@ -3,11 +3,11 @@
 -----------------------------------------------------------
 
 local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
-  if opts then
-    options = vim.tbl_extend('force', options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    local options = { noremap = true, silent = true }
+    if opts then
+        options = vim.tbl_extend('force', options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 -- Leader is space
@@ -18,12 +18,12 @@ map('', '<space>', '<nop>')
 -----------------------------------------------------------
 
 -- Write
-map('n', '<leader>w', ':w<CR>')
+map('n', '<leader>w', '<cmd>w<cr>')
 -- Close
-map('n', 'leader>q', ':q<cr>')
+map('n', 'leader>qq', '<cmd>q<cr>')
 
 -- Clear search highlighting with <leader> and c
-map('n', '<leader>l', ':nohl<CR>')
+map('n', '<leader>l', '<cmd>nohl<cr>')
 
 -- Disable arrow keys
 map('', '<up>', '<nop>')
@@ -64,10 +64,10 @@ map('n', '<c-b>', '<cmd>center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#k
 
 -- Telescope
 map('n', '<leader>bf', '<cmd>Telescope buffers<cr>')
-map('n', '<leader>f', '<cmd>Telescope git_files<cr>')
+map('n', '<leader>f', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>s', '<cmd>Telescope live_grep<cr>')
 map('n', 'F', '<cmd>Telescope grep_string<cr>')
-map('n', '<leader>q', '<cmd>Telescope quickfix<cr>')
+map('n', '<leader>qf', '<cmd>Telescope quickfix<cr>')
 map('n', '<leader>bt', '<cmd>Telescope current_buffer_tags<cr>')
 map('n', '<leader>t', '<cmd>Telescope tags<cr>')
 map('n', '<leader>l', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
@@ -82,16 +82,16 @@ map('n', 'gh', "<cmd>Lspsaga lsp_finder<CR>")
 
 vim.keymap.set("n", "<leader>ca", action.code_action, { silent = true })
 vim.keymap.set("v", "<leader>ca", function()
-  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
-  action.range_code_action()
+    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
+    action.range_code_action()
 end, { silent = true })
 
 map('n', 'K', '<cmd>Lspsaga hover_doc<cr>')
 vim.keymap.set("n", "<C-f>", function()
-  action.smart_scroll_with_saga(1)
+    action.smart_scroll_with_saga(1)
 end, { silent = true })
 vim.keymap.set("n", "<C-b>", function()
-  action.smart_scroll_with_saga(-1)
+    action.smart_scroll_with_saga(-1)
 end, { silent = true })
 
 map('n', 'gs', '<cmd>Lspsaga signature_help<cr>')
@@ -109,12 +109,12 @@ map('n', '<leader>a', '<cmd>LSoutlineToggle<cr>')
 
 local term = require("lspsaga.floaterm")
 vim.keymap.set("n", "<A-d>", function()
-  term.open_float_terminal()
+    term.open_float_terminal()
 end, { silent = true })
 vim.keymap.set("n", "<leader>g", function()
-  term.open_float_terminal('lazygit')
+    term.open_float_terminal('lazygit')
 end, { silent = true })
 vim.keymap.set("t", "<A-d>", function()
-  vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true))
-  term.close_float_terminal()
+    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true))
+    term.close_float_terminal()
 end, { silent = true })
