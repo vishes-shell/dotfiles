@@ -18,14 +18,13 @@ map('', '<space>', '<nop>')
 -----------------------------------------------------------
 
 -- Write
-map('n', '<leader>ww', '<cmd>w<cr>')
+map('n', 'W', '<cmd>w<cr>')
 -- Close
-map('n', '<leader>qq', '<cmd>q<cr>')
-map('n', '<leader>wq', '<cmd>wq<cr>')
-map('n', '<leader>Q', '<cmd>qa!<cr>')
+map('n', 'Q', '<cmd>q<cr>')
+map('n', 'QA', '<cmd>qa!<cr>')
 
 -- Clear search highlighting with <leader> and c
-map('n', '<leader>l', '<cmd>nohl<cr>')
+map('n', '<leader><cr>', '<cmd>nohl<cr>')
 
 -- Disable arrow keys
 map('', '<up>', '<nop>')
