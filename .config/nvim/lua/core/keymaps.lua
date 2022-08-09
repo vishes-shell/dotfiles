@@ -22,7 +22,7 @@ map('n', '<leader>ww', '<cmd>w<cr>')
 -- Close
 map('n', '<leader>qq', '<cmd>q<cr>')
 map('n', '<leader>wq', '<cmd>wq<cr>')
-map('n', '<leader>Q', '<cmd>qa<cr>')
+map('n', '<leader>Q', '<cmd>qa!<cr>')
 
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>l', '<cmd>nohl<cr>')
