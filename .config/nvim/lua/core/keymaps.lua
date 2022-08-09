@@ -119,3 +119,11 @@ vim.keymap.set("t", "<A-d>", function()
     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true))
     term.close_float_terminal()
 end, { silent = true })
+
+
+-- Neotest
+map('n', '<leader>tn', '<cmd>lua require("neotest").run.run()<cr>')
+map('n', '<leader>ts', '<cmd>lua require("neotest").summary.open()<cr>')
+map('n', '<leader>to', '<cmd>lua require("neotest").output.open({enter=true})<cr>')
+map('n', '<leader>tf', '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>')
+map('n', '<leader>te', '<cmd>lua require("neotest").run.stop()<cr>')
