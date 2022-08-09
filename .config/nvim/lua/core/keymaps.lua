@@ -18,9 +18,10 @@ map('', '<space>', '<nop>')
 -----------------------------------------------------------
 
 -- Write
-map('n', '<leader>w', '<cmd>w<cr>')
+map('n', '<leader>ww', '<cmd>w<cr>')
 -- Close
-map('n', 'leader>qq', '<cmd>q<cr>')
+map('n', '<leader>qq', '<cmd>q<cr>')
+map('n', '<leader>wq', '<cmd>wq<cr>')
 
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>l', '<cmd>nohl<cr>')
