@@ -100,6 +100,9 @@ return require('packer').startup(function(use)
     run = ':TSUpdate'
   }
 
+  -- Tags
+  use { 'ludovicchabant/vim-gutentags' }
+
   -- LSP/Completion
   use {
     "neovim/nvim-lspconfig",
