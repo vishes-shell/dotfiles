@@ -164,6 +164,7 @@ return require('packer').startup(function(use)
   use { 'lyokha/vim-xkbswitch' }
 
   -- Tests
+  use { 'vim-test/vim-test' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

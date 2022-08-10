@@ -121,3 +121,10 @@ vim.keymap.set("t", "<A-d>", function()
     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true))
     term.close_float_terminal()
 end, { silent = true })
+
+-- Test
+map('n', 'tn', '<cmd>TestNearest<cr>')
+map('n', 'tl', '<cmd>TestLast<cr>')
+map('n', 'tf', '<cmd>TestFile<cr>')
+map('n', 'ts', '<cmd>TestSuite<cr>')
+map('n', 'tv', '<cmd>TestVisit<cr>')
