@@ -51,6 +51,7 @@ return require('packer').startup(function(use)
   use { 'rcarriga/nvim-notify' }
   use { "aklt/plantuml-syntax" }
   use { 'weirongxu/plantuml-previewer.vim', requires = 'tyru/open-browser.vim'}
+  use { 'onsails/lspkind.nvim' }
 
   -- Colors
   use { "catppuccin/nvim", as = "catppuccin" }
