@@ -16,6 +16,7 @@ require('plugins/catppuccin')
 require('plugins/telescope')
 require('plugins/lsp_saga')
 require('plugins/lexical')
+---@diagnostic disable-next-line: different-requires
 require('plugins/luasnip')
 require('plugins/cmp')
 require('plugins/gutentags')
