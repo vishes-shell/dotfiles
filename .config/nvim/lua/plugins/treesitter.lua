@@ -6,7 +6,7 @@
 -- url: https://github.com/nvim-treesitter/nvim-treesitter
 
 require("nvim-treesitter.configs").setup {
-  ensure_installed = { 'python', 'markdown', },
+  ensure_installed = { 'python', 'markdown', 'norg' },
   sync_install = false,
   auto_install = true,
   highlight = {

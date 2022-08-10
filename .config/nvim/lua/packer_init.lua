@@ -167,6 +167,15 @@ return require('packer').startup(function(use)
   -- Tests
   use { 'vim-test/vim-test' }
 
+  -- Notes
+  use { 
+    "nvim-neorg/neorg",
+    requires = { 
+        "nvim-lua/plenary.nvim",
+        "Pocco81/true-zen.nvim",
+    }
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
