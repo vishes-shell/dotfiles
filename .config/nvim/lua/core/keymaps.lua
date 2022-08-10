@@ -23,6 +23,8 @@ map('n', 'wq', '<cmd>wq<cr>')
 -- Close
 map('n', 'qq', '<cmd>q<cr>')
 map('n', 'QA', '<cmd>qa!<cr>')
+-- Refresh
+map('n', 'E', '<cmd>e!<cr>')
 
 -- Clear search highlighting with <leader> and c
 map('n', '<leader><cr>', '<cmd>nohl<cr>')
