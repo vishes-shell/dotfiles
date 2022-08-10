@@ -164,15 +164,6 @@ return require('packer').startup(function(use)
   use { 'lyokha/vim-xkbswitch' }
 
   -- Tests
-  use {
-    "nvim-neotest/neotest",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-      'nvim-neotest/neotest-python',
-    }
-}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
