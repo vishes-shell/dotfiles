@@ -63,6 +63,9 @@ vim.cmd [[autocmd InsertLeave * execute 'normal! mI']]
 -- Applications and Plugins shortcuts
 -----------------------------------------------------------
 
+-- Format
+map('v', 'f', '<cmd>lua vim.lsp.buf.range_formatting()<cr>')
+
 -- Center
 map('n', '<c-b>', '<cmd>center 80<cr>hhv0r#A<space><esc>40A#<esc>d80<bar>YppVr#kk.<cr>')
 
