@@ -175,13 +175,12 @@ return require('packer').startup(function(use)
   use { 'vim-test/vim-test' }
 
   -- Notes
-  use { 
-    "nvim-neorg/neorg",
-    requires = { 
-        "nvim-lua/plenary.nvim",
-        "Pocco81/true-zen.nvim",
-    }
-  }
+  use({'jakewvincent/mkdnflow.nvim',
+    rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
+    config = function()
+        require('mkdnflow').setup({})
+    end
+  })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
