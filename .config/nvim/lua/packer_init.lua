@@ -68,6 +68,7 @@ return require('packer').startup(function(use)
         "rcarriga/nvim-notify",
       }
   })
+  use { 'RRethy/vim-illuminate' }
 
   -- Preview
   use { 'weirongxu/plantuml-previewer.vim', requires = 'tyru/open-browser.vim'}
