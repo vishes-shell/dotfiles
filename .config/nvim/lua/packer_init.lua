@@ -5,6 +5,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
+vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "10.15")
+
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -31,8 +33,8 @@ return require('packer').startup(function(use)
     requires = 'neovim/nvim-lspconfig',
   }
   use {
-    'akinsho/bufferline.nvim', 
-    tag = "v2.*", 
+    'akinsho/bufferline.nvim',
+    tag = "v2.*",
     requires = 'kyazdani42/nvim-web-devicons'
   }
   use {
@@ -40,6 +42,9 @@ return require('packer').startup(function(use)
     config = function()
       require('gitsigns').setup()
     end
+  }
+  use {
+      'tpope/vim-fugitive'
   }
   use {
     "petertriho/nvim-scrollbar",
@@ -51,12 +56,30 @@ return require('packer').startup(function(use)
   use { 'rcarriga/nvim-notify' }
   use { "aklt/plantuml-syntax" }
   use { 'onsails/lspkind.nvim' }
+  use({
+      "folke/noice.nvim",
+      event = "VimEnter",
+      config = function()
+        require("noice").setup()
+      end,
+      requires = {
+        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
+      }
+  })
 
   -- Preview
   use { 'weirongxu/plantuml-previewer.vim', requires = 'tyru/open-browser.vim'}
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
+  })
+  use({
+      'Pocco81/true-zen.nvim',
+      config = function()
+          require('true-zen').setup()
+      end
   })
 
 
@@ -174,13 +197,13 @@ return require('packer').startup(function(use)
   -- Tests
   use { 'vim-test/vim-test' }
 
-  -- Notes
-  use({'jakewvincent/mkdnflow.nvim',
-    rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
-    config = function()
-        require('mkdnflow').setup({})
-    end
-  })
+  -- -- Notes
+  -- use({'jakewvincent/mkdnflow.nvim',
+  --   rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
+  --   config = function()
+  --       require('mkdnflow').setup({})
+  --   end
+  -- })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
