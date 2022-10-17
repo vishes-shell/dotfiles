@@ -55,10 +55,6 @@ return require("packer").startup(function(use)
         }
     })
     use {"RRethy/vim-illuminate"}
-    use {
-        "karb94/neoscroll.nvim",
-        config = function() require("neoscroll").setup() end
-    }
 
     -- Preview
     use {"weirongxu/plantuml-previewer.vim", requires = "tyru/open-browser.vim"}
