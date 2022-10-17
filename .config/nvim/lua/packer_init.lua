@@ -84,7 +84,18 @@ return require("packer").startup(function(use)
         "numToStr/Comment.nvim",
         config = function() require("Comment").setup() end
     }
-    use {"nat-418/boole.nvim", config = function() require("boole").setup() end}
+    use {
+        "https://github.com/nat-418/boole.nvim",
+        config = function()
+            require("boole").setup({
+                mappings = {increment = "<C-a>", decrement = "<C-x>"},
+                -- Key value pairs of additional replacements
+                -- increment: (key => value)
+                -- decrement: (value => key)
+                pair_additions = {}
+            })
+        end
+    }
 
     -- Linters/formatters
     use {
