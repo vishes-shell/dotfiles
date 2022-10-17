@@ -84,6 +84,7 @@ return require("packer").startup(function(use)
         "numToStr/Comment.nvim",
         config = function() require("Comment").setup() end
     }
+    use {"nat-418/boole.nvim", config = function() require("boole").setup() end}
 
     -- Linters/formatters
     use {
