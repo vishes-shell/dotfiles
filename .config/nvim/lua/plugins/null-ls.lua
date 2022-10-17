@@ -1,18 +1,15 @@
 -----------------------------------------------------------
 -- Null-ls configuration file
 -----------------------------------------------------------
-
 -- Plugin: null-ls
 -- url: https://github.com/jose-elias-alvarez/null-ls.nvim
-
 local null_ls = require("null-ls")
 
 local sources = {
     -- common
     --
     -- diagnostics
-    null_ls.builtins.diagnostics.codespell,
-    null_ls.builtins.diagnostics.alex,
+    null_ls.builtins.diagnostics.codespell, null_ls.builtins.diagnostics.alex,
 
     -- null_ls.builtins.formatting.remark,
 
@@ -20,30 +17,23 @@ local sources = {
     --
     -- formatting
     null_ls.builtins.formatting.isort,
-    null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.black.with({extra_args = {"--fast"}}),
     -- diagnostics
     null_ls.builtins.diagnostics.vulture.with({
-        extra_args = { '--min-confidence', '90' }
-    }),
-    null_ls.builtins.diagnostics.flake8,
-    null_ls.builtins.diagnostics.pylint,
-
-    -- yaml
+        extra_args = {"--min-confidence", "90"}
+    }), null_ls.builtins.diagnostics.flake8,
+    null_ls.builtins.diagnostics.pylint, -- yaml
     --
     -- diagnostics
-    null_ls.builtins.diagnostics.yamllint,
-
-    -- json
+    null_ls.builtins.diagnostics.yamllint, -- json
     --
     -- formatting
-    null_ls.builtins.formatting.jq,
-
-    -- lua
+    null_ls.builtins.formatting.jq, -- lua
     --
     -- formatting
     null_ls.builtins.formatting.lua_format.with({
-        extra_args = { "--single-quote-to-double-quote" },
-    }),
+        extra_args = {"--single-quote-to-double-quote"}
+    })
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -51,9 +41,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local callback = function()
     vim.lsp.buf.format({
         bufnr = bufnr,
-        filter = function(client)
-            return client.name == "null-ls"
-        end
+        filter = function(client) return client.name == "null-ls" end
     })
 end
 
@@ -61,12 +49,12 @@ null_ls.setup({
     sources = sources,
     on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_clear_autocmds({group = augroup, buffer = bufnr})
             vim.api.nvim_create_autocmd("BufWritePre", {
                 group = augroup,
                 buffer = bufnr,
-                callback = callback,
+                callback = callback
             })
         end
-    end,
+    end
 })
