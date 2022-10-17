@@ -115,17 +115,9 @@ map('n', ']e', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 
 map('n', '<leader>a', '<cmd>LSoutlineToggle<cr>')
 
-local term = require("lspsaga.floaterm")
-vim.keymap.set("n", "<A-d>", function()
-    term.open_float_terminal()
-end, { silent = true })
-vim.keymap.set("n", "<leader>g", function()
-    term.open_float_terminal('lazygit')
-end, { silent = true })
-vim.keymap.set("t", "<A-d>", function()
-    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true))
-    term.close_float_terminal()
-end, { silent = true })
+vim.keymap.set("n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
+vim.keymap.set("n", "<leader>g", "<cmd>Lspsaga open_floaterm lazygit<CR>", { silent = true })
+vim.keymap.set("t", "<A-d>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
 
 -- Test
 map('n', 'tn', '<cmd>TestNearest<cr>')
