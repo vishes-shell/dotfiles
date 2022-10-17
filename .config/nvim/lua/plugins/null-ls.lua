@@ -41,7 +41,9 @@ local sources = {
     -- lua
     --
     -- formatting
-    null_ls.builtins.formatting.lua_format,
+    null_ls.builtins.formatting.lua_format.with({
+        extra_args = { "--single-quote-to-double-quote" },
+    }),
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
