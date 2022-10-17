@@ -123,7 +123,8 @@ telescope.setup {
             prompt_title = "Files",
             mappings = default_mappings,
             find_command = {
-                "rg", "--files", "--hidden", "-g", "!.git", "-g", "!.venv"
+                "rg", "--files", "--color", "never", "--hidden", "-g", "!.git",
+                "-g", "!.venv"
             }
         },
         git_files = {prompt_title = "Git Files", mappings = default_mappings},
