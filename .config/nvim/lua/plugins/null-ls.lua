@@ -8,23 +8,40 @@
 local null_ls = require("null-ls")
 
 local sources = {
+    -- common
+    --
+    -- diagnostics
     null_ls.builtins.diagnostics.codespell,
-
     null_ls.builtins.diagnostics.alex,
+
     -- null_ls.builtins.formatting.remark,
 
+    -- python
+    --
+    -- formatting
     null_ls.builtins.formatting.isort,
     null_ls.builtins.formatting.black,
-
+    -- diagnostics
     null_ls.builtins.diagnostics.vulture.with({
         extra_args = { '--min-confidence', '90' }
     }),
     null_ls.builtins.diagnostics.flake8,
     null_ls.builtins.diagnostics.pylint,
 
+    -- yaml
+    --
+    -- diagnostics
     null_ls.builtins.diagnostics.yamllint,
 
+    -- json
+    --
+    -- formatting
     null_ls.builtins.formatting.jq,
+
+    -- lua
+    --
+    -- formatting
+    null_ls.builtins.formatting.lua_format,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
