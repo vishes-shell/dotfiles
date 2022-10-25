@@ -40,7 +40,14 @@ return require("packer").startup(function(use)
     use {
         "petertriho/nvim-scrollbar",
         requires = "kevinhwang91/nvim-hlslens",
-        config = function() require("scrollbar").setup() end,
+        config = function()
+            require("scrollbar").setup()
+            require("hlslens").setup({
+                calm_down = true,
+                nearest_only = true,
+                nearest_float_when = "always",
+            })
+        end,
     }
     use { "rcarriga/nvim-notify" }
     use { "aklt/plantuml-syntax" }
@@ -149,12 +156,35 @@ return require("packer").startup(function(use)
     }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
     use { "nvim-telescope/telescope-file-browser.nvim" }
+    use({
+        "princejoogie/dir-telescope.nvim",
+        -- telescope.nvim is a required dependency
+        requires = { "nvim-telescope/telescope.nvim" },
+        config = function()
+            require("dir-telescope").setup({
+                hidden = true,
+                respect_gitignore = true,
+            })
+        end,
+    })
 
     -- Keymap
     use { "lyokha/vim-xkbswitch" }
 
+    -- Navigation
+    use {
+        "ggandor/leap.nvim",
+        config = function() require("leap").add_default_mappings() end,
+    }
+
     -- Tests
     use { "vim-test/vim-test" }
+
+    -- Browser
+    use {
+        "glacambre/firenvim",
+        run = function() vim.fn["firenvim#install"](0) end,
+    }
 
     -- -- Notes
     -- use({'jakewvincent/mkdnflow.nvim',
