@@ -62,6 +62,21 @@ return require("packer").startup(function(use)
         },
     })
     use { "RRethy/vim-illuminate" }
+    use {
+        "shortcuts/no-neck-pain.nvim",
+        config = function()
+            -- values below are the default
+            require("no-neck-pain").setup({
+                -- the width of the focused buffer when enabling NNP.
+                -- If the available window size is less than `width`, the buffer will take the whole screen.
+                width = 120,
+                -- When `true`, enables the plugin when you start Neovim.
+                enableOnVimEnter = true,
+                -- prints useful logs about what event are triggered, and reasons actions are executed.
+                debug = false,
+            })
+        end,
+    }
 
     -- Preview
     use { "weirongxu/plantuml-previewer.vim",
@@ -101,6 +116,26 @@ return require("packer").startup(function(use)
         end,
     }
     use { "dkarter/bullets.vim" }
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end,
+    }
+    use {
+        "danymat/neogen",
+        config = function()
+            require("neogen").setup {
+                snippet_engine = "luasnip",
+                languages = {
+                    python = {
+                        template = { annotation_convention = "google_docstrings" },
+                    },
+                },
+            }
+        end,
+        requires = "nvim-treesitter/nvim-treesitter",
+        -- Uncomment next line if you want to follow only stable versions
+        -- tag = "*"
+    }
 
     -- Linters/formatters
     use {
@@ -167,6 +202,17 @@ return require("packer").startup(function(use)
             })
         end,
     })
+    use {
+        "debugloop/telescope-undo.nvim",
+        requires = { "nvim-telescope/telescope.nvim" },
+        config = function()
+            require("telescope").load_extension("undo")
+            -- optional: vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+        end,
+    }
+
+    -- Files
+    use { "stevearc/oil.nvim", config = function() require("oil").setup() end }
 
     -- Keymap
     use { "lyokha/vim-xkbswitch" }

@@ -1,19 +1,23 @@
 {
-    "name": "my-snippets",
-    "author": "vishes_shell",
-    "engines": {
-      "vscode": "^1.11.0"
-    },
-    "contributes": {
-        "snippets": [
-            {
-                "language": "markdown",
-                "path": "./snippets/private-markdown.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/python.json"
-            }
-        ]
-    }
+  "name": "my-snippets",
+  "author": "vishes_shell",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "markdown",
+        "path": "./snippets/private-markdown.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/python.json"
+      },
+      {
+        "language": "plantuml",
+        "path": "./snippets/plantuml.json"
+      }
+    ]
+  }
 }

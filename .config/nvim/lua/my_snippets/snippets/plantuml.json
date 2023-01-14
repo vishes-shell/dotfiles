@@ -1,0 +1,6 @@
+{
+  "table name": {
+    "prefix": "tablename",
+    "body": "(\"\"<color:grey>${0}</color>\"\")"
+  }
+}

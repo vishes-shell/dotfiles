@@ -78,7 +78,9 @@ map("n", "<leader>bt", "<cmd>Telescope current_buffer_tags<cr>")
 map("n", "<leader>t", "<cmd>Telescope tags<cr>")
 map("n", "<leader>l", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 map("n", "<leader><leader>", "<cmd>Telescope<cr>")
-map("n", "-", "<cmd>Telescope file_browser path=%:p:h<cr>")
+
+vim.keymap
+    .set("n", "-", require("oil").open, { desc = "Open parent directory" })
 
 -- LSP Saga
 local action = require("lspsaga.codeaction")
@@ -124,7 +126,10 @@ map("n", "tf", "<cmd>TestFile<cr>")
 map("n", "ts", "<cmd>TestSuite<cr>")
 map("n", "tv", "<cmd>TestVisit<cr>")
 
-vim.keymap.set("n", "<leader>fd", "<cmd>Telescope dir live_grep<CR>",
+vim.keymap.set("n", "<leader>fd", "<cmd>Telescope dir live_grep<cr>",
                { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>pd", "<cmd>Telescope dir find_files<CR>",
+vim.keymap.set("n", "<leader>pd", "<cmd>Telescope dir find_files<cr>",
                { noremap = true, silent = true })
+
+-- Neogen
+map("n", "<Leader>d", "<cmd>lua require('neogen').generate()<cr>")
