@@ -94,7 +94,7 @@ return require("packer").startup(function(use)
     use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Modifications
-    use "fedepujol/move.nvim"
+    use "hinell/move.nvim"
     use {
         "kylechui/nvim-surround",
         config = function() require("nvim-surround").setup() end,
@@ -178,7 +178,46 @@ return require("packer").startup(function(use)
         }, { "williamboman/mason-lspconfig.nvim" },
         { "WhoIsSethDaniel/mason-tool-installer.nvim" },
     }
-    use { "glepnir/lspsaga.nvim", branch = "main" }
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = function()
+            require("lspsaga").setup({
+                ui = {
+                    -- currently only round theme
+                    theme = "round",
+                    -- border type can be single,double,rounded,solid,shadow.
+                    border = "solid",
+                    winblend = 0,
+                    expand = "",
+                    collapse = "",
+                    preview = "🔍",
+                    code_action = "💡",
+                    diagnostic = "🐞",
+                    incoming = " ",
+                    outgoing = " ",
+                    colors = {
+                        -- float window normal bakcground color
+                        normal_bg = "#EFF1F5",
+                        -- title background color
+                        title_bg = "#afd700",
+                        red = "#D20F39",
+                        magenta = "#EA76CB",
+                        orange = "#FF8700",
+                        yellow = "#DF8E1D",
+                        green = "#40A02B",
+                        cyan = "#36d0e0",
+                        blue = "#1E66F5",
+                        purple = "#CBA6F7",
+                        white = "#BCC0CC",
+                        black = "#6C6F85",
+                    },
+                    kind = {},
+                },
+
+            })
+        end,
+    })
 
     -- Quickfix
     use { "kevinhwang91/nvim-bqf", ft = "qf" }
@@ -210,9 +249,35 @@ return require("packer").startup(function(use)
             -- optional: vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
         end,
     }
+    use {
+        "xiyaowong/telescope-emoji.nvim",
+        requires = { "nvim-telescope/telescope.nvim" },
+        config = function()
+            require("telescope").load_extension("emoji")
+            -- optional: vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+        end,
+    }
 
     -- Files
-    use { "stevearc/oil.nvim", config = function() require("oil").setup() end }
+    use {
+        "stevearc/oil.nvim",
+        config = function()
+            require("oil").setup({
+                columns = { "icon", "size" },
+                restore_win_options = true,
+                use_default_keymaps = true,
+                view_options = { show_hidden = true },
+                float = {
+                    -- Padding around the floating window
+                    padding = 2,
+                    max_width = 80,
+                    max_height = 33,
+                    border = "rounded",
+                    win_options = { winblend = 10 },
+                },
+            })
+        end,
+    }
 
     -- Keymap
     use { "lyokha/vim-xkbswitch" }
