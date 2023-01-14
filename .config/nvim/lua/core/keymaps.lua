@@ -71,6 +71,8 @@ map("n", "<c-b>",
 map("n", "<leader>bf", "<cmd>Telescope buffers<cr>")
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>s", "<cmd>Telescope live_grep<cr>")
+map("n", "<C-e>", "<cmd>Telescope emoji<cr>")
+map("i", "<C-e>", "<cmd>Telescope emoji<cr>")
 map("n", "<leader>c", "<cmd>Telescope git_status<cr>")
 map("n", "F", "<cmd>Telescope grep_string<cr>")
 map("n", "<leader>qf", "<cmd>Telescope quickfix<cr>")
@@ -79,45 +81,29 @@ map("n", "<leader>t", "<cmd>Telescope tags<cr>")
 map("n", "<leader>l", "<cmd>Telescope current_buffer_fuzzy_find<cr>")
 map("n", "<leader><leader>", "<cmd>Telescope<cr>")
 
-vim.keymap
-    .set("n", "-", require("oil").open, { desc = "Open parent directory" })
+vim.keymap.set("n", "-", require("oil").open_float,
+               { desc = "Open parent directory" })
 
 -- LSP Saga
-local action = require("lspsaga.codeaction")
-
 map("n", "gh", "<cmd>Lspsaga lsp_finder<CR>")
 
-vim.keymap.set("n", "<leader>ca", action.code_action, { silent = true })
-vim.keymap.set("v", "<leader>ca", function()
-    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
-    action.range_code_action()
-end, { silent = true })
+map("n", "ga", "<cmd>Lspsaga code_action<CR>")
+-- map("x", "ga", "<cmd>Lspsaga code_action<CR>")
+
+map("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+map("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+map("n", "[c", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+map("n", "[l", "<cmd>Lspsaga show_line_diagnostics<CR>")
 
 map("n", "K", "<cmd>Lspsaga hover_doc<cr>")
-vim.keymap.set("n", "<C-f>", function() action.smart_scroll_with_saga(1) end,
-               { silent = true })
-vim.keymap.set("n", "<C-b>", function() action.smart_scroll_with_saga(-1) end,
-               { silent = true })
-
+map("n", "gd", "<cmd>Lspsaga peek_definition<cr>")
 map("n", "gs", "<cmd>Lspsaga signature_help<cr>")
-
 map("n", "gr", "<cmd>Lspsaga rename<cr>")
 
-map("n", "gd", "<cmd>Lspsaga preview_definition<cr>")
+map("n", "<leader>o", "<cmd>Lspsaga outline<cr>")
 
-map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<cr>")
-map("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<cr>")
-map("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<cr>")
-map("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-
-map("n", "<leader>a", "<cmd>LSoutlineToggle<cr>")
-
-vim.keymap
-    .set("n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
-vim.keymap.set("n", "<leader>g", "<cmd>Lspsaga open_floaterm lazygit<CR>",
-               { silent = true })
-vim.keymap.set("t", "<A-d>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]],
-               { silent = true })
+map("n", "<A-d>", "<cmd>Lspsaga term_toggle<cr>")
+map("t", "<A-d>", "<cmd>Lspsaga term_toggle<cr>")
 
 -- Test
 map("n", "tn", "<cmd>TestNearest<cr>")
