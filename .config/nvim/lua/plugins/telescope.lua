@@ -28,8 +28,8 @@ local default_mappings = {
         ["<C-l>"] = actions.complete_tag,
         ["<C-/>"] = actions.which_key,
         ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
-        ["<C-w>"] = {"<c-s-w>", type = "command"},
-        ["<c-t>"] = trouble.open_with_trouble
+        ["<C-w>"] = { "<c-s-w>", type = "command" },
+        ["<c-t>"] = trouble.open_with_trouble,
     },
     n = {
         ["<esc>"] = actions.close,
@@ -58,8 +58,8 @@ local default_mappings = {
         ["<C-d>"] = actions.preview_scrolling_down,
 
         ["<c-t>"] = trouble.open_with_trouble,
-        ["?"] = actions.which_key
-    }
+        ["?"] = actions.which_key,
+    },
 }
 
 local opts_cursor = {
@@ -67,7 +67,7 @@ local opts_cursor = {
     sorting_strategy = "ascending",
     layout_strategy = "cursor",
     results_title = false,
-    layout_config = {width = 0.5, height = 0.4}
+    layout_config = { width = 0.5, height = 0.4 },
 }
 
 local opts_vertical = {
@@ -79,80 +79,86 @@ local opts_vertical = {
         width = 0.3,
         height = 0.5,
         prompt_position = "top",
-        mirror = true
-    }
+        mirror = true,
+    },
 }
 
 telescope.setup {
     defaults = {
         prompt_prefix = "🔍 ",
         mappings = default_mappings,
-        dynamic_preview_title = true
+        dynamic_preview_title = true,
     },
     pickers = {
         buffers = {
             prompt_title = "Buffers",
             mappings = vim.tbl_deep_extend("force", {
-                n = {["d"] = actions.delete_buffer}
+                n = { ["d"] = actions.delete_buffer },
             }, default_mappings),
             sort_mru = true,
-            preview_title = false
+            preview_title = false,
         },
-        lsp_code_actions = vim.tbl_deep_extend("force", opts_cursor,
-                                               {prompt_title = "Code Actions"}),
+        lsp_code_actions = vim.tbl_deep_extend("force", opts_cursor, {
+            prompt_title = "Code Actions",
+        }),
         lsp_range_code_actions = vim.tbl_deep_extend("force", opts_vertical, {
-            prompt_title = "Code Actions"
+            prompt_title = "Code Actions",
         }),
         lsp_document_diagnostics = vim.tbl_deep_extend("force", opts_vertical, {
             prompt_title = "Document Diagnostics",
-            mappings = default_mappings
+            mappings = default_mappings,
         }),
         lsp_implementations = vim.tbl_deep_extend("force", opts_cursor, {
             prompt_title = "Implementations",
-            mappings = default_mappings
+            mappings = default_mappings,
         }),
         lsp_definitions = vim.tbl_deep_extend("force", opts_cursor, {
             prompt_title = "Definitions",
-            mappings = default_mappings
+            mappings = default_mappings,
         }),
         lsp_references = vim.tbl_deep_extend("force", opts_cursor, {
             prompt_title = "References",
-            mappings = default_mappings
+            mappings = default_mappings,
         }),
         find_files = {
             prompt_title = "Files",
             mappings = default_mappings,
             find_command = {
                 "rg", "--files", "--color", "never", "--hidden", "-g", "!.git",
-                "-g", "!.venv"
-            }
+                "-g", "!.venv",
+            },
         },
-        git_files = {prompt_title = "Git Files", mappings = default_mappings},
+        git_files = { prompt_title = "Git Files", mappings = default_mappings },
         live_grep = {
             prompt_title = "Live Ripgrep",
             mappings = default_mappings,
-            glob_pattern = {"!.git", "!.venv"},
-            additional_args = function(opts) return {"--hidden"} end
+            glob_pattern = { "!.git", "!.venv" },
+            additional_args = function(opts) return { "--hidden" } end,
         },
         grep_string = {
             mappings = default_mappings,
-            glob_pattern = {"!.git", "!.venv"},
-            additional_args = function(opts) return {"--hidden"} end
-        }
+            glob_pattern = { "!.git", "!.venv" },
+            additional_args = function(opts) return { "--hidden" } end,
+        },
     },
     extensions = {
         fzf = {
             fuzzy = true,
             override_generic_sorter = true,
             override_file_sorter = true,
-            case_mode = "smart_case"
+            case_mode = "smart_case",
         },
         file_browser = {
             hidden = true,
             respect_gitignore = true,
-            hijack_netrw = false
-        }
-    }
+            hijack_netrw = false,
+        },
+        emoji = {
+            action = function(emoji)
+                vim.api.nvim_put({ emoji.value }, "c", false, true)
+            end,
+        },
+    },
 }
 
 telescope.load_extension("fzf")
