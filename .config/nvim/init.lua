@@ -14,7 +14,6 @@ require("plugins/mason-lspconfig")
 require("plugins/mason-tool-installer")
 require("plugins/catppuccin")
 require("plugins/telescope")
-require("plugins/lsp_saga")
 require("plugins/lexical")
 ---@diagnostic disable-next-line: different-requires
 require("plugins/luasnip")
