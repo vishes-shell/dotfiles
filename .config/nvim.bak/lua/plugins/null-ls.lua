@@ -6,17 +6,19 @@
 local null_ls = require("null-ls")
 
 local sources = {
+    -- diagnostics
     null_ls.builtins.diagnostics.codespell, null_ls.builtins.diagnostics.alex,
+    null_ls.builtins.diagnostics.yamllint, null_ls.builtins.diagnostics.ruff,
+    -- formatting
     null_ls.builtins.formatting.isort, null_ls.builtins.formatting.black.with({
         extra_args = { "--fast", "--workers", "1" },
-    }), null_ls.builtins.diagnostics.yamllint,
-    null_ls.builtins.diagnostics.ruff, null_ls.builtins.formatting.jq,
+    }), null_ls.builtins.formatting.jq,
     null_ls.builtins.formatting.lua_format.with({
         extra_args = {
             "--single-quote-to-double-quote", "--spaces-inside-table-braces",
             "--extra-sep-at-table-end", "--chop-down-kv-table",
         },
-    }),
+    }), null_ls.builtins.formatting.yamlfmt,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

@@ -94,7 +94,23 @@ return require("packer").startup(function(use)
     use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Modifications
-    use "hinell/move.nvim"
+    use {
+        "echasnovski/mini.move",
+        config = function()
+            require("mini.move").setup({
+                mappings = {
+                    left = "<A-h>",
+                    right = "<A-l>",
+                    down = "<A-j>",
+                    up = "<A-k>",
+                    line_left = "<A-h>",
+                    line_right = "<A-l>",
+                    line_down = "<A-j>",
+                    line_up = "<A-k>",
+                },
+            })
+        end,
+    }
     use {
         "kylechui/nvim-surround",
         config = function() require("nvim-surround").setup() end,
