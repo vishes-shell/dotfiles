@@ -1,5 +1,16 @@
 return {
   { "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end
+    },
+    keys = {
+      { "<leader>tt", "<cmd>Telescope tags<cr>", desc = "Tags" },
+      { "<leader>tb", "<cmd>Telescope current_buffer_tags<cr>", desc = "Tags" },
+    },
     config = function(_, opts)
       local telescope = require("telescope")
       telescope.setup(opts)
