@@ -1,0 +1,19 @@
+{
+  "name": "snippets",
+  "author": "vishes_shell",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "markdown",
+        "path": "./languages/markdown.json"
+      },
+      {
+        "language": "markdown",
+        "path": "./private/markdown.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "toc tree": {
+    "prefix": [
+      "toctree"
+    ],
+    "body": [
+      "```{toctree}",
+      "---",
+      "maxdepth: 2",
+      "includehidden:",
+      "---",
+      "$0",
+      "```"
+    ]
+  },
+  "top-matter title": {
+    "prefix": "title top-matter",
+    "body": [
+      "---",
+      "title: $0",
+      "---"
+    ]
+  },
+  "python code block": {
+    "prefix": "python",
+    "body": [
+      "```python",
+      "$0",
+      "```"
+    ]
+  },
+  "json code block": {
+    "prefix": "json",
+    "body": [
+      "```json",
+      "$0",
+      "```"
+    ]
+  },
+  "bash code block": {
+    "prefix": "bash",
+    "body": [
+      "```bash",
+      "$0",
+      "```"
+    ]
+  },
+  "jira code block": {
+    "prefix": "jira",
+    "body": [
+      "```jira",
+      "$0",
+      "```"
+    ]
+  }
+}
