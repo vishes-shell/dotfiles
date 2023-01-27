@@ -5,8 +5,8 @@ return {
     opts = {
       plugins = {
         gitsigns = true,
-        tmux = true,
-        kitty = { enabled = false, font = "+2" },
+        tmux = false,
+        kitty = { enabled = true, font = "+2" },
       },
     },
     keys = { { "<leader>wz", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
