@@ -12,6 +12,14 @@
       },
       {
         "language": "markdown",
+        "path": "./languages/global.json"
+      },
+      {
+        "language": "plantuml",
+        "path": "./languages/plantuml.json"
+      },
+      {
+        "language": "markdown",
         "path": "./private/markdown.json"
       }
     ]
