@@ -13,3 +13,6 @@ end
 
 map("n", "<C-e>", "<cmd>Telescope emoji<cr>")
 map("i", "<C-e>", "<cmd>Telescope emoji<cr>")
+
+-- replace current word with Ctrl+c
+map("n", "<C-c>", "<cmd>normal! ciw<cr>a")
