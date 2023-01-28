@@ -144,5 +144,15 @@
       "${0}"
     ],
     "description": "Insert task list"
+  },
+  "Insert myst doc ref": {
+    "prefix": "doc",
+    "body": "{doc}`$0`",
+    "description": "Insert myst doc referense"
+  },
+  "Insert myst ref": {
+    "prefix": "ref",
+    "body": "{ref}`$0`",
+    "description": "Insert myst ref referense"
   }
 }
