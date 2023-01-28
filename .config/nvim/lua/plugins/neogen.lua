@@ -11,6 +11,17 @@ return {
         },
       }
     end,
-    dependencies = { "nvim-treesitter/nvim-treesitter" }
+    keys = {
+      {
+        "<leader>cc",
+        function()
+          require("neogen").generate({})
+        end,
+        desc = "Neogen Comment",
+      },
+    },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    snippet_engine = { 'luasnip' }
+
   }
 }
