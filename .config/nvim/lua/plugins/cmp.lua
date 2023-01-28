@@ -15,7 +15,7 @@ return {
                 vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-labels")
               }
             },
-            debug = true,
+            debug = false,
           })
         end,
       }
