@@ -13,3 +13,11 @@ end
 
 -- replace current word with Ctrl+c
 map("n", "<C-c>", "<cmd>normal! ciw<cr>a")
+
+vim.cmd([[
+" For changing choices in choiceNodes (not strictly necessary for a basic setup).
+imap <silent><expr> <C-n> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-n>'
+smap <silent><expr> <C-n> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-n>'
+imap <silent><expr> <C-p> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' : '<C-p>'
+smap <silent><expr> <C-p> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' : '<C-p>'
+]])
