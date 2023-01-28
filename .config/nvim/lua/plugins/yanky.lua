@@ -1,6 +1,7 @@
 return {
   {
     "gbprod/yanky.nvim",
+    dependencies = { "kkharji/sqlite.lua" },
     enabled = true,
     event = "BufReadPost",
     config = function()
