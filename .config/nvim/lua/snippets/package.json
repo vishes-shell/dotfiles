@@ -7,11 +7,17 @@
   "contributes": {
     "snippets": [
       {
-        "language": "markdown",
+        "language": [
+          "markdown",
+          "telekasten"
+        ],
         "path": "./languages/markdown.json"
       },
       {
-        "language": "markdown",
+        "language": [
+          "markdown",
+          "telekasten"
+        ],
         "path": "./languages/global.json"
       },
       {
@@ -19,7 +25,10 @@
         "path": "./languages/plantuml.json"
       },
       {
-        "language": "markdown",
+        "language": [
+          "markdown",
+          "telekasten"
+        ],
         "path": "./private/markdown.json"
       }
     ]
