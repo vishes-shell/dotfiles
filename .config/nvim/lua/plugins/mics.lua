@@ -19,5 +19,9 @@ return {
         desc = "Structural Replace",
       }
     }
+  },
+  {
+    "shortcuts/no-neck-pain.nvim",
+    keys = { { "<leader>wn", "<cmd>NoNeckPain<cr>", desc = "Stop Neck pain" } },
   }
 }
