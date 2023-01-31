@@ -20,8 +20,14 @@ return {
       }
     }
   },
-  {
-    "shortcuts/no-neck-pain.nvim",
-    keys = { { "<leader>wn", "<cmd>NoNeckPain<cr>", desc = "Stop Neck pain" } },
-  }
+  -- {
+  --   "shortcuts/no-neck-pain.nvim",
+  --   config = function()
+  --     require('no-neck-pain').setup({
+  --       debug = false,
+  --       width = 120,
+  --     })
+  --   end,
+  --   keys = { { "<leader>wn", "<cmd>NoNeckPain<cr>", desc = "Stop Neck pain" } },
+  -- }
 }
