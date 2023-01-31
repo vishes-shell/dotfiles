@@ -16,8 +16,9 @@ return {
             async = true,
             dic = {
               ['markdown'] = {
-                vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-components"),
-                vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-labels")
+                vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-component"),
+                vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-label"),
+                vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-assignee"),
               }
             },
             debug = false,
@@ -49,7 +50,7 @@ return {
           { name = "buffer" },
           { name = "path" },
           { name = "emoji" },
-          -- { name = "dictionary", keyword_length = 2, }
+          { name = "dictionary", keyword_length = 2, }
         }),
         formatting = {
           format = function(_, item)
