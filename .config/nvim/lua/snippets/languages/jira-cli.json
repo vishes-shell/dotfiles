@@ -1,0 +1,159 @@
+{
+  "jiracreateissueinput": {
+    "prefix": [
+      "jiracreateissueinput",
+      "jiraissuecreateinput"
+    ],
+    "body": [
+      "jira issue create \\",
+      "\t--type ${1|Задача,Техдолг,Research,Релиз,Работа с данными,Story,Баг,Входящее|} \\",
+      "\t--label back \\",
+      "\t--component \"${2:component}\" $0"
+    ],
+    "description": "Insert jira-cli create issue with input"
+  },
+  "jiracreatebuf": {
+    "prefix": [
+      "jiracreateissue",
+      "jiraissuecreate"
+    ],
+    "body": [
+      "jira issue create \\",
+      "\t--type ${1|Задача,Техдолг,Research,Релиз,Работа с данными,Story,Баг,Входящее|} \\",
+      "\t--label back \\",
+      "\t--component \"${2:component}\" \\",
+      "\t--summary ${$(cat /tmp/jira/issue-summary.txt)##*# } \\",
+      "\t--template /tmp/jira/issue-description.md \\",
+      "\t--custom number-priority=${3:priority} \\",
+      "\t--custom sprint=${4:\\$SPRINT} \\",
+      "\t--no-input $0"
+    ],
+    "description": "Insert jira-cli create issue without input"
+  },
+  "jiraengineering": {
+    "prefix": [
+      "jiraengineering",
+      "jiralabelengineering"
+    ],
+    "body": "--label engineering $0"
+  },
+  "jiraissueassign": {
+    "prefix": [
+      "jiraissueassign",
+      "jiraassign"
+    ],
+    "body": "--assignee \"${1:assignee}\" $0"
+  },
+  "jiraissuereport": {
+    "prefix": [
+      "jiraissuereport",
+      "jirareport"
+    ],
+    "body": "--reporter \"${1:reporter}\" $0"
+  },
+  "jirareportershalynin": {
+    "prefix": [
+      "jirareportshalynin"
+    ],
+    "body": "--reporter \"Алексей Шалынин\" $0"
+  },
+  "jirareportersidorenkov": {
+    "prefix": [
+      "jirareportsidorenkov"
+    ],
+    "body": "--reporter \"Владислав Сидоренков\" $0"
+  },
+  "jirareportergattunen": {
+    "prefix": [
+      "jirareportgattunen"
+    ],
+    "body": "--reporter \"Александр Гаттунен\" $0"
+  },
+  "jirareporterangelov": {
+    "prefix": [
+      "jirareportangelov"
+    ],
+    "body": "--reporter \"Никита Ангелов\" $0"
+  },
+  "jirareporterchehov": {
+    "prefix": [
+      "jirareportchehov"
+    ],
+    "body": "--reporter \"Илья Чехов\" $0"
+  },
+  "jiraassignshalynin": {
+    "prefix": [
+      "jiraassignshalynin",
+      "jiraissueassignshalynin"
+    ],
+    "body": "--assignee \"Алексей Шалынин\" $0"
+  },
+  "jiraassignsidorenkov": {
+    "prefix": "jiraassignsidorenkov",
+    "body": "--assignee \"Владислав Сидоренков\" $0"
+  },
+  "jiraassigngattunen": {
+    "prefix": "jiraassigngattunen",
+    "body": "--assignee \"Александр Гаттунен\" $0"
+  },
+  "jiraassignangelov": {
+    "prefix": "jiraassignangelov",
+    "body": "--assignee \"Никита Ангелов\" $0"
+  },
+  "jiraassignchehov": {
+    "prefix": "jiraassignchehov",
+    "body": "--assignee \"Илья Чехов\" $0"
+  },
+  "jiraissuelink": {
+    "prefix": [
+      "jiraissuelink",
+      "jiralink"
+    ],
+    "body": "jira issue link ${1:main} ${2:sub} ${0|Relates,Blocking,Duplicate,Gantt End to End,Gantt End to Start|}",
+    "description": "Insert jira-cli command to link issues"
+  },
+  "jirarelate": {
+    "prefix": [
+      "jirarelate",
+      "jiraissuerelate"
+    ],
+    "body": "jira issue link ${1:\\$ISSUE} ${2:\\$US} Relates $0",
+    "description": "Insert jira-cli command to link issues with Relates"
+  },
+  "jirablock": {
+    "prefix": [
+      "jirablock",
+      "jiraissueblock"
+    ],
+    "body": "jira issue link ${1:\\$ISSUE} ${2:\\$ISSUE} Blocking $0",
+    "description": "Insert jira-cli command to link issues with Blocking"
+  },
+  "jiraissueestimate": {
+    "prefix": [
+      "jiraissueestimate",
+      "jiraestimate"
+    ],
+    "body": "jira-issue-estimate ${1:\\$ISSUE} ${0:estimate}",
+    "description": "Insert command to estimate issue"
+  },
+  "jiracapturekey": {
+    "prefix": [
+      "jiracapturekey",
+      "jirasavekey",
+      "jiraissueenv"
+    ],
+    "body": [
+      "| grep -o 'LMSDEV-[[:digit:]]*' | cap | ISSUE=$(ret)",
+      "$0"
+    ],
+    "description": "Insert cap command to capture issue key from jira-cli"
+  },
+  "jirabackprocess": {
+    "prefix": [
+      "jirabackprocess",
+      "jiralabelbackprocess"
+    ],
+    "body": "jira issue edit ${0:\\$US} --label back-processed --no-input {0}",
+    "description": "Insert jira-cli command to label issue as back-processed"
+  }
+}

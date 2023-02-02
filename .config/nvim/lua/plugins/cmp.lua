@@ -18,7 +18,7 @@ return {
               ['markdown'] = {
                 vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-component"),
                 vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-label"),
-                vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-assignee"),
+                vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-assignee")
               }
             },
             debug = false,

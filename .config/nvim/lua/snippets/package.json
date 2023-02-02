@@ -30,6 +30,10 @@
           "telekasten"
         ],
         "path": "./private/markdown.json"
+      },
+      {
+        "language": "markdown",
+        "path": "./languages/jira-cli.json"
       }
     ]
   }
