@@ -43,7 +43,7 @@
   },
   "Insert strikethrough": {
     "prefix": "strikethrough",
-    "body": "~~${1}~~ ${0}",
+    "body": "~~${1}~~${0}",
     "description": "Insert strikethrough"
   },
   "Insert bold text": {
@@ -51,7 +51,7 @@
       "bold",
       "b"
     ],
-    "body": "**${1}** $0",
+    "body": "**${1}**$0",
     "description": "Insert bold text"
   },
   "Insert italic text": {
@@ -59,7 +59,7 @@
       "i",
       "italic"
     ],
-    "body": "*${1}* $0",
+    "body": "_${1}_$0",
     "description": "Insert italic text"
   },
   "Insert quoted text": {
@@ -69,7 +69,7 @@
   },
   "Insert code": {
     "prefix": "code",
-    "body": "`${1}` $0",
+    "body": "`${1}`$0",
     "description": "Insert code"
   },
   "Insert unordered list": {
@@ -127,6 +127,45 @@
       "```"
     ],
     "description": "Insert fenced code block"
+  },
+  "Insert python code block": {
+    "prefix": [
+      "pythoncode",
+      "pythoncodeblock",
+      "pythonblock"
+    ],
+    "body": [
+      "```python",
+      "$0",
+      "```"
+    ],
+    "description": "Insert python code block"
+  },
+  "Insert bash code block": {
+    "prefix": [
+      "bashcode",
+      "bashcodeblock",
+      "bashblock"
+    ],
+    "body": [
+      "```bash",
+      "$0",
+      "```"
+    ],
+    "description": "Insert bash code block"
+  },
+  "Insert jira code block": {
+    "prefix": [
+      "jiracode",
+      "jiracodeblock",
+      "jirablock"
+    ],
+    "body": [
+      "```jira",
+      "$0",
+      "```"
+    ],
+    "description": "Insert jira code block"
   },
   "admonition block": {
     "prefix": "admonition",
