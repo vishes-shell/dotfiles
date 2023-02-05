@@ -1,0 +1,40 @@
+return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "bash",
+        "c",
+        "cmake",
+        "diff",
+        "fish",
+        "gitignore",
+        "help",
+        "html",
+        "http",
+        "javascript",
+        "lua",
+        "jsonc",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "rust",
+        "sql",
+        "toml",
+        "vim",
+        "yaml",
+        "json",
+      },
+      highlight = { enable = true },
+      -- indent = { enable = false },
+      query_linter = {
+        enable = true,
+        use_virtual_text = true,
+        lint_events = { "BufWrite", "CursorHold" },
+      },
+    },
+  },
+
+}
