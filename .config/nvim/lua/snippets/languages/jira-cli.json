@@ -104,6 +104,10 @@
     "prefix": "jiraassignchehov",
     "body": "--assignee \"Илья Чехов\" $0"
   },
+  "jiraassigngoncharuk": {
+    "prefix": "jiraassigngoncharuk",
+    "body": "--assignee \"Владимир Гончарук\" $0"
+  },
   "jiraissuelink": {
     "prefix": [
       "jiraissuelink",
@@ -143,7 +147,7 @@
       "jiraissueenv"
     ],
     "body": [
-      "| grep -o 'LMSDEV-[[:digit:]]*' | cap | ISSUE=$(ret)",
+      "| grep -o 'LMSDEV-[[:digit:]]*' | tee /tmp/capture.out && ISSUE=$(cat /tmp/capture.out)",
       "$0"
     ],
     "description": "Insert cap command to capture issue key from jira-cli"
@@ -153,7 +157,7 @@
       "jirabackprocess",
       "jiralabelbackprocess"
     ],
-    "body": "jira issue edit ${0:\\$US} --label back-processed --no-input {0}",
+    "body": "jira issue edit ${1:\\$US} --label back-processed --no-input $0",
     "description": "Insert jira-cli command to label issue as back-processed"
   }
 }
