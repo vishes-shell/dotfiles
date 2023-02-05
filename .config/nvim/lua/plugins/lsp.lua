@@ -7,7 +7,12 @@ return {
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {},
+        marksman = {},
       },
+      format = {
+        formatting_options = nil,
+        timeout_ms = 1000,
+      }
     },
   },
 }
