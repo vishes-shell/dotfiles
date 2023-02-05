@@ -44,6 +44,7 @@ git:
   paging:
     colorArg: always
     useConfig: false
+    pager: delta --paging=never
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'
@@ -65,16 +66,18 @@ git:
   skipHookPrefix: WIP
   autoFetch: true
   autoRefresh: true
-  branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --'
-  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium'
+  branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative
+    --pretty=medium {{branchName}} --'
+  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate
+    --date=relative  --pretty=medium'
   overrideGpg: false # prevents lazygit from spawning a separate process when using GPG
   disableForcePushing: false
   parseEmoji: false
   diffContextSize: 3 # how many lines of context are shown around a change in diffs
 os:
-  editCommand: '' # see 'Configuring File Editing' section
-  editCommandTemplate: ''
-  openCommand: ''
+  editCommand: "nvim"
+  openCommand: open {{filename}}
+  openLinkCommand: open {{link}}
 refresher:
   refreshInterval: 10 # File/submodule refresh interval in seconds. Auto-refresh can be disabled via option 'git.autoRefresh'.
   fetchInterval: 60 # Re-fetch interval in seconds. Auto-fetch can be disabled via option 'git.autoFetch'.
