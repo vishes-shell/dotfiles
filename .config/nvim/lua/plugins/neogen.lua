@@ -21,7 +21,6 @@ return {
       },
     },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    snippet_engine = { 'luasnip' }
-
+    opts = { snippet_engine = 'luasnip' }
   }
 }
