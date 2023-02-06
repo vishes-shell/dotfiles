@@ -147,6 +147,8 @@ return {
     { mods = 'SUPER', key = '+', action = act.IncreaseFontSize },
     { mods = 'CTRL', key = 'X', action = act.ActivateCopyMode },
     { mods = mod, key = 's', action = act.ShowTabNavigator },
+    { key = 'v', mods = 'SHIFT|CTRL', action = wezterm.action.PasteFrom('PrimarySelection') },
+    { key = 'v', mods = 'SUPER', action = wezterm.action.PasteFrom('Clipboard') },
   },
   use_dead_keys = false,
   bold_brightens_ansi_colors = true,
