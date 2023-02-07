@@ -159,5 +159,20 @@
     ],
     "body": "jira issue edit ${1:\\$US} --label back-processed --no-input $0",
     "description": "Insert jira-cli command to label issue as back-processed"
+  },
+  "jira-cli-collapse-command": {
+    "prefix": [
+      "jiracollapsecommand",
+      "jiraclicollapsecommand"
+    ],
+    "body": [
+      "<details>",
+      "<summary>${1:<code>jira-cli</code> issue create command}</summary>",
+      "",
+      "$0",
+      "</details>",
+      ""
+    ],
+    "description": "Insert jira-cli collapse section"
   }
 }
