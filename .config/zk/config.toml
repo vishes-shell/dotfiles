@@ -1,0 +1,56 @@
+[note]
+
+# Language used when writing notes.
+# This is used to generate slugs or with date formats.
+language = "ru"
+
+# The default title used for new note, if no `--title` flag is provided.
+default-title = "Untitled"
+
+# Template used to generate a note's filename, without extension.
+filename = "{{id}}-{{slug title}}"
+
+# The file extension used for the notes.
+extension = "md"
+
+# Template used to generate a note's content.
+# If not an absolute path, it is relative to .zk/templates/
+template = "default.md"
+
+# Configure random ID generation.
+
+# The charset used for random IDs.
+id-charset = "alphanum"
+
+# Length of the generated IDs.
+id-length = 4
+
+# Letter case for the random IDs.
+id-case = "lower"
+
+[extra]
+author = "Aleksey Shalynin"
+
+[format.markdown]
+# Enable support for #hashtags
+hashtags = true
+# Enable support for :colon:separated:tags:
+colon-tags = true
+
+
+[tool]
+
+# Default editor used to open notes.
+editor = "nvim"
+
+# Pager used to scroll through long output.
+pager = "less -FIRX"
+
+# Command used to preview a note during interactive fzf mode.
+fzf-preview = "bat -p --color always {-1}"
+
+[lsp.diagnostics]
+# Report titles of wiki-links as hints.
+wiki-title = "hint"
+# Warn for dead links between notes.
+dead-link = "error"
