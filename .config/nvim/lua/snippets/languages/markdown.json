@@ -170,7 +170,7 @@
   "admonition block": {
     "prefix": "admonition",
     "body": [
-      "```${1|note,important,hint,seealso,tip,attention,caution,warning,danger,error} ${2:title}",
+      "```${1|note,important,hint,seealso,tip,attention,caution,warning,danger,error|}",
       "${0}",
       "```"
     ],
@@ -180,7 +180,7 @@
     "prefix": "admonitioncomplex",
     "body": [
       "````{admonition} ${1:title}",
-      ":class: ${2|note,important,hint,seealso,tip,attention,caution,warning,danger,error} ${2:title}",
+      ":class: ${2|note,important,hint,seealso,tip,attention,caution,warning,danger,error|} ${2:title}",
       "",
       "$0",
       "",
@@ -191,8 +191,7 @@
   "Insert task list": {
     "prefix": "task",
     "body": [
-      "- [${1| ,x|}] ${2:text}",
-      "${0}"
+      "- [${1| ,x|}] ${2:text}"
     ],
     "description": "Insert task list"
   },
