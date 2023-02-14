@@ -22,8 +22,8 @@
       "\t--type ${1|Задача,Техдолг,Research,Релиз,Работа с данными,Story,Баг,Входящее|} \\",
       "\t--label back \\",
       "\t--component \"${2:component}\" \\",
-      "\t--summary ${$(cat /tmp/jira/issue-summary.txt)##*# } \\",
-      "\t--template /tmp/jira/issue-description.md \\",
+      "\t--summary \"${$(cat ~/tmp/jira/issue-summary.txt)##*# }\" \\",
+      "\t--template ~/tmp/jira/issue-description.md \\",
       "\t--custom number-priority=${3:priority} \\",
       "\t--custom sprint=${4:\\$SPRINT} \\",
       "\t--no-input $0"
