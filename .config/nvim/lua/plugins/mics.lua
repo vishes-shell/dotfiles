@@ -17,8 +17,8 @@ return {
         end,
         mode = { "n", "x" },
         desc = "Structural Replace",
-      }
-    }
+      },
+    },
   },
   -- {
   --   "shortcuts/no-neck-pain.nvim",

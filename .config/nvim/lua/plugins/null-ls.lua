@@ -4,21 +4,20 @@ local methods = require("null-ls.methods")
 local FORMATTING = methods.internal.FORMATTING
 
 local sqlfmt = h.make_builtin({
-  name = 'sqlfmt',
+  name = "sqlfmt",
   meta = {
-    url = 'https://github.com/tconbeer/sqlfmt',
-    description = "sqlfmt formats your dbt SQL files so you don't have to"
+    url = "https://github.com/tconbeer/sqlfmt",
+    description = "sqlfmt formats your dbt SQL files so you don't have to",
   },
   method = FORMATTING,
-  filetypes = { 'sql', 'pgsql' },
+  filetypes = { "sql", "pgsql" },
   generator_opts = {
-    command = 'sqlfmt',
+    command = "sqlfmt",
     to_stdin = true,
-    args = { '-' },
+    args = { "-" },
   },
-  factory = h.formatter_factory
+  factory = h.formatter_factory,
 })
-
 
 return {
   {
@@ -35,9 +34,9 @@ return {
           nls.builtins.formatting.black.with({ extra_args = { "--fast", "--workers", "1" } }),
           nls.builtins.formatting.jq,
           nls.builtins.formatting.yamlfmt,
+          nls.builtins.formatting.stylua,
           sqlfmt,
         },
-        debug = true
       }
     end,
   },
