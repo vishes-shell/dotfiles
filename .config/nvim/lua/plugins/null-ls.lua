@@ -36,6 +36,19 @@ return {
           nls.builtins.formatting.yamlfmt,
           nls.builtins.formatting.stylua,
           sqlfmt,
+          nls.builtins.formatting.prettier.with({
+            filetypes = {
+              "javascript",
+              "javascriptreact",
+              "typescript",
+              "typescriptreact",
+              "vue",
+              "css",
+              "scss",
+              "less",
+              "html",
+            },
+          }),
         },
       }
     end,

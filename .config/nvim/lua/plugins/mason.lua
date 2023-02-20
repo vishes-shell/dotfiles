@@ -9,6 +9,7 @@ return {
         "ruff",
         "yamlfmt",
         "yamllint",
+        "prettier",
       },
     },
   },

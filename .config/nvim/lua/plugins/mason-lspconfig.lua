@@ -1,11 +1,12 @@
 return {
-  { "williamboman/mason-lspconfig.nvim",
+  {
+    "williamboman/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
         "pyright",
-        "marksman"
-      }
-    }
-
-  }
+        "marksman",
+        "tsserver",
+      },
+    },
+  },
 }

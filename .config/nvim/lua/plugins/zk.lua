@@ -21,15 +21,23 @@ return {
       {
         "<leader>zn",
         function()
-          vim.ui.select({ "daily", "interview", "personal", "meeting", "weekly" }, { prompt = "Group" }, function(group)
-            if group then
-              vim.ui.input({ prompt = "Title" }, function(title)
-                if title then
-                  require("zk").new({ group = group, title = title, dir = group })
-                end
-              end)
+          vim.ui.select(
+            { "daily", "interview", "personal", "meeting", "weekly", "blank" },
+            { prompt = "Group" },
+            function(group)
+              if group then
+                vim.ui.input({ prompt = "Title" }, function(title)
+                  if title then
+                    if group == "blank" then
+                      require("zk").new({ title = title })
+                    else
+                      require("zk").new({ group = group, title = title, dir = group })
+                    end
+                  end
+                end)
+              end
             end
-          end)
+          )
         end,
         desc = "Create a new note",
       },

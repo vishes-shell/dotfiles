@@ -121,7 +121,7 @@
       "jirarelate",
       "jiraissuerelate"
     ],
-    "body": "jira issue link ${1:\\$ISSUE} ${2:\\$US} Relates $0",
+    "body": "jira issue link ${1:\\$ISSUE} ${2:\\$US} Relates$0",
     "description": "Insert jira-cli command to link issues with Relates"
   },
   "jirablock": {
@@ -129,7 +129,7 @@
       "jirablock",
       "jiraissueblock"
     ],
-    "body": "jira issue link ${1:\\$ISSUE} ${2:\\$ISSUE} Blocking $0",
+    "body": "jira issue link ${1:\\$ISSUE} ${2:\\$ISSUE} Blocking$0",
     "description": "Insert jira-cli command to link issues with Blocking"
   },
   "jiraissueestimate": {

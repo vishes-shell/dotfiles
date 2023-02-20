@@ -12,7 +12,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- replace current word with Ctrl+c
-map("n", "<C-c>", "<cmd>normal! ciw<cr>a")
+map("n", "<C-c>", "<cmd>normal! ciw<cr>a", { desc = "Replace current word" })
 
 vim.cmd([[
 " For changing choices in choiceNodes (not strictly necessary for a basic setup).
@@ -21,3 +21,6 @@ smap <silent><expr> <C-n> luasnip#choice_active() ? '<Plug>luasnip-next-choice' 
 imap <silent><expr> <C-p> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' : '<C-p>'
 smap <silent><expr> <C-p> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' : '<C-p>'
 ]])
+
+map("v", "<leader>js", ":w! ~/tmp/jira/issue-summary.txt<cr>", { desc = "Save Jira task summary" })
+map("v", "<leader>jd", ":w! ~/tmp/jira/issue-description.md<cr>", { desc = "Save Jira task description" })
