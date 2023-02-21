@@ -4,7 +4,7 @@ return {
     version = false,
     dependencies = {
       "hrsh7th/cmp-emoji",
-      { "hrsh7th/cmp-nvim-lsp", },
+      { "hrsh7th/cmp-nvim-lsp" },
       { "hrsh7th/cmp-buffer" },
       { "hrsh7th/cmp-path" },
       { "saadparwaiz1/cmp_luasnip" },
@@ -12,14 +12,14 @@ return {
         "uga-rosa/cmp-dictionary",
         lazy = true,
         config = function()
-          require('cmp_dictionary').setup({
+          require("cmp_dictionary").setup({
             async = true,
             dic = {
-              ['markdown'] = {
+              ["markdown"] = {
                 vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-component"),
                 vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-label"),
-                vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-assignee")
-              }
+                vim.fn.expand("~/.config/nvim/lua/dictionaries/jira-assignee"),
+              },
             },
             debug = false,
           })
@@ -50,7 +50,7 @@ return {
           { name = "buffer" },
           { name = "path" },
           { name = "emoji" },
-          { name = "dictionary", keyword_length = 2, }
+          { name = "dictionary", keyword_length = 2 },
         }),
         formatting = {
           format = function(_, item)
@@ -67,6 +67,6 @@ return {
           },
         },
       }
-    end
+    end,
   },
 }
