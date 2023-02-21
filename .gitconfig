@@ -1,16 +1,46 @@
 [pull]
 	rebase = false
+
 [http]
 	postBuffer = 157286400
 	version = HTTP/1.1
 
+[core]
+  name = "Alex Shalynin"
+  email = "a.shalynin@gmail.com"
+
+[color]
+  ui = auto
+  diff = auto
+
+[core]
+  autocrlf = input
+  pager = "{                        \
+    if [[ $COLUMNS -ge 160 ]]; then \
+      delta --side-by-side;         \
+    else                            \
+      delta;                        \
+    fi                              \
+  }"
+  editor         = nvim
+  excludesfile   = ~/.gitignore_global
+
+[init]
+  defaultBranch = main
+
 [includeIf "gitdir:~/github/"]
     path = .gitconfig-github
+
 [includeIf "gitdir:~/projects/"]
     path = .gitconfig-work
+
 [alias]
-    pushbackdev = push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target=dev 
+  pushbackdev = push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target=dev 
 	pushbackbranch = "!git push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target=\"$1\""
     
 [credential]
 	helper = store
+
+[delta]
+  features = line-numbers decorations
+  syntax-theme = Catppuccin-mocha

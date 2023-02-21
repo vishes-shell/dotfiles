@@ -1,0 +1,22 @@
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+
+# Python
+**/*.pyc
+.mypy_cache
+
+# tags
+tags
+tags.lock
+GPATH
+GRTAGS
+GTAGS
+
+# keep
+!.keep
+!.gitkeep
+git-worktrees/*
