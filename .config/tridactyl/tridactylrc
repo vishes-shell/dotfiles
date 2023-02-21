@@ -16,8 +16,6 @@ bind n findnext 1
 bind N findnext -1
 bind B fillcmdline bmarks
 
-set historyresults 100
-
 set editorcmd /usr/local/bin/vimr --wait --nvim +only
 
 " Remove search highlighting.
@@ -29,6 +27,31 @@ set findcase sensitive
 set searchurls.pydoc https://docs.python.org/3/search.html?q=%s
 set searchurls.y https://www.youtube.com/results?search_query=%s
 set searchurls.gh https://github.com/search?utf8=%E2%9C%93&q=%s&ref=simplesearch
+
+set tabopenpos last
+set smoothscroll false
+set scrollduration 100
+set allowautofocus false
+set historyresults 30
+
+unbind --mode=normal v
+unbind --mode=normal o
+unbind --mode=normal p
+
+bind --mode=normal h tabprev
+bind --mode=normal l tabnext
+
+unbind --mode=ex <C-f>
+unbind --mode=ex <Space>
+bind   --mode=ex <C-w>     text.backward_kill_word
+bind   --mode=ex <C-p>     ex.prev_completion
+bind   --mode=ex <C-n>     ex.next_completion
+bind   --mode=ex <C-Space> ex.insert_space_or_completion
+
+keymap a <Nop>
+keymap A <Nop>
+keymap p <Nop>
+keymap P <Nop>
 
 " Cyrillic keymap support
 keymap , ?
