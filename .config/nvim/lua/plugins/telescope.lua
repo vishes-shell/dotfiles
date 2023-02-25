@@ -30,6 +30,11 @@ return {
       { "<leader>fF", Util.telescope("files", { hidden = true, cwd = false }), desc = "Find Files (cwd)" },
       { "<leader>bs", Util.telescope("lsp_document_symbols"), desc = "LSP Document Symbols" },
       { "<leader>t<space>", "<cmd>Telescope<cr>", desc = "Base Telescope" },
+      {
+        "<leader>sD",
+        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+        desc = "LSP Dynamic Workspace Symbols",
+      },
     },
     opts = {
       defaults = {
