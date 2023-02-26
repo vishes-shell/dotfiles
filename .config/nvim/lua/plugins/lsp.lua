@@ -6,7 +6,19 @@ return {
       ---@type lspconfig.options
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {},
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                diagnosticMode = "openFilesOnly",
+                autoImportCompletions = true,
+                autoSearchPaths = true,
+                typeCheckingMode = "basic",
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        },
         marksman = {},
         tsserver = {},
       },
