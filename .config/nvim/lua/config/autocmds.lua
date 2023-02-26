@@ -11,17 +11,6 @@ vim.cmd("iabbrev professsions professions")
 vim.cmd('iabbrev <expr> nowd strftime("%Y-%m-%d")')
 vim.cmd('iabbrev <expr> nowdt strftime("%Y-%m-%d %H:%M:%S")')
 
-vim.cmd([[
-  augroup lexical
-    autocmd!
-    autocmd FileType markdown,mkd call lexical#init()
-    autocmd FileType textile call lexical#init()
-    autocmd FileType text call lexical#init({ 'spell': 0 })
-  augroup END
-
-  let g:lexical#spelllang = ['en_us','en_ca', 'en_gb','ru_ru']
-]])
-
 vim.api.nvim_exec(
   [[
 function! s:prepend_task_number() abort
