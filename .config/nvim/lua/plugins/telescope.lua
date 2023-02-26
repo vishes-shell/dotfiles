@@ -1,5 +1,4 @@
 local Util = require("lazyvim.util")
-local telescope = require("telescope")
 local telescopeConfig = require("telescope.config")
 
 -- Clone the default Telescope configuration
@@ -13,7 +12,7 @@ table.insert(vimgrep_arguments, "!**/.git/*")
 
 return {
   {
-    "nvim-telescope/telescope.nvim",
+    "telescope.nvim",
     dependencies = {
       {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -22,13 +21,46 @@ return {
           require("telescope").load_extension("fzf")
         end,
       },
+      {
+        "molecule-man/telescope-menufacture",
+        config = function()
+          require("telescope").load_extension("menufacture")
+        end,
+      },
     },
     keys = {
       { "<leader>tt", "<cmd>Telescope tags<cr>", desc = "Tags" },
       { "<leader>tb", "<cmd>Telescope current_buffer_tags<cr>", desc = "Buffer Tags" },
-      { "<leader>ff", Util.telescope("files", { hidden = true }), desc = "Find Files (root dir)" },
-      { "<leader>fF", Util.telescope("files", { hidden = true, cwd = false }), desc = "Find Files (cwd)" },
+      {
+        "<leader>ff",
+        function()
+          require("telescope").extensions.menufacture.find_files()
+        end,
+        desc = "Find Files",
+      },
       { "<leader>bs", Util.telescope("lsp_document_symbols"), desc = "LSP Document Symbols" },
+      {
+        "<leader>/",
+        function()
+          require("telescope").extensions.menufacture.live_grep()
+        end,
+        desc = "Find in Files (Grep)",
+      },
+      {
+        "<leader><space>",
+        function()
+          require("telescope").extensions.menufacture.find_files()
+        end,
+        desc = "Find Files (root dir)",
+      },
+      {
+        "<leader>sw",
+        function()
+          require("telescope").extensions.menufacture.grep_string()
+        end,
+        desc = "Word",
+      },
+
       { "<leader>t<space>", "<cmd>Telescope<cr>", desc = "Base Telescope" },
       {
         "<leader>sD",
