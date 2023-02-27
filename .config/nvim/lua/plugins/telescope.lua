@@ -34,7 +34,7 @@ return {
       {
         "<leader>ff",
         function()
-          require("telescope").extensions.menufacture.find_files()
+          require("telescope").extensions.menufacture.find_files({ hidden = true })
         end,
         desc = "Find Files",
       },
@@ -42,21 +42,21 @@ return {
       {
         "<leader>/",
         function()
-          require("telescope").extensions.menufacture.live_grep()
+          require("telescope").extensions.menufacture.live_grep({ hidden = true })
         end,
         desc = "Find in Files (Grep)",
       },
       {
         "<leader><space>",
         function()
-          require("telescope").extensions.menufacture.find_files()
+          require("telescope").extensions.menufacture.find_files({ hidden = true })
         end,
         desc = "Find Files (root dir)",
       },
       {
         "<leader>sw",
         function()
-          require("telescope").extensions.menufacture.grep_string()
+          require("telescope").extensions.menufacture.grep_string({ hidden = true })
         end,
         desc = "Word",
       },
