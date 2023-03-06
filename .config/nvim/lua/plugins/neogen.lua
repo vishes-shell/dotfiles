@@ -1,26 +1,24 @@
 return {
   {
     "danymat/neogen",
-    config = function()
-      require("neogen").setup {
-        snippet_engine = "luasnip",
-        languages = {
-          python = {
-            template = { annotation_convention = "google_docstrings" },
-          },
-        },
-      }
-    end,
     keys = {
       {
-        "<leader>cc",
+        '<leader>nf',
         function()
-          require("neogen").generate({})
+          require('neogen').generate {}
         end,
-        desc = "Neogen Comment",
       },
     },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    opts = { snippet_engine = 'luasnip' }
+    opts = {
+      snippet_engine = 'luasnip',
+      languages = {
+        python = {
+          template = {
+            annotation_convention = 'google_docstrings',
+          },
+        },
+      },
+    },
   }
 }
