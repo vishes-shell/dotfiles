@@ -23,10 +23,10 @@ local blackd = h.make_builtin({
   name = 'blackd',
   method = FORMATTING,
   filetypes = { 'python' },
-  generator = h.formatter_factory {
+  generator = h.formatter_factory({
     command = 'blackd-client',
     to_stdin = true,
-  },
+  }),
 })
 
 return {
