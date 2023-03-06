@@ -81,6 +81,13 @@
     ],
     "body": "--reporter \"Илья Чехов\" $0"
   },
+  "jiraassigndragunkin": {
+    "prefix": [
+      "jiraassigndragunkin",
+      "jiraissueassigndragunkin"
+    ],
+    "body": "--assignee \"Михаил Драгункин\" $0"
+  },
   "jiraassignshalynin": {
     "prefix": [
       "jiraassignshalynin",
