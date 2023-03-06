@@ -19,6 +19,16 @@ local sqlfmt = h.make_builtin({
   factory = h.formatter_factory,
 })
 
+local blackd = h.make_builtin({
+  name = 'blackd',
+  method = FORMATTING,
+  filetypes = { 'python' },
+  generator = h.formatter_factory {
+    command = 'blackd-client',
+    to_stdin = true,
+  },
+})
+
 return {
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -31,7 +41,7 @@ return {
           nls.builtins.diagnostics.yamllint,
           -- formatting
           nls.builtins.formatting.isort,
-          nls.builtins.formatting.black.with({ extra_args = { "--fast", "--workers", "1" } }),
+          blackd,
           nls.builtins.formatting.jq,
           nls.builtins.formatting.yamlfmt,
           nls.builtins.formatting.stylua,
