@@ -17,6 +17,7 @@ return {
         "lua",
         "jsonc",
         "markdown",
+        "markdown_inline",
         "python",
         "query",
         "regex",
