@@ -2,10 +2,6 @@
 
 sanitize tridactyllocal tridactylsync
 
-" will yank to clipboard command to download github repo in ~/github folder
-" for further code inspection in vim
-bind ygc composite js document.location.href.replace("https://github.com/", "gc ").replace("/", " ") | clipboard yank
-
 " Ctrl-F should use the browser's native 'find' functionality.
 unbind <C-f>
 
@@ -22,11 +18,6 @@ set editorcmd /usr/local/bin/vimr --wait --nvim +only
 bind ,<Space> nohlsearch
 " Use sensitive case. Smart case would be nice here, but it doesn't work.
 set findcase sensitive
-
-" Search ulrs
-set searchurls.pydoc https://docs.python.org/3/search.html?q=%s
-set searchurls.y https://www.youtube.com/results?search_query=%s
-set searchurls.gh https://github.com/search?utf8=%E2%9C%93&q=%s&ref=simplesearch
 
 set tabopenpos last
 set smoothscroll false
@@ -48,10 +39,14 @@ bind   --mode=ex <C-p>     ex.prev_completion
 bind   --mode=ex <C-n>     ex.next_completion
 bind   --mode=ex <C-Space> ex.insert_space_or_completion
 
-keymap a <Nop>
-keymap A <Nop>
+" keymap a <Nop>
+" keymap A <Nop>
 keymap p <Nop>
 keymap P <Nop>
+
+" disable tridactyl for particular websites
+blacklistadd github.com
+blacklistadd gitlab.skillbox.pro
 
 " Cyrillic keymap support
 keymap , ?
