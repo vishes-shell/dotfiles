@@ -20,11 +20,11 @@ local sqlfmt = h.make_builtin({
 })
 
 local blackd = h.make_builtin({
-  name = 'blackd',
+  name = "blackd",
   method = FORMATTING,
-  filetypes = { 'python' },
+  filetypes = { "python" },
   generator = h.formatter_factory({
-    command = 'blackd-client',
+    command = "blackd-client",
     to_stdin = true,
   }),
 })
