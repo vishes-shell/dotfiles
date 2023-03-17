@@ -13,6 +13,7 @@ return {
       ]]
       dashboard.section.header.val = vim.split(logo, "\n")
       dashboard.section.buttons.val = {
+        dashboard.button("n", " " .. " New file", [[:lua require("genghis").createNewFile() <cr>]]),
         dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
         dashboard.button("/", " " .. " Find text", ":Telescope live_grep <CR>"),
         dashboard.button(
