@@ -9,5 +9,6 @@ return {
     vim.g.vim_markdown_math = 0 -- Don't process MathJaX and LaTeX math
     vim.g.vim_markdown_auto_insert_bullets = 0 -- autoList handles bullet insertion now
     vim.g.vim_markdown_new_list_item_indent = 0 -- autoList handles spacing for lists
+    vim.g.vim_markdown_folding_disabled = 1 -- disable folding
   end,
 }
