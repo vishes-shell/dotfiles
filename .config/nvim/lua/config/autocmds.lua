@@ -15,7 +15,7 @@ vim.api.nvim_exec(
   [[
 function! s:prepend_task_number() abort
     let task = system('git symbolic-ref --short HEAD | awk -F "[/-]" ''{printf "%s-%s ",$2,$3}''')
-    if l:task != ' - '
+    if l:task != '- '
         call append(line('.'), l:task)
         normal! J
         normal! 0
