@@ -170,23 +170,13 @@
   "admonition block": {
     "prefix": "admonition",
     "body": [
-      "```${1|note,important,hint,seealso,tip,attention,caution,warning,danger,error|}",
+      ":::{admonition\\} ${1:title}",
+      ":class: ${2|note,important,hint,seealso,tip,attention,caution,warning,danger,error|}",
+      "",
       "${0}",
-      "```"
+      ":::"
     ],
     "description": "Add admonition block"
-  },
-  "admonition complex block": {
-    "prefix": "admonitioncomplex",
-    "body": [
-      "````{admonition} ${1:title}",
-      ":class: ${2|note,important,hint,seealso,tip,attention,caution,warning,danger,error|} ${2:title}",
-      "",
-      "$0",
-      "",
-      "````"
-    ],
-    "description": "Add complex admonition block with code support"
   },
   "Insert task list": {
     "prefix": "task",
