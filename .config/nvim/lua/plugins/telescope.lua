@@ -21,43 +21,29 @@ return {
           require("telescope").load_extension("fzf")
         end,
       },
-      {
-        "molecule-man/telescope-menufacture",
-        config = function()
-          require("telescope").load_extension("menufacture")
-        end,
-      },
     },
     keys = {
       { "<leader>tt", "<cmd>Telescope tags<cr>", desc = "Tags" },
       { "<leader>tb", "<cmd>Telescope current_buffer_tags<cr>", desc = "Buffer Tags" },
       {
         "<leader>ff",
-        function()
-          require("telescope").extensions.menufacture.find_files({ hidden = true })
-        end,
+        Util.telescope("files", { hidden = true }),
         desc = "Find Files",
       },
       { "<leader>bs", Util.telescope("lsp_document_symbols"), desc = "LSP Document Symbols" },
       {
         "<leader>/",
-        function()
-          require("telescope").extensions.menufacture.live_grep({ hidden = true })
-        end,
+        Util.telescope("live_grep", { hidden = true }),
         desc = "Find in Files (Grep)",
       },
       {
         "<leader><space>",
-        function()
-          require("telescope").extensions.menufacture.find_files({ hidden = true })
-        end,
+        Util.telescope("files", { hidden = true }),
         desc = "Find Files (root dir)",
       },
       {
         "<leader>sw",
-        function()
-          require("telescope").extensions.menufacture.grep_string({ hidden = true })
-        end,
+        Util.telescope("grep_string", { hidden = true }),
         desc = "Word",
       },
 
