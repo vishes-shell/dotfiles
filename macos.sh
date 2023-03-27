@@ -279,3 +279,5 @@ set -e
   -kill -r -domain local -domain system -domain user
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
+
+defaults write com.apple.screencapture location ~/Desktop/Screenshots/
