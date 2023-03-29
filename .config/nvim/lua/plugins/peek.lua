@@ -4,7 +4,7 @@ return {
     build = "deno task --quiet build:fast",
     keys = {
       {
-        "<leader>op",
+        "<leader>fp",
         function()
           local peek = require("peek")
           if peek.is_open() then
@@ -17,5 +17,5 @@ return {
       },
     },
     opts = { theme = "light" },
-  }
+  },
 }
