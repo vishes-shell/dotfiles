@@ -39,6 +39,10 @@ return {
           -- diagnostics
           nls.builtins.diagnostics.ruff,
           nls.builtins.diagnostics.yamllint,
+          nls.builtins.diagnostics.markdownlint.with({
+            filetypes = { "markdown" },
+            command = "markdownlint-cli2",
+          }),
           -- formatting
           nls.builtins.formatting.isort,
           blackd,

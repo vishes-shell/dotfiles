@@ -1,4 +1,5 @@
 return {
+  -- welcome window
   {
     "goolord/alpha-nvim",
     opts = function()
@@ -35,5 +36,55 @@ return {
       dashboard.opts.layout[1].val = 8
       return dashboard
     end,
+  },
+  {
+    "b0o/incline.nvim",
+    event = "BufReadPre",
+    config = function()
+      local colors = require("catppuccin.palettes").get_palette()
+      require("incline").setup({
+        highlight = {
+          groups = {
+            InclineNormal = { guibg = "#FC56B1", guifg = colors.black },
+            InclineNormalNC = { guifg = "#FC56B1", guibg = colors.black },
+          },
+        },
+        window = { margin = { vertical = 0, horizontal = 1 } },
+        render = function(props)
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          local icon, color = require("nvim-web-devicons").get_icon_color(filename)
+          return { { icon, guifg = color }, { " " }, { filename } }
+        end,
+      })
+    end,
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+        },
+      },
+      presets = {
+        bottom_search = true,
+        command_palette = true,
+        long_message_to_split = true,
+      },
+    },
+  },
+  {
+    "folke/zen-mode.nvim",
+    cmd = "ZenMode",
+    opts = {
+      plugins = {
+        gitsigns = true,
+        tmux = false,
+        kitty = { enabled = true, font = "+2" },
+      },
+    },
+    keys = { { "<leader>wz", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
   },
 }

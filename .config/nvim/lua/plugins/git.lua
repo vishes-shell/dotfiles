@@ -15,14 +15,30 @@ return {
     },
   },
   {
-    "aaronhallaert/advanced-git-search.nvim",
-    config = function()
-      require("telescope").load_extension("advanced_git_search")
-    end,
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      -- to show diff splits and open commits in browser
-      "tpope/vim-fugitive",
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewFileHistory" },
+    config = true,
+    keys = {
+      { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Open diff view" },
+      { "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "Close diff view" },
+      { "<leader>gdf", "<cmd>DiffviewFileHistory %<cr>", desc = "File git history" },
+      {
+        "<leader>gdr",
+        function()
+          vim.ui.input({ prompt = "Target branch" }, function(branch)
+            if branch then
+              vim.cmd({
+                cmd = "DiffviewOpen",
+                args = {
+                  branch .. "...",
+                  "--imply-local",
+                },
+              })
+            end
+          end)
+        end,
+        desc = "Review changes with target branch",
+      },
     },
   },
 }

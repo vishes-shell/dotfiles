@@ -41,4 +41,144 @@ return {
       end, { desc = "Spider-ge" })
     end,
   },
+  {
+    "SmiteshP/nvim-navbuddy",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
+    },
+    event = "LspAttach",
+    opts = { lsp = { auto_attach = true } },
+    keys = { { "<leader>cn", "<Cmd>Navbuddy<CR>", desc = "Code breadcrumbs Navigation" } },
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_hidden = false,
+        },
+      },
+    },
+  },
+  {
+    "simrat39/symbols-outline.nvim",
+    keys = { { "|", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+    config = true,
+  },
+  {
+    "ludovicchabant/vim-gutentags",
+  },
+  {
+    "mickael-menu/zk-nvim",
+    lazy = false,
+    config = function()
+      require("zk").setup({
+        picker = "telescope",
+        lsp = {
+          config = {
+            cmd = { "zk", "lsp" },
+            name = "zk",
+          },
+        },
+        auto_attach = {
+          enabled = true,
+          filetypes = { "markdown" },
+        },
+      })
+    end,
+    keys = {
+      {
+        "<leader>zn",
+        function()
+          vim.ui.select(
+            { "daily", "interview", "personal", "meeting", "weekly", "blank" },
+            { prompt = "Group" },
+            function(group)
+              if group then
+                vim.ui.input({ prompt = "Title" }, function(title)
+                  if title then
+                    if group == "blank" then
+                      require("zk").new({ title = title })
+                    else
+                      require("zk").new({ group = group, title = title, dir = group })
+                    end
+                  end
+                end)
+              end
+            end
+          )
+        end,
+        desc = "Create a new note",
+      },
+      {
+        "<leader>zo",
+        "<cmd>ZkNotes { sort = { 'modified' } }<cr>",
+        desc = "Open notes",
+      },
+      { "<leader>zt", "<cmd>ZkTags<cr>", desc = "Open notes associated with the selected tags" },
+      {
+        "<leader>zf",
+        -- function()
+        --   vim.ui.input({ prompt = 'Search' }, function(term)
+        --     if term then
+        --       require('zk').pick_notes({ sort = { 'modified' }, match = { term } })
+        --     end
+        --   end)
+        -- end
+        "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
+        desc = "Search for the notes matching a given query",
+      },
+    },
+  },
+  {
+    "chrisgrieser/nvim-genghis",
+    dependencies = "stevearc/dressing.nvim",
+    keys = {
+      {
+        "<leader>yp",
+        function()
+          require("genghis").copyFilepath()
+        end,
+        desc = "Copy file path",
+      },
+      {
+        "<leader>yn",
+        function()
+          require("genghis").copyFilename()
+        end,
+        desc = "Copy file name",
+      },
+      {
+        "<leader>rf",
+        function()
+          require("genghis").renameFile()
+        end,
+        desc = "Rename file",
+      },
+      {
+        "<leader>mf",
+        function()
+          require("genghis").moveAndRenameFile()
+        end,
+        desc = "Move and rename file",
+      },
+      {
+        "<leader>nf",
+        function()
+          require("genghis").createNewFile()
+        end,
+        desc = "Create new file",
+      },
+      {
+        "<leader>yf",
+        function()
+          require("genghis").duplicateFile()
+        end,
+        desc = "Duplicate file",
+      },
+    },
+  },
 }

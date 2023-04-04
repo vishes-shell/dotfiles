@@ -1,4 +1,5 @@
 return {
+  -- colorscheme
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -46,4 +47,5 @@ return {
       },
     },
   },
+  "folke/twilight.nvim",
 }
