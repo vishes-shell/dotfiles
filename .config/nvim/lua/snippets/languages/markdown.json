@@ -1,41 +1,59 @@
 {
   "header 1": {
-    "prefix": "h1",
+    "prefix": [
+      "h1",
+      "р1"
+    ],
     "body": [
       "# ${0}"
     ],
     "description": "Add header level 1"
   },
   "header 2": {
-    "prefix": "h2",
+    "prefix": [
+      "h2",
+      "р2"
+    ],
     "body": [
       "## ${0}"
     ],
     "description": "Add header level 2"
   },
   "header 3": {
-    "prefix": "h3",
+    "prefix": [
+      "h3",
+      "р3"
+    ],
     "body": [
       "### ${0}"
     ],
     "description": "Add header level 3"
   },
   "header 4": {
-    "prefix": "h4",
+    "prefix": [
+      "h4",
+      "р4"
+    ],
     "body": [
       "#### ${0}"
     ],
     "description": "Add header level 4"
   },
   "header 5": {
-    "prefix": "h5",
+    "prefix": [
+      "h5",
+      "р5"
+    ],
     "body": [
       "##### ${0}"
     ],
     "description": "Add header level 5"
   },
   "header 6": {
-    "prefix": "h6",
+    "prefix": [
+      "h6",
+      "р6"
+    ],
     "body": [
       "###### ${0}"
     ],
