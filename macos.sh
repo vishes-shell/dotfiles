@@ -25,9 +25,6 @@ sudo nvram SystemAudioVolume=" "
 echo " > Automatically quit printer app once the print jobs complete"
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-echo " > Disable local Time Machine snapshots"
-sudo tmutil disablelocal
-
 echo " > Disable hibernation (speeds up entering sleep mode) "
 sudo pmset -a hibernatemode 0
 
