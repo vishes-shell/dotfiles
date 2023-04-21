@@ -19,6 +19,27 @@ echo "› System:"
 echo "  › Disable press-and-hold for keys in favor of key repeat"
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+echo " > Disable the sound effects on boot"
+sudo nvram SystemAudioVolume=" "
+
+echo " > Automatically quit printer app once the print jobs complete"
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+echo " > Disable local Time Machine snapshots"
+sudo tmutil disablelocal
+
+echo " > Disable hibernation (speeds up entering sleep mode) "
+sudo pmset -a hibernatemode 0
+
+echo " > Remove the sleep image file to save disk space"
+sudo rm /private/var/vm/sleepimage
+echo " > Create a zero-byte file instead… "
+sudo touch /private/var/vm/sleepimage
+sudo chflags uchg /private/var/vm/sleepimage
+
+echo "> Disable the sudden motion sensor as it’s not useful for SSDs"
+sudo pmset -a sms 0
+
 
 echo "  › Show the ~/Library folder"
 chflags nohidden ~/Library
@@ -60,9 +81,6 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 echo "  › Disable the 'Are you sure you want to open this application?' dialog"
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-echo "  › Set dark interface style"
-defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
-
 echo "  › Set graphite appearance"
 defaults write NSGlobalDomain AppleAquaColorVariant -int 6
 
@@ -95,8 +113,16 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+
 echo " > Increase sound quality for Bluetooth headphones/headsets"
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Max (editable)" 80
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" 80
+defaults write com.apple.BluetoothAudioAgent "Apple Initial Bitpool (editable)" 80
+defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool" 80
+defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Max" 80
+defaults write com.apple.BluetoothAudioAgent "Negotiated Bitpool Min" 80
 
 echo " > Enable full keyboard access for all controls"
 echo " (e.g. enable Tab in modal dialogs)"
@@ -265,6 +291,22 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 echo " > Turn on app auto-update"
 defaults write com.apple.commerce AutoUpdate -bool true
 
+echo " > Change Screenshots folder"
+defaults write com.apple.screencapture location ~/Desktop/Screenshots/
+
+echo " > massively increase virtualized macOS by disabling spotlight."
+sudo mdutil -i off -a
+
+echo " > Disable heavy login screen wallpaper"
+defaults write /Library/Preferences/com.apple.loginwindow DesktopPicture ""
+
+echo " > Reduce Motion & Transparency"
+defaults write com.apple.Accessibility DifferentiateWithoutColor -int 1
+defaults write com.apple.Accessibility ReduceMotionEnabled -int 1
+defaults write com.apple.universalaccess reduceMotion -int 1
+defaults write com.apple.universalaccess reduceTransparency -int 1
+defaults write com.apple.Accessibility ReduceMotionEnabled -int 1
+
 
 set +e
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" \
@@ -280,4 +322,3 @@ set -e
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
 
-defaults write com.apple.screencapture location ~/Desktop/Screenshots/
