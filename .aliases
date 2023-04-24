@@ -16,15 +16,6 @@ alias ls="exa"
 
 alias l="exa -lahF"
 
-
-# lock the screen (when going afk)
-alias afk="/system/library/coreservices/menu\ extras/user.menu/contents/resources/cgsession -suspend"
-
-
-# reload the shell (i.e. invoke as a login shell)
-alias reload="exec ${shell} -l"
-
-
 # sometimes :exit is easier
 alias :exit="exit"
 alias qq="exit"
@@ -34,28 +25,12 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-# copy public key to clipboard
-alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
-
-alias cb="kitty +kitten clipboard"
-
 alias p="cd ~/projects"
 alias g="lazygit"
 
-alias reload="exec ${SHELL} -l"
-
-alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
-alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
-
-function title { echo -en "\033]0;$(basename $(dirname $1))/$(basename ${PWD})\007"; }
-function cd { dir=$1; if [ -z "$dir" ]; then dir=~; fi; builtin cd "$dir" && title `pwd`; }
-
-
-# https://sw.kovidgoyal.net/kitty/faq.html#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
 alias w='watson'
 
 alias jira-sprints-future="jira sprint list --state future"
 
-alias s="kitty +kitten ssh"
-alias icat="kitty +kitten icat"
-alias d="kitty +kitten diff"
+alias dotfiles="cd ~/github/vishes-shell/dotfiles/; v"
+alias dotfiles-private="cd ~/github/vishes-shell/dotfiles-private/; v"
