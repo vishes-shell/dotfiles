@@ -106,6 +106,7 @@ return {
         "yamllint",
         "prettier",
         "bash-language-server",
+        "stylua",
       },
     },
   },
