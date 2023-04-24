@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Gitlab Discussion blocking issue",
+    "text": "**blocking issue**: ",
+    "keyword": "gbi"
+  },
+  {
+    "name": "Gitlab Discussion non-blocking issue",
+    "text": "**non-blocking issue**: ",
+    "keyword": "gnbi"
+  },
+  {
+    "name": "Gitlab Discussion blocking question",
+    "text": "**blocking question**: ",
+    "keyword": "gbq"
+  },
+  {
+    "name": "Gitlab Discussion non-blocking question",
+    "text": "**non-blocking question**: ",
+    "keyword": "gnbq"
+  },
+  {
+    "name": "Rocket.Chat link",
+    "text": "<{clipboard}|{cursor}>",
+    "keyword": "rl"
+  },
+  {
+    "name": "Jira link",
+    "text": "[{cursor}|{clipboard}]",
+    "keyword": "jl"
+  }
+]
