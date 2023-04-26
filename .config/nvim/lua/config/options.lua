@@ -5,6 +5,7 @@
 local opt = vim.opt
 
 vim.g.XkbSwitchEnabled = 1
+vim.g.XkbSwitchLib = "/usr/local/bin/libxkbswitch.dylib"
 
 vim.g.gutentags_file_list_command = "fd"
 vim.g.gutentags_ctags_extra_args = { "--languages=python", "--kinds-python=-iv" }
