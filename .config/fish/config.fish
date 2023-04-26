@@ -19,3 +19,5 @@ if test -d (brew --prefix)"/share/fish/vendor_completions.d"
 end
 
 set -U fish_greeting "🐟"
+
+fish_vi_key_bindings
