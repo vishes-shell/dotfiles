@@ -28,5 +28,10 @@
     "name": "Jira link",
     "text": "[{cursor}|{clipboard}]",
     "keyword": "jl"
+  },
+  {
+    "name": "file date",
+    "text": "{date \"yyyyMMdd\"}",
+    "keyword": "fd"
   }
 ]
