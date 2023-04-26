@@ -196,6 +196,28 @@
     ],
     "description": "Add admonition block"
   },
+  "admonition dont block": {
+    "prefix": "admonitiondont",
+    "body": [
+      ":::{admonition\\} Don't",
+      ":class: error",
+      "",
+      "${0}",
+      ":::"
+    ],
+    "description": "Add admonition Don't block"
+  },
+  "admonition do block": {
+    "prefix": "admonitiondo",
+    "body": [
+      ":::{admonition\\} Do",
+      ":class: note",
+      "",
+      "${0}",
+      ":::"
+    ],
+    "description": "Add admonition Do block"
+  },
   "Insert task list": {
     "prefix": "task",
     "body": [
