@@ -31,7 +31,7 @@
   },
   {
     "name": "file date",
-    "text": "{date \"yyyyMMdd\"}",
-    "keyword": "fd"
+    "text": "{date \"yyyyMMdd\"}_",
+    "keyword": "fd_"
   }
 ]
