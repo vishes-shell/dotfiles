@@ -32,6 +32,11 @@ return {
         },
         marksman = {},
         tsserver = {},
+        ruff_lsp = {
+          on_attach = function(client, _)
+            client.server_capabilities.hoverProvider = false
+          end,
+        },
       },
       format = {
         formatting_options = nil,
@@ -117,6 +122,7 @@ return {
         "pyright",
         "marksman",
         "tsserver",
+        "ruff_lsp",
       },
     },
   },
