@@ -35,3 +35,6 @@ alias jira-sprints-future="jira sprint list --state future"
 alias dotfiles="cd ~/github/vishes-shell/dotfiles/; v"
 alias dotfiles-private="cd ~/github/vishes-shell/dotfiles-private/; v"
 alias libs="cd ~/github/libs"
+
+alias v='nvim'
+alias s="ssh"
