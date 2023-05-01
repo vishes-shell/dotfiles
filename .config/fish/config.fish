@@ -21,3 +21,9 @@ end
 set -U fish_greeting "🐟"
 
 fish_vi_key_bindings
+
+set LS_COLORS (vivid generate catppuccin-latte)
+
+if status is-inteactive
+  atuin init fish | source
+end
