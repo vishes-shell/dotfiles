@@ -4,7 +4,15 @@ fish_add_path ~/.local/bin
 
 yes | fish_config theme save "Catppuccin Latte"
 
-starship init fish | source
+if status is-interactive
+  starship init fish | source
+
+  set -x ATUIN_NOBIND true
+  atuin init fish | source
+  bind \cr _atuin_search
+  bind -M insert \cr _atuin_search
+end
+
 
 for file in ~/.{exports,aliases,functions,extra}
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
@@ -24,6 +32,3 @@ fish_vi_key_bindings
 
 set LS_COLORS (vivid generate catppuccin-latte)
 
-if status is-inteactive
-  atuin init fish | source
-end
