@@ -172,6 +172,19 @@
     ],
     "description": "Insert bash code block"
   },
+  "Insert fish code block": {
+    "prefix": [
+      "fishcode",
+      "fishcodeblock",
+      "fishblock"
+    ],
+    "body": [
+      "```fish",
+      "$0",
+      "```"
+    ],
+    "description": "Insert fish code block"
+  },
   "Insert jira code block": {
     "prefix": [
       "jiracode",

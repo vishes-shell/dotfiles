@@ -22,7 +22,7 @@
       "\t--type ${1|Задача,Техдолг,Research,Релиз,Работа с данными,Story,Баг,Входящее|} \\",
       "\t--label back \\",
       "\t--component \"${2:component}\" \\",
-      "\t--summary \"${$(cat ~/tmp/jira/issue-summary.txt)##*# }\" \\",
+      "\t--summary (string trim --chars \"# \" -- (cat ~/tmp/jira/issue-summary.txt)) \\",
       "\t--template ~/tmp/jira/issue-description.md \\",
       "\t--custom number-priority=${3:priority} \\",
       "\t--custom sprint=${4:\\$SPRINT} \\",
@@ -154,7 +154,7 @@
       "jiraissueenv"
     ],
     "body": [
-      "| grep -o 'LMSDEV-[[:digit:]]*' | tee /tmp/capture.out && ISSUE=$(cat /tmp/capture.out)",
+      "| grep -o 'LMSDEV-[[:digit:]]*' | tee /tmp/capture.out && set ISSUE $(cat /tmp/capture.out)",
       "$0"
     ],
     "description": "Insert cap command to capture issue key from jira-cli"
