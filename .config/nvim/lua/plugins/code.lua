@@ -40,7 +40,7 @@ return {
       },
       format = {
         formatting_options = nil,
-        timeout_ms = 1000,
+        timeout_ms = 3000,
       },
     },
   },
