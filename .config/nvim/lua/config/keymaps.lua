@@ -13,6 +13,7 @@ end
 
 -- replace current word with Ctrl+c
 map("n", "<C-c>", "<cmd>normal! ciw<cr>a", { desc = "Replace current word" })
+map("n", "<leader>ww", "<cmd>:w<cr>", { desc = "Save file" })
 
 vim.cmd([[
 " For changing choices in choiceNodes (not strictly necessary for a basic setup).
