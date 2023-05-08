@@ -25,3 +25,5 @@ autocmd BufRead */.git/COMMIT_EDITMSG call s:prepend_task_number()
 ]],
   true
 )
+
+vim.cmd([[autocmd FileType markdown set tw=98 wrap]])
