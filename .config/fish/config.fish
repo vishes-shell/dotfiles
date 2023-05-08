@@ -31,4 +31,5 @@ set -U fish_greeting "🐟"
 fish_vi_key_bindings
 
 set LS_COLORS (vivid generate catppuccin-latte)
+set RIPGREP_CONFIG_PATH ~/.config/ripgrep/.rg
 
