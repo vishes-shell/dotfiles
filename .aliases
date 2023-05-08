@@ -38,3 +38,5 @@ alias libs="cd ~/github/libs"
 
 alias v='nvim'
 alias s="ssh"
+
+alias poe="poetry poe"
