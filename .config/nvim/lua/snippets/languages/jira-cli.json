@@ -24,8 +24,8 @@
       "\t--component \"${2:component}\" \\",
       "\t--summary (string trim --chars \"# \" -- (cat ~/tmp/jira/issue-summary.txt)) \\",
       "\t--template ~/tmp/jira/issue-description.md \\",
-      "\t--custom number-priority=${3:priority} \\",
-      "\t--custom sprint=${4:\\$SPRINT} \\",
+      "\t--custom \"Числовой приоритет\"=${3:priority} \\",
+      "\t--custom Sprint=${4:\\$SPRINT} \\",
       "\t--no-input $0"
     ],
     "description": "Insert jira-cli create issue without input"
@@ -81,12 +81,12 @@
     ],
     "body": "--reporter \"Илья Чехов\" $0"
   },
-  "jiraassigndragunkin": {
+  "jiraassigntycshenko": {
     "prefix": [
-      "jiraassigndragunkin",
-      "jiraissueassigndragunkin"
+      "jiraassigntycshenko",
+      "jiraissueassigntycshenko"
     ],
-    "body": "--assignee \"Михаил Драгункин\" $0"
+    "body": "--assignee \"Виктор Тыщенко\" $0"
   },
   "jiraassignshalynin": {
     "prefix": [
