@@ -21,6 +21,13 @@ return {
           require("telescope").load_extension("fzf")
         end,
       },
+      {
+        "nvim-telescope/telescope-frecency.nvim",
+        config = function()
+          require("telescope").load_extension("frecency")
+        end,
+        dependencies = { "kkharji/sqlite.lua" },
+      },
     },
     keys = {
       { "<leader>tt", "<cmd>Telescope tags<cr>", desc = "Tags" },
