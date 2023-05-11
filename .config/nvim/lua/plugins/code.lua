@@ -1,13 +1,26 @@
 return {
   {
     "nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
+    lazy = true,
+    event = "InsertEnter",
+    dependencies = { "hrsh7th/cmp-emoji", "lukas-reineke/cmp-under-comparator", "ray-x/cmp-treesitter" },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
         { name = "emoji" },
+        { name = "treesitter" },
       }))
+      opts.sorting.comparators = {
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+        require("cmp-under-comparator").under,
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      }
     end,
   },
   {
