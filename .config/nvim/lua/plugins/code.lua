@@ -24,19 +24,15 @@ return {
                 diagnosticMode = "openFilesOnly",
                 autoImportCompletions = true,
                 autoSearchPaths = true,
-                typeCheckingMode = "basic",
+                typeCheckingMode = "off",
                 useLibraryCodeForTypes = true,
               },
+              disableOrganizeImports = true,
             },
           },
         },
         marksman = {},
         tsserver = {},
-        ruff_lsp = {
-          on_attach = function(client, _)
-            client.server_capabilities.hoverProvider = false
-          end,
-        },
       },
       format = {
         formatting_options = nil,
@@ -122,8 +118,19 @@ return {
         "pyright",
         "marksman",
         "tsserver",
-        "ruff_lsp",
       },
+    },
+  },
+  {
+    "glepnir/lspsaga.nvim",
+    event = "LspAttach",
+    config = function()
+      require("lspsaga").setup({})
+    end,
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+      --Please make sure you install markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" },
     },
   },
 }
