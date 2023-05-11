@@ -249,4 +249,5 @@ return {
       end, { desc = "Paste from Yanky" })
     end,
   },
+  { "LunarVim/bigfile.nvim" },
 }
