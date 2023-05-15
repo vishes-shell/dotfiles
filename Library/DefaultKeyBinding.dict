@@ -1,0 +1,10 @@
+{
+  "^w" = (deleteWordBackward:);
+  "^ц" = (deleteWordBackward:);
+  "^u" = (deleteToBeginningOfLine:);
+  "^г" = (deleteToBeginningOfLine:);
+  "^h"  = "moveWordLeft:";
+  "^р"  = "moveWordLeft:";
+  "^l"  = "moveWordRight:";
+  "^д"  = "moveWordRight:";
+}
