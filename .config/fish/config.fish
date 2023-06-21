@@ -1,6 +1,9 @@
 fish_add_path /usr/local/bin
 fish_add_path /usr/sbin
 fish_add_path ~/.local/bin
+fish_add_path ~/.rye/env
+fish_add_path ~/.rye/shims
+fish_add_path /usr/local/opt/postgresql@11/bin
 
 yes | fish_config theme save "Catppuccin Latte"
 
