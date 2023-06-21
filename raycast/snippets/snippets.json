@@ -1,37 +1,92 @@
 [
   {
+    "name": "Gitlab Discussion praise",
+    "text": "**praise**",
+    "keyword": "gpr"
+  },
+  {
+    "name": "Gitlab Discussion nitpick",
+    "text": "**nitpick**",
+    "keyword": "gntp"
+  },
+  {
+    "name": "Gitlab Discussion suggestion",
+    "text": "**suggestion**: ",
+    "keyword": "gsg"
+  },
+  {
+    "name": "Gitlab Discussion question",
+    "text": "**question**: ",
+    "keyword": "gqq"
+  },
+  {
     "name": "Gitlab Discussion blocking issue",
-    "text": "**blocking issue**: ",
+    "text": "**issue (blocking)**: ",
     "keyword": "gbi"
   },
   {
     "name": "Gitlab Discussion non-blocking issue",
-    "text": "**non-blocking issue**: ",
+    "text": "**issue (non-blocking)**: ",
     "keyword": "gnbi"
   },
   {
-    "name": "Gitlab Discussion blocking question",
-    "text": "**blocking question**: ",
-    "keyword": "gbq"
+    "name": "Gitlab Discussion non-blocking thought",
+    "text": "**thought (non-blocking)**: ",
+    "keyword": "gnbt"
   },
   {
-    "name": "Gitlab Discussion non-blocking question",
-    "text": "**non-blocking question**: ",
-    "keyword": "gnbq"
+    "name": "Gitlab Discussion blocking thought",
+    "text": "**thought (blocking)**: ",
+    "keyword": "gbt"
   },
   {
-    "name": "Rocket.Chat link",
+    "name": "Gitlab Discussion chore",
+    "text": "**chore**: ",
+    "keyword": "gchr"
+  },
+  {
+    "name": "Gitlab Discussion typo",
+    "text": "**typo**: ",
+    "keyword": "gtypo"
+  },
+  {
+    "name": "Gitlab Discussion polish",
+    "text": "**polish**: ",
+    "keyword": "gplsh"
+  },
+  {
+    "name": "Rocket.Chat link full",
+    "text": "<{clipboard offset=1}|{clipboard}>",
+    "keyword": "rlf"
+  },
+  {
+    "name": "Rocket.Chat link prompt",
     "text": "<{clipboard}|{cursor}>",
-    "keyword": "rl"
+    "keyword": "rlp"
   },
   {
-    "name": "Jira link",
+    "name": "Jira link full",
+    "text": "[{clipboard}|{clipboard offset=1}]{cursor}",
+    "keyword": "jlf"
+  },
+  {
+    "name": "Jira link prompt",
     "text": "[{cursor}|{clipboard}]",
-    "keyword": "jl"
+    "keyword": "jlp"
+  },
+  {
+    "name": "Markdown link full",
+    "text": "[{clipboard}]({clipboard offset=1}){cursor}",
+    "keyword": "mdlf"
+  },
+  {
+    "name": "Markdown link prompt",
+    "text": "[{cursor}]({clipboard})",
+    "keyword": "mdlp"
   },
   {
     "name": "file date",
     "text": "{date \"yyyyMMdd\"}_",
-    "keyword": "fd_"
+    "keyword": "fdd"
   }
 ]

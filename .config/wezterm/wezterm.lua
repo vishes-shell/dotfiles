@@ -123,6 +123,8 @@ return {
 	default_cwd = wezterm.home_dir,
 	default_prog = { "/usr/local/bin/fish" },
 	font = wezterm.font("JetBrains Mono"),
+	initial_cols = 120,
+	initial_rows = 37,
 	font_rules = {
 		{
 			italic = true,

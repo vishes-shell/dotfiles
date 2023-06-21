@@ -23,6 +23,11 @@ return {
           cmp.config.compare.order,
         },
       }
+      opts.experimental = {
+        ghost_text = {
+          hl_group = "Comment",
+        },
+      }
     end,
   },
   {

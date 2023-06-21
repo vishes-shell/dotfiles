@@ -40,3 +40,5 @@ alias v='nvim'
 alias s="ssh"
 
 alias poe="poetry poe"
+
+alias jira-issue-estimate="~/.fish_scripts/set_jira_original_estimate.fish"

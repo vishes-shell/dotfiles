@@ -34,22 +34,43 @@ return {
       { "<leader>tb", "<cmd>Telescope current_buffer_tags<cr>", desc = "Buffer Tags" },
       {
         "<leader>ff",
-        Util.telescope("files", { hidden = true }),
-        desc = "Find Files",
+        Util.telescope(
+          "files",
+          { hidden = true, glob_pattern = {
+            "!**/test_*",
+            "!**/.git/*",
+          } }
+        ),
+        desc = "Find Non-test Files",
+      },
+      {
+        "<leader>fF",
+        Util.telescope("files", { hidden = true, glob_pattern = { "!**/.git/*" } }),
+        desc = "Find All Files",
       },
       { "<leader>bs", Util.telescope("lsp_document_symbols"), desc = "LSP Document Symbols" },
       {
         "<leader>/",
+        Util.telescope("live_grep", { hidden = true, glob_pattern = { "!**/test_*.py", "!tests/**" } }),
+        desc = "Find in Non-Test Files (Grep)",
+      },
+      {
+        "<leader>?",
         Util.telescope("live_grep", { hidden = true }),
-        desc = "Find in Files (Grep)",
+        desc = "Find in All Files (Grep)",
       },
       {
         "<leader><space>",
-        Util.telescope("files", { hidden = true }),
+        Util.telescope("files", { hidden = true, opts = { glob = "!**/test_*.py" } }),
         desc = "Find Files (root dir)",
       },
       {
         "<leader>sw",
+        Util.telescope("grep_string", { hidden = true, glob_pattern = { "!**/test_*.py" } }),
+        desc = "Word",
+      },
+      {
+        "<leader>sW",
         Util.telescope("grep_string", { hidden = true }),
         desc = "Word",
       },

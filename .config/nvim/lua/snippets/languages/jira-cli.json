@@ -24,8 +24,8 @@
       "\t--component \"${2:component}\" \\",
       "\t--summary (string trim --chars \"# \" -- (cat ~/tmp/jira/issue-summary.txt)) \\",
       "\t--template ~/tmp/jira/issue-description.md \\",
-      "\t--custom \"Числовой приоритет\"=${3:priority} \\",
-      "\t--custom Sprint=${4:\\$SPRINT} \\",
+      "\t--custom=number-priority=${3:priority} \\",
+      "\t--custom=sprint=${4:\\$SPRINT} \\",
       "\t--no-input $0"
     ],
     "description": "Insert jira-cli create issue without input"
@@ -154,8 +154,7 @@
       "jiraissueenv"
     ],
     "body": [
-      "| grep -o 'LMSDEV-[[:digit:]]*' | tee /tmp/capture.out && set ISSUE $(cat /tmp/capture.out)",
-      "$0"
+      "| grep -o 'LMSDEV-[[:digit:]]*' | tee /tmp/capture.out && set ISSUE $(cat /tmp/capture.out) && echo -n \\$ISSUE | fish_clipboard_copy$0"
     ],
     "description": "Insert cap command to capture issue key from jira-cli"
   },
@@ -164,7 +163,7 @@
       "jirabackprocess",
       "jiralabelbackprocess"
     ],
-    "body": "jira issue edit ${1:\\$US} --label back-processed --no-input $0",
+    "body": "jira issue edit ${1:\\$US} --label back-processed --no-input$0",
     "description": "Insert jira-cli command to label issue as back-processed"
   },
   "jira-cli-collapse-command": {

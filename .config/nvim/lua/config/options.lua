@@ -13,3 +13,7 @@ vim.g.gutentags_ctags_tagfile = "tags"
 vim.g.gutentags_file_list_command = "fd --hidden --strip-cwd-prefix --type f -E .git -E .venv"
 
 opt.conceallevel = 0
+
+opt.spelllang = { "en_us", "ru" }
+
+-- привет
