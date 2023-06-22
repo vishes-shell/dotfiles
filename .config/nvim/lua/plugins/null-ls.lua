@@ -44,6 +44,8 @@ return {
             command = "markdownlint-cli2",
           }),
           -- formatting
+          nls.builtins.formatting.fish_indent,
+          nls.builtins.diagnostics.fish,
           nls.builtins.formatting.isort,
           blackd,
           nls.builtins.formatting.jq,
