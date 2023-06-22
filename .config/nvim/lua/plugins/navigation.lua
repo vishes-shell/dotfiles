@@ -42,11 +42,6 @@ return {
     end,
   },
   {
-    "jinh0/eyeliner.nvim",
-    -- opts = { highlight_on_key = false },
-  },
-  { "ggandor/flit.nvim", enabled = false },
-  {
     "SmiteshP/nvim-navbuddy",
     dependencies = {
       "neovim/nvim-lspconfig",
