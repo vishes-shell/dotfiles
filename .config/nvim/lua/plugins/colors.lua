@@ -11,7 +11,7 @@ return {
           enabled = true,
           colored_indent_levels = true,
         },
-        leap = true,
+        -- leap = true,
         markdown = true,
         mason = true,
         mini = true,
