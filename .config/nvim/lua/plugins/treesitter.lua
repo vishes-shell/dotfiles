@@ -1,4 +1,5 @@
 return {
+  -- Yet another tree-sitter indent plugin for Neovim.
   { "yioneko/nvim-yati", event = "InsertEnter" },
   {
     "nvim-treesitter/nvim-treesitter",
