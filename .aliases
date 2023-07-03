@@ -2,8 +2,6 @@
 alias ..="cd .."
 alias cd..="cd .."
 alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
 
 # mv, rm, cp
 alias mv='mv -v'
@@ -27,6 +25,7 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 
 alias p="cd ~/projects"
 alias g="lazygit"
+alias gh-libs="cd ~/github/libs"
 
 alias w='watson'
 
