@@ -4,22 +4,23 @@ fish_add_path /opt/homebrew/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.rye/env
 fish_add_path ~/.rye/shims
+fish_add_path ~/.cargo/bin
 fish_add_path /usr/local/opt/postgresql@11/bin
 
 yes | fish_config theme save "Catppuccin Latte"
 
 if status is-interactive
-  starship init fish | source
+    starship init fish | source
 
-  set -x ATUIN_NOBIND true
-  atuin init fish | source
-  bind \cr _atuin_search
-  bind -M insert \cr _atuin_search
+    set -x ATUIN_NOBIND true
+    atuin init fish | source
+    bind \cr _atuin_search
+    bind -M insert \cr _atuin_search
 end
 
 
 for file in ~/.{exports,aliases,functions,extra}
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+    [ -r "$file" ] && [ -f "$file" ] && source "$file"
 end
 
 if test -d (brew --prefix)"/share/fish/completions"
@@ -36,4 +37,3 @@ fish_vi_key_bindings
 
 set LS_COLORS (vivid generate catppuccin-latte)
 set RIPGREP_CONFIG_PATH ~/.config/ripgrep/.rg
-
