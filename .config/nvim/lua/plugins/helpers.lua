@@ -65,13 +65,13 @@ return {
     },
   },
   -- better % matching
-  {
-    "andymass/vim-matchup",
-    event = "BufReadPost",
-    config = function()
-      vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
-    end,
-  },
+  -- {
+  --   "andymass/vim-matchup",
+  --   event = "BufReadPost",
+  --   config = function()
+  --     vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
+  --   end,
+  -- },
   -- better join lines
   {
     "Wansmer/treesj",
