@@ -1,15 +1,10 @@
 return {
   {
-    "dinhhuy258/git.nvim",
-    config = function()
-      require("git").setup({
-        default_mappings = false,
-      })
-    end,
+    "tpope/vim-fugitive",
     keys = {
       {
         "<leader>gb",
-        "<cmd>GitBlame<cr>",
+        "<cmd>Git blame<cr>",
         desc = "Git blame",
       },
     },
