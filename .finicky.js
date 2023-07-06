@@ -11,7 +11,7 @@ module.exports = {
   ],
   handlers: [
     {
-      match: ["meet.google.com"],
+      match: ["meet.google.com/*"],
       browser: "Google Chrome",
     },
   ],
