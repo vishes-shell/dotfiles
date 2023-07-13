@@ -22,7 +22,8 @@ export LC_MONETARY='en_US.UTF-8';
 export HOMEBREW_NO_ANALYTICS=1  # disables statistics that brew collects
 
 # resolve problem with installing psycopg2
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
 
 export BAT_THEME='Coldark-Cold'
 export FZF_COMPLETION_OPTS="--preview '(bat --color=always {} || cat {} || tree -C {}) 2> /dev/null | head -200'"
