@@ -160,4 +160,7 @@ return {
       },
     },
   },
+  {
+    "abecodes/tabout.nvim",
+  },
 }

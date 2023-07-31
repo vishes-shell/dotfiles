@@ -141,4 +141,11 @@ return {
       },
     },
   },
+  {
+    "ranelpadon/python-copy-reference.vim",
+    ft = "python",
+    keys = {
+      { "<leader>yr", "<cmd>PythonCopyReferencePytest<cr>", desc = "Yank Python Reference" },
+    },
+  },
 }
