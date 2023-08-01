@@ -10,6 +10,7 @@ return {
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
         { name = "emoji" },
         { name = "treesitter" },
+        { name = "vim-dadbod-completion" },
       }))
       opts.sorting = {
         comparators = {
