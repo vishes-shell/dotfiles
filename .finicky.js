@@ -15,4 +15,8 @@ module.exports = {
       browser: "Google Chrome",
     },
   ],
+  options: {
+    // Hide the finicky icon from the top bar. Default: false
+    hideIcon: true,
+  },
 };
