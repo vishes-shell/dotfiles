@@ -232,6 +232,10 @@ return {
 			regex = [[\b(LMSDEV-\d+)\b]],
 			format = "https://jira.skillbox.pro/browse/$1",
 		},
+		{
+			regex = [[\b(DEVOPS-\d+)\b]],
+			format = "https://jira.skillbox.pro/browse/$1",
+		},
 		-- Linkify things that look like URLs with numeric addresses as hosts.
 		-- E.g. http://127.0.0.1:8000 for a local development server,
 		-- or http://192.168.1.1 for the web interface of many routers.
