@@ -53,7 +53,6 @@ return {
           },
         },
         marksman = {},
-        tsserver = {},
       },
       format = {
         formatting_options = nil,
