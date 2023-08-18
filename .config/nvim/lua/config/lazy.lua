@@ -17,7 +17,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.coding.yanky" },
     { import = "lazyvim.plugins.extras.editor.mini-files" },
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.python-semshi" },
+    -- { import = "lazyvim.plugins.extras.lang.python-semshi" },
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
   },
@@ -48,3 +48,20 @@ require("lazy").setup({
     },
   },
 })
+
+local lspconfig = require("lspconfig")
+local configs = require("lspconfig.configs")
+
+if not configs.postgres_lsp then
+  configs.postgres_lsp = {
+    default_config = {
+      name = "postgres_lsp",
+      cmd = { "postgres_lsp" },
+      filetypes = { "sql" },
+      single_file_support = true,
+      root_dir = lspconfig.util.root_pattern("root-file.txt"),
+    },
+  }
+end
+
+lspconfig.postgres_lsp.setup({})

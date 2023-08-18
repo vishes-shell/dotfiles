@@ -1,9 +1,5 @@
 return {
   {
-    "aklt/plantuml-syntax",
-    lazy = true,
-  },
-  {
     "preservim/vim-markdown",
     ft = "markdown",
     init = function()

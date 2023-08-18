@@ -25,3 +25,9 @@ smap <silent><expr> <C-p> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' 
 
 map("v", "<leader>js", ":w! ~/tmp/jira/issue-summary.txt<cr>", { desc = "Save Jira task summary" })
 map("v", "<leader>jd", ":w! ~/tmp/jira/issue-description.md<cr>", { desc = "Save Jira task description" })
+map(
+  "v",
+  "<leader>jc",
+  ":w! ~/tmp/jira/convert-in.md | !jira-convert<cr>",
+  { desc = "Convert to jira markup and put in clipboard" }
+)

@@ -20,8 +20,7 @@ return {
   },
   {
     "weirongxu/plantuml-previewer.vim",
-    lazy = true,
-    dependencies = { "tyru/open-browser.vim" },
+    dependencies = { "tyru/open-browser.vim", "aklt/plantuml-syntax" },
     config = function()
       vim.cmd([[
         au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
