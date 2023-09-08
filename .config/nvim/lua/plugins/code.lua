@@ -8,6 +8,15 @@ return {
     opts = function(_, opts)
       local cmp = require("cmp")
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
+        {
+          name = "luasnip",
+          group_index = 1,
+          option = { use_show_condition = true },
+          entry_filter = function()
+            local context = require("cmp.config.context")
+            return not context.in_treesitter_capture("string") and not context.in_syntax_group("String")
+          end,
+        },
         { name = "emoji" },
         { name = "treesitter" },
         { name = "vim-dadbod-completion" },
@@ -25,6 +34,7 @@ return {
         },
       }
       opts.experimental = {
+        native_menu = false,
         ghost_text = {
           hl_group = "Comment",
         },
@@ -148,9 +158,4 @@ return {
       { "<leader>yr", "<cmd>PythonCopyReferencePytest<cr>", desc = "Yank Python Reference" },
     },
   },
-  {
-    "altermo/ultimate-autopair.nvim",
-    event = { "InsertEnter", "CmdlineEnter" },
-  },
-  { "echasnovski/mini.pairs", enabled = false },
 }
