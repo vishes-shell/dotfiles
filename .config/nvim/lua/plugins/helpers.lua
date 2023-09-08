@@ -250,4 +250,5 @@ return {
   --   end,
   -- },
   { "LunarVim/bigfile.nvim" },
+  { "lambdalisue/suda.vim" },
 }
