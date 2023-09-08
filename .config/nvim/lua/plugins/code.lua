@@ -148,4 +148,9 @@ return {
       { "<leader>yr", "<cmd>PythonCopyReferencePytest<cr>", desc = "Yank Python Reference" },
     },
   },
+  {
+    "altermo/ultimate-autopair.nvim",
+    event = { "InsertEnter", "CmdlineEnter" },
+  },
+  { "echasnovski/mini.pairs", enabled = false },
 }
