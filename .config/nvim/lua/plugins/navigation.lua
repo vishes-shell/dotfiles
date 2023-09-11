@@ -94,7 +94,11 @@ return {
         "<leader>zn",
         function()
           vim.ui.input({ prompt = "Title" }, function(title)
-            require("zk").new({ title = title })
+            if title == nil or title == "" then
+              require("notify")("Till next time!")
+            else
+              require("zk").new({ title = title })
+            end
           end)
         end,
         desc = "Create a new note",
