@@ -17,7 +17,7 @@ brew "deno"
 brew "python@3.10", link: false
 brew "docutils"
 brew "erlang"
-brew "exa"
+brew "eza"
 brew "ctop"
 brew "direnv"
 brew "procs"

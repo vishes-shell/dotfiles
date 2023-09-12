@@ -10,9 +10,9 @@ alias cp='cp -v'
 
 alias ag='ag -f --hidden'
 
-alias ls="exa"
+alias ls="eza"
 
-alias l="exa -lahF"
+alias l="eza -lahF"
 
 # sometimes :exit is easier
 alias :exit="exit"
