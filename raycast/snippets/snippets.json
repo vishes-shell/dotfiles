@@ -1,12 +1,12 @@
 [
   {
     "name": "Gitlab Discussion praise",
-    "text": "**praise**",
+    "text": "**praise**: ",
     "keyword": "gpr"
   },
   {
     "name": "Gitlab Discussion nitpick",
-    "text": "**nitpick**",
+    "text": "**nitpick**: ",
     "keyword": "gntp"
   },
   {
