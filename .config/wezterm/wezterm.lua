@@ -229,11 +229,7 @@ return {
 		-- Make JIRA task numbers clickable
 		-- The first matched regex group is captured in $1.
 		{
-			regex = [[\b(LMSDEV-\d+)\b]],
-			format = "https://jira.skillbox.pro/browse/$1",
-		},
-		{
-			regex = [[\b(DEVOPS-\d+)\b]],
+			regex = [[\b((LMSDEV|DEVOPS|ARCH|WEBDEV)-\d+)\b]],
 			format = "https://jira.skillbox.pro/browse/$1",
 		},
 		-- Linkify things that look like URLs with numeric addresses as hosts.
