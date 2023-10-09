@@ -33,4 +33,26 @@ return {
       },
     },
   },
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        yaml = { "yamllint" },
+        lua = { "selene", "luacheck" },
+        markdown = { "markdownlint" },
+        python = { "ruff" },
+        fish = { "fish" },
+      },
+      linters = {
+        markdownlint = {
+          cmd = "markdownlint-cli2",
+        },
+        fish = {
+          cmd = "fish",
+          stdin = false,
+          args = { "--no-execute" },
+        },
+      },
+    },
+  },
 }
