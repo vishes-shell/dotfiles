@@ -43,15 +43,8 @@ return {
             filetypes = { "markdown" },
             command = "markdownlint-cli2",
           }),
-          -- formatting
-          nls.builtins.formatting.fish_indent,
           nls.builtins.diagnostics.fish,
-          -- nls.builtins.formatting.isort,
-          -- blackd,
-          nls.builtins.formatting.jq,
-          nls.builtins.formatting.yamlfmt,
-          nls.builtins.formatting.stylua,
-          sqlfmt,
+          -- formatting
           nls.builtins.formatting.prettier.with({
             filetypes = {
               "javascript",

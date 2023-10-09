@@ -8,14 +8,23 @@ return {
           "isort",
           "blackd",
         },
+        ["fish"] = {
+          "fish_indent",
+        },
+        ["json"] = { "jq" },
+        ["yaml"] = { "yamlfmt" },
+        ["lua"] = { "stylua" },
+        ["sql"] = { "sqlfmt" },
       },
       formatters = {
         blackd = {
           command = "blackd-client",
           stdin = true,
-          cwd = require("conform.util").root_file({
-            "pyproject.toml",
-          }),
+        },
+        sqlfmt = {
+          command = "sqlfmt",
+          args = { "-" },
+          stdin = true,
         },
       },
       format_on_save = {
