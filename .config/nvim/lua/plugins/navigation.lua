@@ -164,4 +164,18 @@ return {
       },
     },
   },
+  {
+    "folke/flash.nvim",
+    keys = {
+      {
+        "q",
+        mode = { "n", "x", "o" },
+        function()
+          vim.cmd([[set keymap=russian-jcukenmac]])
+          require("flash").jump()
+        end,
+        desc = "Flash RU",
+      },
+    },
+  },
 }

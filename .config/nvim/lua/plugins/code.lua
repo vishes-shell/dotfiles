@@ -138,6 +138,7 @@ return {
         "prettier",
         "bash-language-server",
         "stylua",
+        "selene",
       },
     },
   },
