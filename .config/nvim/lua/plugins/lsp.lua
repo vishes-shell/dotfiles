@@ -13,9 +13,9 @@ return {
         blackd = {
           command = "blackd-client",
           stdin = true,
-          -- cwd = require("conform.util").root_file({
-          --   "pyproject.toml",
-          -- }),
+          cwd = require("conform.util").root_file({
+            "pyproject.toml",
+          }),
         },
       },
       format_on_save = {
