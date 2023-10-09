@@ -37,7 +37,7 @@ return {
       return {
         sources = {
           -- diagnostics
-          nls.builtins.diagnostics.ruff,
+          -- nls.builtins.diagnostics.ruff,
           nls.builtins.diagnostics.yamllint,
           nls.builtins.diagnostics.markdownlint.with({
             filetypes = { "markdown" },
@@ -46,8 +46,8 @@ return {
           -- formatting
           nls.builtins.formatting.fish_indent,
           nls.builtins.diagnostics.fish,
-          nls.builtins.formatting.isort,
-          blackd,
+          -- nls.builtins.formatting.isort,
+          -- blackd,
           nls.builtins.formatting.jq,
           nls.builtins.formatting.yamlfmt,
           nls.builtins.formatting.stylua,
