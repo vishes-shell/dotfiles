@@ -139,6 +139,7 @@ return {
         "bash-language-server",
         "stylua",
         "selene",
+        "luacheck",
       },
     },
   },
