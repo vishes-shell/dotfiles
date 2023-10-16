@@ -173,6 +173,7 @@ return {
         function()
           vim.cmd([[set keymap=russian-jcukenmac]])
           require("flash").jump()
+          vim.cmd([[set keymap=]])
         end,
         desc = "Flash RU",
       },
