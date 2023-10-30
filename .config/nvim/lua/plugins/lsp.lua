@@ -15,6 +15,7 @@ return {
         ["yaml"] = { "yamlfmt" },
         ["lua"] = { "stylua" },
         ["sql"] = { "sqlfmt" },
+        ["markdown"] = { "markdownlint" },
       },
       formatters = {
         blackd = {
