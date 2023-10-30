@@ -88,5 +88,10 @@
     "name": "file date",
     "text": "{date \"yyyyMMdd\"}_",
     "keyword": "fdd"
+  },
+  {
+    "name": "skillbox email",
+    "text": "aleksey.shalynin@skillbox.ru",
+    "keyword": "skbxemail"
   }
 ]
