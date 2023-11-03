@@ -1,0 +1,20 @@
+{
+  "keyMappings": "map о scrollDown\nmap л scrollUp\nmap к reload\nmap р scrollLeft\nmap д scrollRight\nmap пп scrollToTop\nmap П scrollToBottom\nmap яР scrollToLeft\nmap яД scrollToRight\n\"map <с-в> scrollPageDown\n\"map <с-г> scrollPageUp\n\"map <с-а> scrollFullPageDown\nmap пы toggleViewSource\nmap яш zoomIn\nmap ящ zoomOut\nmap нн copyCurrentUrl\nmap пг goUp\nmap ш enterInsertMode\nmap пш focusInput\nmap а activateLinkHintsMode\nmap А activateLinkHintsModeToOpenInNewTab\n\"map <а-а> activateLinkHintsModeWithQueue\nmap т performFind\nmap Т performBackwardsFind\nmap па nextFrame\nmap Р goBack\nmap Д goForward\nmap Л nextTab\nmap пе nextTab\nmap О previousTab\nmap пЕ previousTab\nmap е createTab\nmap в removeTab\nmap г restoreTab\nmap , showHelp",
+  "newTabUrl": "pages/blank.html",
+  "ignoreKeyboardLayout": true,
+  "scrollStepSize": 120,
+  "smoothScroll": false,
+  "grabBackFocus": true,
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\njira: https://jira.skillbox.pro/browse/%s\nmyst: https://myst-parser.readthedocs.io/en/latest/search.html?q=%s\nsphinx: https://www.sphinx-doc.org/en/master/search.html?q=%s\n\n\n# More examples.\n#\n# (Vimium supports search completion Wikipedia, as\n# above, and for these.)\n#\n# g: https://www.google.com/search?q=%s Google\n# l: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\n# y: https://www.youtube.com/results?search_query=%s Youtube\n# gm: https://www.google.com/maps?q=%s Google maps\n# b: https://www.bing.com/search?q=%s Bing\n# d: https://duckduckgo.com/?q=%s DuckDuckGo\n# az: https://www.amazon.com/s/?field-keywords=%s Amazon\n# qw: https://www.qwant.com/?q=%s Qwant",
+  "settingsVersion": "2.0.4",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://mail.google.com/*"
+    },
+    {
+      "passKeys": "K",
+      "pattern": "https?://time-test.corp.skillbox.pro/*"
+    }
+  ]
+}
