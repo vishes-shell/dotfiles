@@ -244,6 +244,9 @@ config.keys = {
 	{ mods = keys_M.mod, key = "p", action = act.ActivateCommandPalette },
 	{ mods = keys_M.mod, key = "d", action = act.ShowDebugOverlay },
 	{ mods = keys_M.mod, key = "w", action = act.CloseCurrentTab({ confirm = true }) },
+	-- Resize
+	{ mods = "SUPER", key = "-", action = act.DecreaseFontSize },
+	{ mods = "SUPER", key = "+", action = act.IncreaseFontSize },
 	-- keys_M.split_nav("resize", "CTRL", "LeftArrow", "Right"),
 	-- keys_M.split_nav("resize", "CTRL", "RightArrow", "Left"),
 	-- keys_M.split_nav("resize", "CTRL", "UpArrow", "Up"),
