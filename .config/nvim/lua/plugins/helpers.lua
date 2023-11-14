@@ -2,7 +2,7 @@ return {
   -- any list will do
   {
     "gaoDean/autolist.nvim",
-    enabled = false,
+    enabled = true,
     ft = {
       "markdown",
       "text",
@@ -10,23 +10,26 @@ return {
       "plaintex",
     },
     config = function()
-      local autolist = require("autolist")
-      autolist.setup()
-      autolist.create_mapping_hook("i", "<CR>", autolist.new)
-      autolist.create_mapping_hook("i", "<Tab>", autolist.indent)
-      autolist.create_mapping_hook("i", "<S-Tab>", autolist.indent, "<C-D>")
-      autolist.create_mapping_hook("n", "o", autolist.new)
-      autolist.create_mapping_hook("n", "O", autolist.new_before)
-      autolist.create_mapping_hook("n", ">>", autolist.indent)
-      autolist.create_mapping_hook("n", "<<", autolist.indent)
-      autolist.create_mapping_hook("n", "<C-r>", autolist.force_recalculate)
-      autolist.create_mapping_hook("n", "<leader>x", autolist.invert_entry, "")
-      vim.api.nvim_create_autocmd("TextChanged", {
-        pattern = "*",
-        callback = function()
-          vim.cmd.normal({ autolist.force_recalculate(nil, nil), bang = false })
-        end,
+      require("autolist").setup({
+        colon = { indent_raw = false },
+        cycle = { "-", "1." },
       })
+
+      vim.keymap.set("i", "<tab>", "<cmd>AutolistTab<cr>")
+      vim.keymap.set("i", "<s-tab>", "<cmd>AutolistShiftTab<cr>")
+      vim.keymap.set("i", "<CR>", "<CR><cmd>AutolistNewBullet<cr>")
+      vim.keymap.set("n", "o", "o<cmd>AutolistNewBullet<cr>")
+      vim.keymap.set("n", "O", "O<cmd>AutolistNewBulletBefore<cr>")
+      vim.keymap.set("n", "<leader>x", "<cmd>AutolistToggleCheckbox<cr>")
+      vim.keymap.set("n", "<leader>r", "<cmd>AutolistRecalculate<cr>")
+
+      vim.keymap.set("n", "<leader>cn", require("autolist").cycle_next_dr, { expr = true })
+      vim.keymap.set("n", "<leader>cp", require("autolist").cycle_prev_dr, { expr = true })
+
+      vim.keymap.set("n", ">>", ">><cmd>AutolistRecalculate<cr>")
+      vim.keymap.set("n", "<<", "<<<cmd>AutolistRecalculate<cr>")
+      vim.keymap.set("n", "dd", "dd<cmd>AutolistRecalculate<cr>")
+      vim.keymap.set("v", "d", "d<cmd>AutolistRecalculate<cr>")
     end,
   },
   -- better increase/descrease
