@@ -37,7 +37,8 @@
 [alias]
   pushbackdev = push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target=dev 
 	pushbackbranch = "!git push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target=\"$1\""
-    
+  push-gl-mr-automerge = push origin HEAD -o merge_request.create -o merge_request.merge_when_pipeline_succeeds
+
 [credential]
 	helper = store
 
