@@ -154,7 +154,7 @@
       "jiraissueenv"
     ],
     "body": [
-      "| grep -o 'LMSDEV-[[:digit:]]*' | tee /tmp/capture.out && set ISSUE $(cat /tmp/capture.out) && echo -n \\$ISSUE | fish_clipboard_copy$0"
+      "| grep -o '[[:upper:]]\\+\\-[[:digit:]]\\+' | tee /tmp/capture.out && set ISSUE $(cat /tmp/capture.out) && echo -n $ISSUE | fish_clipboard_copy$0"
     ],
     "description": "Insert cap command to capture issue key from jira-cli"
   },
