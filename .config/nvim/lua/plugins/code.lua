@@ -3,7 +3,7 @@ return {
     "nvim-cmp",
     lazy = true,
     event = "InsertEnter",
-    dependencies = { "hrsh7th/cmp-emoji", "lukas-reineke/cmp-under-comparator", "ray-x/cmp-treesitter" },
+    dependencies = { "hrsh7th/cmp-emoji", "ray-x/cmp-treesitter" },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
