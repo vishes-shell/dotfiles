@@ -3,7 +3,7 @@ return {
     "nvim-cmp",
     lazy = true,
     event = "InsertEnter",
-    dependencies = { "hrsh7th/cmp-emoji", "ray-x/cmp-treesitter" },
+    dependencies = { "hrsh7th/cmp-emoji", "ray-x/cmp-treesitter", "Dynge/gitmoji.nvim" },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
@@ -22,6 +22,7 @@ return {
         { name = "emoji" },
         { name = "treesitter" },
         { name = "vim-dadbod-completion" },
+        { name = "gitmoji" },
       })
     end,
   },
