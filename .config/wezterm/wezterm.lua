@@ -247,6 +247,29 @@ config.keys = {
 	-- Resize
 	{ mods = "SUPER", key = "-", action = act.DecreaseFontSize },
 	{ mods = "SUPER", key = "+", action = act.IncreaseFontSize },
+	{
+		mods = keys_M.mod,
+		key = "b",
+		action = wezterm.action.QuickSelectArgs({
+			label = "open url",
+			patterns = {
+				"https?://\\S+",
+				"u+-%d+",
+			},
+			action = wezterm.action_callback(function(window, pane)
+				local selection = window:get_selection_text_for_pane(pane)
+				wezterm.log_info("opening: " .. selection)
+
+				-- Determine whether the selection is a URL or a JIRA issue
+				if string.match(selection, "^https?://") then
+					wezterm.open_with(selection) -- Open URL
+				else
+					local jiraUrl = "https://jira.skillbox.pro/browse/" .. selection
+					wezterm.open_with(jiraUrl) -- Open JIRA issue
+				end
+			end),
+		}),
+	},
 	-- keys_M.split_nav("resize", "CTRL", "LeftArrow", "Right"),
 	-- keys_M.split_nav("resize", "CTRL", "RightArrow", "Left"),
 	-- keys_M.split_nav("resize", "CTRL", "UpArrow", "Up"),
@@ -261,6 +284,21 @@ config.default_prog = { "/usr/local/bin/fish" }
 config.default_cwd = wezterm.home_dir
 
 config.color_scheme = "Catppuccin Latte"
+
+config.hyperlink_rules = {
+	{
+		regex = "\\b\\w+://[\\w.-]+\\.[a-z]{2,15}\\S*\\b",
+		format = "$0",
+	},
+	{
+		regex = [[\b\w+@[\w-]+(\.[\w-]+)+\b]],
+		format = "mailto:$0",
+	},
+	{
+		regex = [[\b[A-Z]+-\d+\b]],
+		format = "https://jira.skillbox.pro/browse/$0",
+	},
+}
 
 return config
 
