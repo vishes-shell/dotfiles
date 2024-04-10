@@ -5,17 +5,20 @@ return {
       formatters_by_ft = {
         ["python"] = {
           "ruff_fix",
-          "isort",
+          -- "isort",
           "blackd",
         },
         ["fish"] = {
           "fish_indent",
         },
         ["json"] = { "jq" },
-        ["yaml"] = { "yamlfmt" },
         ["lua"] = { "stylua" },
         ["sql"] = { "sqlfmt" },
         ["markdown"] = { "markdownlint" },
+        ["javascript"] = { { "prettierd", "prettier" } },
+        ["typescript"] = { { "prettierd", "prettier" } },
+        ["javascriptreact"] = { { "prettierd", "prettier" } },
+        ["typescriptreact"] = { { "prettierd", "prettier" } },
       },
       formatters = {
         blackd = {

@@ -31,6 +31,8 @@ return {
         "json",
         "gitcommit",
         "rst",
+        "tsx",
+        "typescript",
       },
       highlight = { enable = true },
       indent = { enable = false },
