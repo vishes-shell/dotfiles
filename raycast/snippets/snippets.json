@@ -55,34 +55,24 @@
     "keyword": "gplsh"
   },
   {
-    "name": "Rocket.Chat link full",
-    "text": "<{clipboard offset=1}|{clipboard}>",
-    "keyword": "rlf"
-  },
-  {
-    "name": "Rocket.Chat link prompt",
-    "text": "<{clipboard}|{cursor}>",
-    "keyword": "rlp"
-  },
-  {
-    "name": "Jira link full",
-    "text": "[{clipboard}|{clipboard offset=1}]{cursor}",
-    "keyword": "jlf"
-  },
-  {
-    "name": "Jira link prompt",
-    "text": "[{cursor}|{clipboard}]",
-    "keyword": "jlp"
-  },
-  {
     "name": "Markdown link full",
-    "text": "[{clipboard}]({clipboard offset=1}){cursor}",
+    "text": "[{clipboard | trim}{argument name=\"location\"}]({clipboard offset=1 | trim}){cursor}",
     "keyword": "mdlf"
   },
   {
     "name": "Markdown link prompt",
-    "text": "[{cursor}]({clipboard})",
+    "text": "[{argument name=\"display\"}]({clipboard | trim}){cursor}",
     "keyword": "mdlp"
+  },
+  {
+    "name": "Jira link full",
+    "text": "[{clipboard | trim}{argument name=\"location\"}|{clipboard offset=1 | trim}]{cursor}",
+    "keyword": "jlf"
+  },
+  {
+    "name": "Jira link prompt",
+    "text": "[{argument name=\"display\"}|{clipboard | trim}]{cursor}",
+    "keyword": "jlp"
   },
   {
     "name": "file date",
@@ -92,6 +82,6 @@
   {
     "name": "skillbox email",
     "text": "aleksey.shalynin@skillbox.ru",
-    "keyword": "skbxemail"
+    "keyword": "emailme"
   }
 ]
