@@ -59,4 +59,5 @@ return {
     },
     keys = { { "<leader>wz", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
   },
+  { "mracos/mermaid.vim" },
 }
