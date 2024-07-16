@@ -5,8 +5,9 @@ return {
       formatters_by_ft = {
         ["python"] = {
           "ruff_fix",
+          "ruff_format",
           -- "isort",
-          "blackd",
+          -- "blackd",
         },
         ["fish"] = {
           "fish_indent",
