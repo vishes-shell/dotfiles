@@ -1,4 +1,3 @@
-local Util = require("lazyvim.util")
 local telescopeConfig = require("telescope.config")
 
 -- Clone the default Telescope configuration
@@ -27,7 +26,7 @@ return {
       { "<leader>tb", "<cmd>Telescope current_buffer_tags<cr>", desc = "Buffer Tags" },
       {
         "<leader>ff",
-        Util.telescope(
+        LazyVim.pick(
           "files",
           { hidden = true, glob_pattern = {
             "!**/test_*",
@@ -38,33 +37,33 @@ return {
       },
       {
         "<leader>fF",
-        Util.telescope("files", { hidden = true, glob_pattern = { "!**/.git/*" } }),
+        LazyVim.pick("files", { hidden = true, glob_pattern = { "!**/.git/*" } }),
         desc = "Find All Files",
       },
-      { "<leader>bs", Util.telescope("lsp_document_symbols"), desc = "LSP Document Symbols" },
+      { "<leader>bs", LazyVim.pick("lsp_document_symbols"), desc = "LSP Document Symbols" },
       {
         "<leader>/",
-        Util.telescope("live_grep", { hidden = true, glob_pattern = { "!**/test_*.py", "!tests/**" } }),
+        LazyVim.pick("live_grep", { hidden = true, glob_pattern = { "!**/test_*.py", "!tests/**" } }),
         desc = "Find in Non-Test Files (Grep)",
       },
       {
         "<leader>?",
-        Util.telescope("live_grep", { hidden = true }),
+        LazyVim.pick("live_grep", { hidden = true }),
         desc = "Find in All Files (Grep)",
       },
       {
         "<leader><space>",
-        Util.telescope("files", { hidden = true, opts = { glob = "!**/test_*.py" } }),
+        LazyVim.pick("files", { hidden = true, opts = { glob = "!**/test_*.py" } }),
         desc = "Find Files (root dir)",
       },
       {
         "<leader>sw",
-        Util.telescope("grep_string", { hidden = true, glob_pattern = { "!**/test_*.py" } }),
+        LazyVim.pick("grep_string", { hidden = true, glob_pattern = { "!**/test_*.py" } }),
         desc = "Word",
       },
       {
         "<leader>sW",
-        Util.telescope("grep_string", { hidden = true }),
+        LazyVim.pick("grep_string", { hidden = true }),
         desc = "Word",
       },
 
