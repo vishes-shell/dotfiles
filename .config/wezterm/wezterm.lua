@@ -283,7 +283,7 @@ config.keys = {
 config.default_prog = { "/usr/local/bin/fish" }
 config.default_cwd = wezterm.home_dir
 
-config.color_scheme = "Catppuccin Latte"
+config.color_scheme = "Tokyo Night Moon"
 
 config.hyperlink_rules = {
 	{
