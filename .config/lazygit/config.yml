@@ -7,25 +7,51 @@ gui:
   mainPanelSplitMode: 'flexible' # one of 'horizontal' | 'flexible' | 'vertical'
   language: 'auto' # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl' | 'ja' | 'ko'
   timeFormat: '02 Jan 06 15:04 MST' # https://pkg.go.dev/time#Time.Format
+  nerdFontsVersion: "3"
   theme:
-    lightTheme: false
     activeBorderColor:
-      - "#40a02b" # Green
-      - bold
+      - "#ff966c"
+      - "bold"
     inactiveBorderColor:
-      - "#4c4f69" # Text
+      - "#589ed7"
+    searchingActiveBorderColor:
+      - "#ff966c"
+      - "bold"
     optionsTextColor:
-      - "#1e66f5" # Blue
+      - "#82aaff"
     selectedLineBgColor:
-      - "#ccd0da" # Surface0
-    selectedRangeBgColor:
-      - "#ccd0da" # Surface0
-    cherryPickedCommitBgColor:
-      - "#179299" # Teal
+      - "#2d3f76"
     cherryPickedCommitFgColor:
-      - "#1e66f5" # Blue
+      - "#82aaff"
+    cherryPickedCommitBgColor:
+      - "#c099ff"
+    markedBaseCommitFgColor:
+      - "#82aaff"
+    markedBaseCommitBgColor:
+      - "#ffc777"
     unstagedChangesColor:
-      - red # Red
+      - "#c53b53"
+    defaultFgColor:
+      - "#c8d3f5"
+  # theme:
+  #   lightTheme: false
+  #   activeBorderColor:
+  #     - "#40a02b" # Green
+  #     - bold
+  #   inactiveBorderColor:
+  #     - "#4c4f69" # Text
+  #   optionsTextColor:
+  #     - "#1e66f5" # Blue
+  #   selectedLineBgColor:
+  #     - "#ccd0da" # Surface0
+  #   selectedRangeBgColor:
+  #     - "#ccd0da" # Surface0
+  #   cherryPickedCommitBgColor:
+  #     - "#179299" # Teal
+  #   cherryPickedCommitFgColor:
+  #     - "#1e66f5" # Blue
+  #   unstagedChangesColor:
+  #     - red # Red
   commitLength:
     show: true
   mouseEvents: true
