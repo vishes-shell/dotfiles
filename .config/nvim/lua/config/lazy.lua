@@ -24,6 +24,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.coding.luasnip" },
 
+    { import = "lazyvim.plugins.extras.editor.telescope" },
+
     { import = "plugins" },
   },
   defaults = {
