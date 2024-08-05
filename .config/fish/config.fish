@@ -8,7 +8,7 @@ fish_add_path ~/.cargo/bin
 fish_add_path /usr/local/opt/postgresql@11/bin
 fish_add_path /opt/homebrew/opt/gnu-sed/libexec/gnubin
 
-yes | fish_config theme save "Catppuccin Latte"
+yes | fish_config theme save tokyonight_moon
 
 if status is-interactive
     starship init fish | source
