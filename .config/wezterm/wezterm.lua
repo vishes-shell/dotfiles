@@ -13,6 +13,9 @@ config.underline_thickness = 3
 config.cursor_thickness = 2
 config.underline_position = -6
 
+config.initial_cols = 160
+config.initial_rows = 50
+
 -- config.term = "wezterm"
 config.window_decorations = "RESIZE"
 
@@ -283,7 +286,8 @@ config.keys = {
 config.default_prog = { "/usr/local/bin/fish" }
 config.default_cwd = wezterm.home_dir
 
-config.color_scheme = "Tokyo Night Moon"
+-- config.color_scheme = "Tokyo Night Moon"
+config.color_scheme = "Catppuccin Latte"
 
 config.hyperlink_rules = {
 	{
