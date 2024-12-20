@@ -26,6 +26,8 @@ require("lazy").setup({
 
     { import = "lazyvim.plugins.extras.editor.telescope" },
 
+    { import = "lazyvim.plugins.extras.ai.supermaven" },
+
     { import = "plugins" },
   },
   defaults = {
