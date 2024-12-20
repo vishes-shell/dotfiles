@@ -1,9 +1,10 @@
 return {
   {
     "nvim-cmp",
+    enabled = false,
     lazy = true,
     event = "InsertEnter",
-    dependencies = { "hrsh7th/cmp-emoji", "ray-x/cmp-treesitter", "Dynge/gitmoji.nvim", "hrsh7th/cmp-buffer" },
+    dependencies = { "ray-x/cmp-treesitter", "hrsh7th/cmp-buffer" },
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       local cmp = require("cmp")
@@ -19,10 +20,7 @@ return {
         --   end,
         -- },
         { name = "path" },
-        { name = "emoji" },
         { name = "treesitter" },
-        { name = "vim-dadbod-completion" },
-        { name = "gitmoji" },
         { name = "buffer" },
       })
     end,
@@ -49,7 +47,8 @@ return {
           },
         },
         marksman = {},
-        tsserver = {},
+        ts_ls = {},
+        html = { init_options = { provideFormatter = false } },
       },
       format = {
         formatting_options = nil,
@@ -129,7 +128,15 @@ return {
       ensure_installed = {
         "pyright",
         "marksman",
-        "tsserver",
+        "ts_ls",
+        "html",
+      },
+      handlers = {
+        ["html"] = function()
+          require("lspconfig").html.setup({
+            filetypes = { "html", "htmldjango" },
+          })
+        end,
       },
     },
   },

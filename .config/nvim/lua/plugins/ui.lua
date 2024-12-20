@@ -68,4 +68,19 @@ return {
     keys = { { "<leader>wz", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
   },
   { "mracos/mermaid.vim" },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      git = { enabled = true },
+      bigfile = { enabled = true },
+      bufdelete = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      statuscolumn = { enabled = true },
+      scratch = { enabled = true },
+      words = { enabled = true },
+    },
+  },
 }
