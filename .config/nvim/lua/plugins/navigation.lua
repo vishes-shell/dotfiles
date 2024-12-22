@@ -63,58 +63,8 @@ return {
       },
     },
   },
-  -- {
-  --   "simrat39/symbols-outline.nvim",
-  --   keys = { { "|", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
-  --   config = true,
-  -- },
   {
     "ludovicchabant/vim-gutentags",
-  },
-  {
-    "mickael-menu/zk-nvim",
-    lazy = false,
-    config = function()
-      require("zk").setup({
-        picker = "telescope",
-        lsp = {
-          config = {
-            cmd = { "zk", "lsp" },
-            name = "zk",
-          },
-        },
-        auto_attach = {
-          enabled = true,
-          filetypes = { "markdown" },
-        },
-      })
-    end,
-    keys = {
-      {
-        "<leader>zn",
-        function()
-          vim.ui.input({ prompt = "Title" }, function(title)
-            if title == nil or title == "" then
-              require("notify")("Till next time!")
-            else
-              require("zk").new({ title = title })
-            end
-          end)
-        end,
-        desc = "Create a new note",
-      },
-      {
-        "<leader>zo",
-        "<cmd>ZkNotes { sort = { 'modified' } }<cr>",
-        desc = "Open notes",
-      },
-      { "<leader>zt", "<cmd>ZkTags<cr>", desc = "Open notes associated with the selected tags" },
-      {
-        "<leader>zf",
-        "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
-        desc = "Search for the notes matching a given query",
-      },
-    },
   },
   {
     "chrisgrieser/nvim-genghis",
