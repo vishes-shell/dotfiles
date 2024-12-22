@@ -7,19 +7,19 @@
 
 # export EDITOR='nvim';
 
-export PYTHONIOENCODING='UTF-8';
+export PYTHONIOENCODING='UTF-8'
 
 # Prefer US English and use UTF-8.
-export LANG='en_US.UTF-8';
-export LC_ALL='en_US.UTF-8';
-export LC_CTYPE='UTF-8';
-export LC_NUMERIC='en_US.UTF-8';
-export LC_TIME='en_US.UTF-8';
-export LC_COLLATE='en_US.UTF-8';
-export LC_MONETARY='en_US.UTF-8';
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+export LC_CTYPE='UTF-8'
+export LC_NUMERIC='en_US.UTF-8'
+export LC_TIME='en_US.UTF-8'
+export LC_COLLATE='en_US.UTF-8'
+export LC_MONETARY='en_US.UTF-8'
 
 # Homebrew:
-export HOMEBREW_NO_ANALYTICS=1  # disables statistics that brew collects
+export HOMEBREW_NO_ANALYTICS=1 # disables statistics that brew collects
 
 # resolve problem with installing psycopg2
 export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
@@ -32,3 +32,5 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export ZK_NOTEBOOK_DIR="$HOME/zk"
+
+export HOMEBREW_NO_AUTO_UPDATE=1
