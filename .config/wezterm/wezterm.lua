@@ -304,6 +304,8 @@ config.hyperlink_rules = {
 	},
 }
 
+config.max_fps = 120
+
 return config
 
 -- return {
