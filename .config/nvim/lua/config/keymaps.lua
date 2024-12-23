@@ -48,14 +48,6 @@ M.set_user_var("IS_NVIM", true)
 map("n", "<C-c>", "<cmd>normal! ciw<cr>a", { desc = "Replace current word" })
 map("n", "<leader>ww", "<cmd>:w<cr>", { desc = "Save file" })
 
--- vim.cmd([[
--- " For changing choices in choiceNodes (not strictly necessary for a basic setup).
--- imap <silent><expr> <C-n> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-n>'
--- smap <silent><expr> <C-n> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-n>'
--- imap <silent><expr> <C-p> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' : '<C-p>'
--- smap <silent><expr> <C-p> luasnip#choice_active() ? '<Plug>luasnip-prev-choice' : '<C-p>'
--- ]])
-
 map("v", "<leader>js", ":w! ~/tmp/jira/issue-summary.txt<cr>", { desc = "Save Jira task summary" })
 map("v", "<leader>jd", ":w! ~/tmp/jira/issue-description.md<cr>", { desc = "Save Jira task description" })
 map(
@@ -64,26 +56,3 @@ map(
   ":w! ~/tmp/jira/convert-in.md | !jira-convert<cr>",
   { desc = "Convert to jira markup and put in clipboard" }
 )
-
-local gitlab = require("gitlab")
-local gitlab_server = require("gitlab.server")
-vim.keymap.set("n", "glr", gitlab.review)
-vim.keymap.set("n", "gls", gitlab.summary)
-vim.keymap.set("n", "glA", gitlab.approve)
-vim.keymap.set("n", "glR", gitlab.revoke)
-vim.keymap.set("n", "glc", gitlab.create_comment)
-vim.keymap.set("v", "glc", gitlab.create_multiline_comment)
-vim.keymap.set("v", "glC", gitlab.create_comment_suggestion)
-vim.keymap.set("n", "glO", gitlab.create_mr)
-vim.keymap.set("n", "glm", gitlab.move_to_discussion_tree_from_diagnostic)
-vim.keymap.set("n", "gln", gitlab.create_note)
-vim.keymap.set("n", "gld", gitlab.toggle_discussions)
-vim.keymap.set("n", "glaa", gitlab.add_assignee)
-vim.keymap.set("n", "glad", gitlab.delete_assignee)
-vim.keymap.set("n", "glla", gitlab.add_label)
-vim.keymap.set("n", "glld", gitlab.delete_label)
-vim.keymap.set("n", "glra", gitlab.add_reviewer)
-vim.keymap.set("n", "glrd", gitlab.delete_reviewer)
-vim.keymap.set("n", "glp", gitlab.pipeline)
-vim.keymap.set("n", "glo", gitlab.open_in_browser)
-vim.keymap.set("n", "glM", gitlab.merge)

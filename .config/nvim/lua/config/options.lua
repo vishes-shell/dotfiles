@@ -19,4 +19,4 @@ opt.spelllang = { "en_us", "ru" }
 vim.g.python3_host_prog = "/opt/homebrew/bin/python3.11"
 vim.opt.shell = "/usr/local/bin/fish"
 
-vim.g.lazyvim_picker = "telescope"
+-- vim.g.lazyvim_picker = "telescope"
