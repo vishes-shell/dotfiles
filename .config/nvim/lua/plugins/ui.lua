@@ -24,6 +24,8 @@ return {
     lazy = false,
     opts = {
       animate = { enabled = true },
+      dim = { enabled = true },
+      explorer = { enabled = true },
       git = { enabled = true },
       bigfile = { enabled = true },
       bufdelete = { enabled = true },
@@ -38,6 +40,19 @@ return {
       rename = { enabled = true },
       scroll = { enabled = true },
       toggle = { enabled = true },
+      picker = {
+        sources = {
+          files = {
+            hidden = true,
+          },
+          grep = {
+            hidden = true,
+          },
+          sources = {
+            explorer = {},
+          },
+        },
+      },
       dashboard = {
         formats = {
           key = function(item)
@@ -46,7 +61,6 @@ return {
         },
         sections = {
           { section = "terminal", cmd = "fortune -s | cowsay", hl = "header", padding = 1, indent = 8 },
-          { section = "recent_files", limit = 8, padding = 1 },
           { title = "MRU ", file = vim.fn.fnamemodify(".", ":~"), padding = 1 },
           { section = "recent_files", cwd = true, limit = 8, padding = 1 },
           { section = "keys" },

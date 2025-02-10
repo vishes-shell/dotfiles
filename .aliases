@@ -44,3 +44,5 @@ alias jira-issue-estimate="~/.fish_scripts/set_jira_original_estimate.fish"
 alias jira-convert="pandoc -s ~/tmp/jira/convert-in.md -t jira -o ~/tmp/jira/convert-out.txt && pbcopy < ~/tmp/jira/convert-out.txt"
 
 alias jira-clip-convert="pbpaste | pandoc -f markdown -t jira | pbcopy"
+
+alias k='kubectl'

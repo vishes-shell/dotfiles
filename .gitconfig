@@ -1,6 +1,9 @@
 [pull]
 	rebase = false
 
+[include]
+  path = ~/.config/delta/catppuccin.gitconfig
+
 [http]
 	postBuffer = 157286400
 	version = HTTP/1.1
@@ -43,5 +46,4 @@
 	helper = store
 
 [delta]
-  features = line-numbers decorations
-  syntax-theme = Catppuccin-mocha
+  features = line-numbers decorations catppuccin-latte
