@@ -13,6 +13,11 @@ return {
     name = "catppuccin",
     opts = {
       flavour = "latte",
+      integrations = {
+        blink_cmp = true,
+        which_key = true,
+        snacks = { enabled = true },
+      },
     },
   },
   { "folke/twilight.nvim" },
