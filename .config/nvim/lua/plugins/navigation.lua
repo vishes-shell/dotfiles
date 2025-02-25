@@ -53,17 +53,6 @@ return {
     keys = { { "<leader>cn", "<Cmd>Navbuddy<CR>", desc = "Code breadcrumbs Navigation" } },
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      filesystem = {
-        filtered_items = {
-          hide_dotfiles = false,
-          hide_hidden = false,
-        },
-      },
-    },
-  },
-  {
     "ludovicchabant/vim-gutentags",
   },
   {
