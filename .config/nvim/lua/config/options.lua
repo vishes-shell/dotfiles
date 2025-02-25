@@ -20,3 +20,4 @@ vim.g.python3_host_prog = "/opt/homebrew/bin/python3.11"
 vim.opt.shell = "/usr/local/bin/fish"
 
 vim.g.lazyvim_picker = "snacks"
+vim.g.lazyvim_python_lsp = "basedpyright"
