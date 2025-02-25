@@ -5,18 +5,24 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
-        -- pyright will be automatically installed with mason and loaded with lspconfig
-        pyright = {
+        basedpyright = {
           settings = {
-            python = {
+            basedpyright = {
               analysis = {
                 diagnosticMode = "openFilesOnly",
                 autoImportCompletions = true,
                 autoSearchPaths = true,
                 typeCheckingMode = "off",
                 useLibraryCodeForTypes = true,
+                inlayHints = {
+                  variableTypes = false,
+                  callArgumentNames = false,
+                  functionReturnTypes = false,
+                  genericTypes = false,
+                },
               },
               disableOrganizeImports = true,
+              disableTaggedHints = true,
             },
           },
         },
@@ -48,7 +54,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
-        "pyright",
+        "basedpyright",
         "marksman",
         "ts_ls",
         "html",
