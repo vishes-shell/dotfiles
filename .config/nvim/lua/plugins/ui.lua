@@ -48,8 +48,8 @@ return {
           grep = {
             hidden = true,
           },
-          sources = {
-            explorer = {},
+          explorer = {
+            hidden = true,
           },
         },
       },
@@ -67,5 +67,18 @@ return {
         },
       },
     },
+    keys = {
+      {
+        "<leader><space>",
+        function()
+          Snacks.picker.smart()
+        end,
+        desc = "Smart Find Files",
+      },
+    },
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "codecompanion" },
   },
 }
