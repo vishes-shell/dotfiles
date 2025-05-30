@@ -1,0 +1,10 @@
+{
+  "multilinestring": {
+    "prefix": "multis",
+    "body": [
+      "\"\"\"",
+      "${0}",
+      "\"\"\""
+    ]
+  }
+}

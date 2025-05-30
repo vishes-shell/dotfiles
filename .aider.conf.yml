@@ -1,0 +1,7 @@
+gitignore: false
+auto-commits: false
+dirty-commits: false
+read:
+  - CONVENTIONS.md
+light-mode: true
+model: anthropic/claude-3-7-sonnet-latest

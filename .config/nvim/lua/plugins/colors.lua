@@ -17,6 +17,7 @@ return {
         blink_cmp = true,
         which_key = true,
         snacks = { enabled = true },
+        flash = true,
       },
     },
   },

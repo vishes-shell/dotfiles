@@ -105,17 +105,17 @@ return {
   },
   {
     "folke/flash.nvim",
-    keys = {
-      {
-        "q",
-        mode = { "n", "x", "o" },
-        function()
-          vim.cmd([[set keymap=russian-jcukenmac]])
-          require("flash").jump()
-          vim.cmd([[set keymap=]])
-        end,
-        desc = "Flash RU",
-      },
-    },
+    -- keys = {
+    --   {
+    --     "q",
+    --     mode = { "n", "x", "o" },
+    --     function()
+    --       vim.cmd([[set keymap=russian-jcukenmac]])
+    --       require("flash").jump()
+    --       vim.cmd([[set keymap=]])
+    --     end,
+    --     desc = "Flash RU",
+    --   },
+    -- },
   },
 }

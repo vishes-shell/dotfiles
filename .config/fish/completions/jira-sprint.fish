@@ -1,0 +1,1 @@
+complete -c jira-sprint -f -l state -a "active future" --description "Sprint state"

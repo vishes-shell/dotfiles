@@ -11,7 +11,7 @@ module.exports = {
   ],
   handlers: [
     {
-      match: ["meet.google.com/*"],
+      match: ["meet.google.com/*", "edu.livedigital.space/*"],
       browser: "Google Chrome",
     },
   ],

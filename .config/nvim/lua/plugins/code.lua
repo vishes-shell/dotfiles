@@ -49,6 +49,7 @@ return {
         "stylua",
       },
     },
+    version = "1.11.0",
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -67,6 +68,7 @@ return {
         end,
       },
     },
+    version = "1.32.0",
   },
   {
     "ranelpadon/python-copy-reference.vim",

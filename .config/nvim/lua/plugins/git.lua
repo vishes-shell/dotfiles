@@ -15,7 +15,7 @@ return {
     config = true,
     keys = {
       { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Open diff view" },
-      { "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "Close diff view" },
+      { "<leader>gdx", "<cmd>DiffviewClose<cr>", desc = "Close diff view" },
       { "<leader>gdf", "<cmd>DiffviewFileHistory %<cr>", desc = "File git history" },
       {
         "<leader>gdr",

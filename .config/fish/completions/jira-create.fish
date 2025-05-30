@@ -1,0 +1,5 @@
+complete -c jira-create -f -a "Задача Техдолг" --description "Issue type"
+complete -c jira-create -f -l label -a "back front engineering" --description "Issue labels (comma-separated)"
+complete -c jira-create -f -l component -a "authentication block-lesson client-course code-grader content-file continious-delivery course course-package development-tools diploma django-admin documentation expert-sender external-course external-vendor gitlab-manager homework homework-balancer homework-processing learning-process infrastructure lerna lesson-grades longread loyalty-program mindbox refactoring-common study-group passport program-access teachers-management teachers-statistics topic user-data user-feedback video videolesson" --description "Components (comma-separated)"
+complete -c jira-create -f -l sprint --description "Sprint value"
+complete -c jira-create -f -l assignee -a "\"Никита Ангелов\" \"Алексей Шалынин\"" --description "Assignee name"
