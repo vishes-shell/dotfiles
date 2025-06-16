@@ -39,7 +39,7 @@ return {
     opts = {
       linters_by_ft = {
         yaml = { "yamllint" },
-        lua = { "selene", "luacheck" },
+        lua = { "luacheck" },
         markdown = { "markdownlint" },
         python = { "ruff" },
         fish = { "fish" },
