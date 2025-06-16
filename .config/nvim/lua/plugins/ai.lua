@@ -1,30 +1,5 @@
 return {
   {
-    "frankroeder/parrot.nvim",
-    dependencies = { "ibhagwan/fzf-lua", "nvim-lua/plenary.nvim" },
-    -- optionally include "rcarriga/nvim-notify" for beautiful notifications
-    config = function()
-      require("parrot").setup({
-        providers = {
-          anthropic = {
-            api_key = os.getenv("PARROT_ANTHROPIC_API_KEY"),
-            endpoint = os.getenv("PARROT_ANTHROPIC_API_URL"),
-            topic = {
-              model = "claude-3-5-haiku-latest",
-            },
-          },
-          openai = {
-            api_key = os.getenv("PARROT_OPENAI_API_KEY"),
-            endpoint = os.getenv("PARROT_OPENAI_API_URL"),
-            topic = {
-              model = "gpt-4o-mini",
-            },
-          },
-        },
-      })
-    end,
-  },
-  {
     "olimorris/codecompanion.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -33,6 +8,16 @@ return {
     lazy = false,
     config = function()
       require("codecompanion").setup({
+        extensions = {
+          mcphub = {
+            callback = "mcphub.extensions.codecompanion",
+            opts = {
+              show_result_in_chat = true, -- Show mcp tool results in chat
+              make_vars = true, -- Convert resources to #variables
+              make_slash_commands = true, -- Add prompts as /slash commands
+            },
+          },
+        },
         adapters = {
           anthropic = function()
             return require("codecompanion.adapters").extend("anthropic", {
@@ -53,7 +38,7 @@ return {
           end,
           deepseek = function()
             return require("codecompanion.adapters").extend("deepseek", {
-              url = "https://api.proxyapi.ru/deepseek/chat/completions",
+              url = "https://api.deepseek.com/v1/chat/completions",
               env = {
                 api_key = "CODE_COMPANION_DEEPSEEK_API_KEY",
               },
@@ -62,11 +47,21 @@ return {
           end,
         },
         strategies = {
-          chat = { adapter = "openai" },
-          inline = { adapter = "opanai" },
+          chat = { adapter = "deepseek" },
+          inline = { adapter = "deepseek" },
         },
       })
     end,
     keys = { { "<leader>cc", "<Cmd>CodeCompanionChat Toggle<CR>", desc = "Code Companion Chat" } },
+  },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    build = "npm install -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
+    config = function()
+      require("mcphub").setup()
+    end,
   },
 }
