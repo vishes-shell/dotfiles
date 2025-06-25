@@ -70,6 +70,12 @@ git:
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'
+  commitPrefix: |
+    {{- $branchName := .CheckedOutBranch.Name -}}
+    {{- $parts := split $branchName "/" -}}
+    {{- if and (gt (len $parts) 2) (ne $parts.1 "") (ne $parts.2 "") -}}
+    {{- printf "%s-%s " $parts.1 $parts.2 -}}
+    {{- end -}}
   merging:
     # only applicable to unix users
     manualCommit: false
