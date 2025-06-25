@@ -30,25 +30,6 @@ gui:
       - '#df8e1d'
   authorColors:
     '*': '#7287fd'
-  # theme:
-  #   lightTheme: false
-  #   activeBorderColor:
-  #     - "#40a02b" # Green
-  #     - bold
-  #   inactiveBorderColor:
-  #     - "#4c4f69" # Text
-  #   optionsTextColor:
-  #     - "#1e66f5" # Blue
-  #   selectedLineBgColor:
-  #     - "#ccd0da" # Surface0
-  #   selectedRangeBgColor:
-  #     - "#ccd0da" # Surface0
-  #   cherryPickedCommitBgColor:
-  #     - "#179299" # Teal
-  #   cherryPickedCommitFgColor:
-  #     - "#1e66f5" # Blue
-  #   unstagedChangesColor:
-  #     - red # Red
   commitLength:
     show: true
   mouseEvents: true
@@ -70,12 +51,11 @@ git:
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'
-  commitPrefix: |
-    {{- $branchName := .CheckedOutBranch.Name -}}
-    {{- $parts := split $branchName "/" -}}
-    {{- if and (gt (len $parts) 2) (ne $parts.1 "") (ne $parts.2 "") -}}
-    {{- printf "%s-%s " $parts.1 $parts.2 -}}
-    {{- end -}}
+  commitPrefix:
+    - pattern: "^\\w+\\/(\\w+-\\w+).*"
+      replace: '[$1] '
+    - pattern: "^([^_]+)_.*" # Take all text prior to the first underscore
+      replace: '($1) '
   merging:
     # only applicable to unix users
     manualCommit: false
