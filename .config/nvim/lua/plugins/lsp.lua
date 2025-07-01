@@ -6,8 +6,6 @@ return {
         ["python"] = {
           "ruff_fix",
           "ruff_format",
-          -- "isort",
-          -- "blackd",
         },
         ["fish"] = {
           "fish_indent",
@@ -20,12 +18,10 @@ return {
         ["typescript"] = { { "prettierd", "prettier" } },
         ["javascriptreact"] = { { "prettierd", "prettier" } },
         ["typescriptreact"] = { { "prettierd", "prettier" } },
+        ["django"] = { "djlint" },
+        ["htmldjango"] = { "djlint" },
       },
       formatters = {
-        blackd = {
-          command = "blackd-client",
-          stdin = true,
-        },
         sqlfmt = {
           command = "sqlfmt",
           args = { "-" },
