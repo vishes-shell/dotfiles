@@ -56,3 +56,5 @@ map(
   ":w! ~/tmp/jira/convert-in.md | !jira-convert<cr>",
   { desc = "Convert to jira markup and put in clipboard" }
 )
+map("n", "<leader>yfc", ":%y", { desc = "Yank file contents" })
+map("n", "YY", ":%y", { desc = "Yank file contents" })
