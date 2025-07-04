@@ -95,7 +95,7 @@ return {
         desc = "Create new file",
       },
       {
-        "<leader>yf",
+        "<leader>yff",
         function()
           require("genghis").duplicateFile()
         end,
