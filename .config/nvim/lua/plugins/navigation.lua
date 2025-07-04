@@ -60,14 +60,14 @@ return {
     dependencies = "stevearc/dressing.nvim",
     keys = {
       {
-        "<leader>yp",
+        "<leader>yfp",
         function()
-          require("genghis").copyFilepath()
+          require("genghis").copyRelativePath()
         end,
-        desc = "Copy file path",
+        desc = "Copy relative file path",
       },
       {
-        "<leader>yn",
+        "<leader>yfn",
         function()
           require("genghis").copyFilename()
         end,
