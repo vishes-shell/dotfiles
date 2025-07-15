@@ -1,9 +1,15 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.8"
+# dependencies = []
+# ///
+
 """
 Claude Code hooks for running Ruff check and format after file operations.
-This script should be saved as a hook file in your Claude Code hooks directory.
+This script should be saved as ~/.claude/hooks/ruff_hooks.py
 """
 
+import json
 import subprocess
 import sys
 import os
@@ -18,7 +24,7 @@ def run_ruff_check(filepath):
     """Run ruff check --fix on the specified file."""
     try:
         result = subprocess.run(
-            ["ruff", "check", "--fix", filepath],
+            ["ruff", "check", "--fix", filepath, "--ignore", "F401"],
             capture_output=True,
             text=True,
             timeout=30,
@@ -26,7 +32,8 @@ def run_ruff_check(filepath):
 
         if result.returncode != 0:
             print(f"Ruff check warnings/errors for {filepath}:")
-            print(result.stdout)
+            if result.stdout:
+                print(result.stdout)
             if result.stderr:
                 print(result.stderr)
         else:
@@ -38,7 +45,7 @@ def run_ruff_check(filepath):
         print(f"Ruff check timed out for {filepath}")
         return False
     except FileNotFoundError:
-        print("Ruff not found. Install with: pip install ruff")
+        print("Ruff not found. Install with: uv add ruff")
         return False
     except Exception as e:
         print(f"Error running ruff check: {e}")
@@ -54,7 +61,8 @@ def run_ruff_format(filepath):
 
         if result.returncode != 0:
             print(f"Ruff format failed for {filepath}:")
-            print(result.stdout)
+            if result.stdout:
+                print(result.stdout)
             if result.stderr:
                 print(result.stderr)
         else:
@@ -66,7 +74,7 @@ def run_ruff_format(filepath):
         print(f"Ruff format timed out for {filepath}")
         return False
     except FileNotFoundError:
-        print("Ruff not found. Install with: pip install ruff")
+        print("Ruff not found. Install with: uv add ruff")
         return False
     except Exception as e:
         print(f"Error running ruff format: {e}")
@@ -96,49 +104,57 @@ def process_file(filepath):
 
 def main():
     """Main hook function called by Claude Code."""
-    # Get the operation type from environment variable or command line
-    operation = os.getenv("CLAUDE_OPERATION", "unknown")
+    try:
+        # Read JSON input from stdin
+        input_data = json.load(sys.stdin)
 
-    if len(sys.argv) < 2:
-        print("Usage: ruff_hooks.py <filepath> [filepath2 ...]")
-        sys.exit(1)
+        # Extract tool information
+        tool_name = input_data.get("tool", {}).get("name", "unknown")
+        tool_input = input_data.get("tool", {}).get("input", {})
 
-    print(f"Running Ruff hooks for {operation} operation...")
+        print(f"Running Ruff hooks for {tool_name} operation...")
 
-    # Process each file passed as argument
-    all_success = True
-    for filepath in sys.argv[1:]:
-        success = process_file(filepath)
-        all_success = all_success and success
+        # Get file paths based on the tool type
+        filepaths = []
 
-    if all_success:
-        print("✓ All Ruff operations completed successfully")
+        if tool_name in ["write", "edit"]:
+            # Single file operations
+            filepath = tool_input.get("path")
+            if filepath:
+                filepaths = [filepath]
+        elif tool_name == "multiedit":
+            # Multi-file operations
+            edits = tool_input.get("edits", [])
+            for edit in edits:
+                filepath = edit.get("path")
+                if filepath:
+                    filepaths.append(filepath)
+
+        if not filepaths:
+            print("No file paths found in input data")
+            sys.exit(0)
+
+        # Process each file
+        all_success = True
+        for filepath in filepaths:
+            success = process_file(filepath)
+            all_success = all_success and success
+
+        if all_success:
+            print("✓ All Ruff operations completed successfully")
+            sys.exit(0)
+        else:
+            print("✗ Some Ruff operations failed")
+            sys.exit(1)
+
+    except json.JSONDecodeError:
+        # Handle JSON decode errors gracefully
+        print("Error: Invalid JSON input")
         sys.exit(0)
-    else:
-        print("✗ Some Ruff operations failed")
-        sys.exit(1)
-
-
-# Hook functions for different operations
-def after_write(filepath):
-    """Hook called after write operations."""
-    os.environ["CLAUDE_OPERATION"] = "write"
-    sys.argv = ["ruff_hooks.py", filepath]
-    main()
-
-
-def after_edit(filepath):
-    """Hook called after edit operations."""
-    os.environ["CLAUDE_OPERATION"] = "edit"
-    sys.argv = ["ruff_hooks.py", filepath]
-    main()
-
-
-def after_multiedit(*filepaths):
-    """Hook called after multiedit operations."""
-    os.environ["CLAUDE_OPERATION"] = "multiedit"
-    sys.argv = ["ruff_hooks.py"] + list(filepaths)
-    main()
+    except Exception as e:
+        # Exit cleanly on any other error
+        print(f"Error: {e}")
+        sys.exit(0)
 
 
 if __name__ == "__main__":
