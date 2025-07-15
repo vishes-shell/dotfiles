@@ -8,9 +8,10 @@ vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchLib = "/usr/local/bin/libxkbswitch.dylib"
 
 vim.g.gutentags_file_list_command = "fd"
-vim.g.gutentags_ctags_extra_args = { "--languages=python", "--kinds-python=-iv" }
+vim.g.gutentags_ctags_extra_args = { "--language-force=Python", "--kinds-python=-mvIiY" }
 vim.g.gutentags_ctags_tagfile = "tags"
-vim.g.gutentags_file_list_command = "fd --hidden --strip-cwd-prefix --type f -E .git -E .venv"
+vim.g.gutentags_file_list_command =
+  "fd --hidden --strip-cwd-prefix --type f -E .git -E .venv -E 'test_*.py' -E migrations -c never"
 
 opt.conceallevel = 0
 
