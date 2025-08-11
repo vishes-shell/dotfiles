@@ -37,3 +37,6 @@ os:
   editCommand: "nvim"
   openCommand: open {{filename}}
   openLinkCommand: open {{link}}
+
+services:
+  gitlab.skillbox.pro: gitlab:gitlab.skillbox.pro
