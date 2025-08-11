@@ -8,6 +8,7 @@ fish_add_path ~/.cargo/bin
 fish_add_path /usr/local/opt/postgresql@11/bin
 fish_add_path /opt/homebrew/opt/gnu-sed/libexec/gnubin
 fish_add_path ~/.opencode/bin
+fish_add_path ~/.bun/bin
 
 yes | fish_config theme save "Catppuccin Latte"
 
