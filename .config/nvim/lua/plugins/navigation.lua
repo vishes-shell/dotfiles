@@ -42,17 +42,6 @@ return {
     end,
   },
   {
-    "SmiteshP/nvim-navbuddy",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "SmiteshP/nvim-navic",
-      "MunifTanjim/nui.nvim",
-    },
-    event = "LspAttach",
-    opts = { lsp = { auto_attach = true } },
-    keys = { { "<leader>cn", "<Cmd>Navbuddy<CR>", desc = "Code breadcrumbs Navigation" } },
-  },
-  {
     "ludovicchabant/vim-gutentags",
   },
   {
@@ -124,6 +113,10 @@ return {
     -- or if you are using nixos
     -- build = "nix run .#release",
     opts = {
+      keymaps = {
+        move_up = { "<Up>", "<C-p>", "<C-k>" },
+        move_down = { "<Down>", "<C-n>", "<C-j>" },
+      },
       -- pass here all the options
     },
     keys = {
