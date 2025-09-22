@@ -9,6 +9,7 @@ fish_add_path /usr/local/opt/postgresql@11/bin
 fish_add_path /opt/homebrew/opt/gnu-sed/libexec/gnubin
 fish_add_path ~/.opencode/bin
 fish_add_path ~/.bun/bin
+fish_add_path ~/.local/gettext-0.23.1/bin
 
 yes | fish_config theme save "Catppuccin Latte"
 
@@ -20,7 +21,6 @@ if status is-interactive
     bind \cr _atuin_search
     bind -M insert \cr _atuin_search
 end
-
 
 for file in ~/.{exports,aliases,functions,extra}
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
