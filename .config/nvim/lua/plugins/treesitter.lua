@@ -1,6 +1,5 @@
 return {
   -- Yet another tree-sitter indent plugin for Neovim.
-  { "yioneko/nvim-yati", event = "InsertEnter" },
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
@@ -36,11 +35,6 @@ return {
       },
       highlight = { enable = true },
       indent = { enable = false },
-      yati = {
-        enable = true,
-        default_lazy = true,
-        default_fallback = "auto",
-      },
       query_linter = {
         enable = true,
         use_virtual_text = true,
