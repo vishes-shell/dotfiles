@@ -37,7 +37,7 @@ return {
     },
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "markdownlint",
@@ -49,10 +49,10 @@ return {
         "stylua",
       },
     },
-    version = "1.11.0",
+    -- version = "1.11.0",
   },
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
         "basedpyright",
@@ -68,7 +68,7 @@ return {
         end,
       },
     },
-    version = "1.32.0",
+    -- version = "1.32.0",
   },
   {
     "ranelpadon/python-copy-reference.vim",
