@@ -86,4 +86,22 @@ return {
     lazy = false,
     opts = {},
   },
+  {
+    "MeanderingProgrammer/treesitter-modules.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    ---@module 'treesitter-modules'
+    ---@type ts.mod.UserConfig
+    opts = {
+      incremental_selection = {
+        enable = true,
+        disable = {},
+        keymaps = {
+          init_selection = "<CR>", -- maps in normal mode to init the node/scope selection
+          node_incremental = "<CR>", -- increment to the upper named parent
+          scope_incremental = "<nop>", -- increment to the upper scope (as defined in locals.scm)
+          node_decremental = "<BS>", -- decrement to the previous node
+        },
+      },
+    },
+  },
 }
