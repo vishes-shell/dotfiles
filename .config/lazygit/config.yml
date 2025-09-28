@@ -40,3 +40,13 @@ os:
 
 services:
   gitlab.skillbox.pro: gitlab:gitlab.skillbox.pro
+
+customCommands:
+  - key: "G"
+    context: "global"
+    description: "Push and create MR to target branch (default dev)"
+    prompts:
+      - type: "input"
+        title: "Branch to create MR against"
+        initialValue: "dev"
+    command: "uv run git pushbackbranch {{index .PromptResponses 0}}"
