@@ -13,7 +13,7 @@ return {
         ["json"] = { "jq" },
         ["lua"] = { "stylua" },
         ["sql"] = { "sqlfmt" },
-        ["markdown"] = { "markdownlint" },
+        -- ["markdown"] = { "markdownlint" },
         ["javascript"] = { { "prettierd", "prettier" } },
         ["typescript"] = { { "prettierd", "prettier" } },
         ["javascriptreact"] = { { "prettierd", "prettier" } },
