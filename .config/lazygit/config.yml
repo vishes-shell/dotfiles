@@ -44,9 +44,25 @@ services:
 customCommands:
   - key: "G"
     context: "global"
-    description: "Push and create MR to target branch (default dev)"
+    description: "Push and create MR to target branch"
     prompts:
       - type: "input"
         title: "Branch to create MR against"
+        key: "TargetBranch"
         initialValue: "dev"
-    command: "uv run git pushbackbranch {{index .PromptResponses 0}}"
+      - type: "input" # Corrected from 'textarea'
+        title: "MR description (optional)"
+        key: "Description"
+        initialValue: ""
+      - type: "menu"
+        title: "Assignee"
+        key: "Assignee"
+        options:
+          - name: "nikita.angelov"
+            value: "nikita.angelov"
+          - name: "aleksey.shalynin"
+            value: "aleksey.shalynin"
+          - name: "Nobody"
+            value: ""
+        initialValue: "nikita.angelov"
+    command: "uv run --frozen -- git push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target={{.Form.TargetBranch}} -o merge_request.description={{.Form.Description}} -o merge_request.assign={{.Form.Assignee}}"
