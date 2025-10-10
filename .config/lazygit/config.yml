@@ -50,7 +50,7 @@ customCommands:
         title: "Branch to create MR against"
         key: "TargetBranch"
         initialValue: "dev"
-      - type: "input" # Corrected from 'textarea'
+      - type: "input"  # Corrected from 'textarea'
         title: "MR description (optional)"
         key: "Description"
         initialValue: ""
@@ -65,4 +65,6 @@ customCommands:
           - name: "Nobody"
             value: ""
         initialValue: "nikita.angelov"
-    command: "uv run --frozen -- git push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target={{.Form.TargetBranch}} -o merge_request.description={{.Form.Description}} -o merge_request.assign={{.Form.Assignee}}"
+    command: "uv run --frozen -- git push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target={{.Form.TargetBranch}} -o merge_request.description=\"{{.Form.Description}}\" -o merge_request.assign={{.Form.Assignee}}"
+    output: "popup"
+    loadingText: "Making Merge Request, you lazy b..."
