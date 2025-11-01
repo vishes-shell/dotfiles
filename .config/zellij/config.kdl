@@ -155,6 +155,27 @@ keybinds clear-defaults=true {
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
+        bind "Ctrl y" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
+                floating true
+                ignore_case true
+                quick_jump true
+            }
+        }
+        bind "Alt /" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij_forgot.wasm" {
+                floating true
+                "LOAD_ZELLIJ_BINDINGS" "true"
+                "lock" "ctrl + g"
+                "unlock" "ctrl + g"
+                "new pane" "ctrl + p + n"
+                "new tab" "ctrl + t + n"
+                "switch tab" "ctrl + y"
+                "resize mode" "ctrl + n"
+                "move mode" "ctrl + h"
+                "session mode" "ctrl + o"
+            }
+        }
     }
     shared_except "locked" "move" {
         bind "Ctrl h" { SwitchToMode "move"; }
@@ -261,12 +282,19 @@ plugins {
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
+    autolock location="file:~/.config/zellij/plugins/zellij-autolock.wasm" {
+        is_enabled true
+        triggers "nvim|vim|git|fzf|zoxide|atuin|helix|lazygit|gh"
+        reaction_seconds "0.3"
+        print_to_log false
+    }
 }
 
 // Plugins to load in the background when a new session starts
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
+    autolock
 }
 web_client {
     font "monospace"

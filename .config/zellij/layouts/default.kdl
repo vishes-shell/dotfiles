@@ -1,0 +1,49 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+                // Layout sections
+                format_left   "{mode} #[fg=#1e66f5,bold]{session}"
+                format_center "{tabs}"
+                format_right  "{command_git_branch} {datetime}"
+
+                // General options
+                hide_frame_for_single_pane "true"
+                border_enabled  "false"
+                border_char     "─"
+
+                // Mode styling - Catppuccin Latte colors
+                mode_normal        "#[bg=#1e66f5,fg=#eff1f5,bold] NORMAL "
+                mode_locked        "#[bg=#dc8a78,fg=#eff1f5,bold] LOCKED "
+                mode_resize        "#[bg=#40a02b,fg=#eff1f5,bold] RESIZE "
+                mode_pane          "#[bg=#8839ef,fg=#eff1f5,bold] PANE "
+                mode_tab           "#[bg=#d20f39,fg=#eff1f5,bold] TAB "
+                mode_scroll        "#[bg=#df8e1d,fg=#eff1f5,bold] SCROLL "
+                mode_enter_search  "#[bg=#ea76cb,fg=#eff1f5,bold] SEARCH "
+                mode_search        "#[bg=#ea76cb,fg=#eff1f5,bold] SEARCH "
+                mode_rename_tab    "#[bg=#179299,fg=#eff1f5,bold] RENAME "
+                mode_rename_pane   "#[bg=#179299,fg=#eff1f5,bold] RENAME "
+                mode_session       "#[bg=#04a5e5,fg=#eff1f5,bold] SESSION "
+                mode_move          "#[bg=#8839ef,fg=#eff1f5,bold] MOVE "
+                mode_prompt        "#[bg=#fe640b,fg=#eff1f5,bold] PROMPT "
+                mode_tmux          "#[bg=#df8e1d,fg=#eff1f5,bold] TMUX "
+
+                // Tab styling - Catppuccin Latte colors
+                tab_normal   "#[fg=#6c6f85] {name} "
+                tab_active   "#[fg=#1e66f5,bold,italic] {name} "
+
+                // Datetime widget
+                datetime        "#[fg=#4c4f69,bold] {format} "
+                datetime_format "%A, %d %b %Y %H:%M"
+                datetime_timezone "America/New_York"
+
+                // Command widgets (git branch)
+                command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+                command_git_branch_format      "#[fg=#1e66f5,bold] {stdout} "
+                command_git_branch_interval    "10"
+                command_git_branch_rendermode  "static"
+            }
+        }
+    }
+}
