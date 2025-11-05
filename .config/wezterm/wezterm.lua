@@ -283,7 +283,7 @@ config.keys = {
 	-- keys_M.split_nav("move", "CTRL", "l", "Right"),
 }
 
-config.default_prog = { "/usr/local/bin/fish" }
+config.default_prog = { "/Users/aleksei.shalynin/.cargo/bin/zellij" }
 config.default_cwd = wezterm.home_dir
 
 -- config.color_scheme = "Tokyo Night Moon"
