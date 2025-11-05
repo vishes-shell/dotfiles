@@ -58,6 +58,7 @@ return {
         },
       },
       nes = { enabled = false },
+      copilot = { status = { enabled = false } },
     },
   },
 }
