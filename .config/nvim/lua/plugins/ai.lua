@@ -45,22 +45,4 @@ return {
     end,
     keys = { { "<leader>cc", "<Cmd>CodeCompanionChat Toggle<CR>", desc = "Code Companion Chat" } },
   },
-  {
-    "zbirenbaum/copilot.lua",
-    enabled = false,
-  },
-  {
-    "folke/sidekick.nvim",
-    enabled = false,
-    opts = {
-      cli = {
-        mux = {
-          backend = "zellij",
-          enabled = true,
-        },
-      },
-      nes = { enabled = false },
-      copilot = { status = { enabled = false } },
-    },
-  },
 }
