@@ -1,6 +1,13 @@
 keybinds clear-defaults=true {
     shared {
         bind "Alt f" { ToggleFloatingPanes; }
+        bind "Alt s" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
+                floating true
+                ignore_case true
+                quick_jump true
+            }
+        }
     }
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }
