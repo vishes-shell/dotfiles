@@ -257,7 +257,7 @@ config.keys = {
 			label = "open url",
 			patterns = {
 				"https?://\\S+",
-				"u+-%d+",
+				"LMSDEV-\\d+",
 			},
 			action = wezterm.action_callback(function(window, pane)
 				local selection = window:get_selection_text_for_pane(pane)
@@ -270,6 +270,18 @@ config.keys = {
 					local jiraUrl = "https://jira.skillbox.pro/browse/" .. selection
 					wezterm.open_with(jiraUrl) -- Open JIRA issue
 				end
+			end),
+		}),
+	},
+	{
+		mods = keys_M.mod,
+		key = "j",
+		action = wezterm.action.QuickSelectArgs({
+			label = "copy jira issue",
+			patterns = { "LMSDEV-\\d+" },
+			action = wezterm.action_callback(function(window, pane)
+				local selection = window:get_selection_text_for_pane(pane)
+				window:copy_to_clipboard(selection, "Clipboard")
 			end),
 		}),
 	},
