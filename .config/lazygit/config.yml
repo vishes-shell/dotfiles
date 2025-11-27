@@ -70,6 +70,6 @@ customCommands:
           - name: "Nobody"
             value: ""
         initialValue: "nikita.angelov"
-    command: "if [ '{{.Form.UseDescription}}' = 'yes' ] && [ -f .gitlab-merge-request-description.md ]; then DESC=$(cat .gitlab-merge-request-description.md | sed ':a;N;$!ba;s/\\n/<br>/g'); uv run --frozen -- git push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target={{.Form.TargetBranch}} -o merge_request.description=\"${DESC}\" -o merge_request.assign={{.Form.Assignee}}; else uv run --frozen -- git push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target={{.Form.TargetBranch}} -o merge_request.assign={{.Form.Assignee}}; fi"
+    command: "if [ '{{.Form.UseDescription}}' = 'yes' ] && [ -f .gitlab-merge-request-description.md ]; then DESC=$(awk '{printf \"%s<br>\", $0}' .gitlab-merge-request-description.md | sed 's/<br>$//'); uv run --frozen -- git push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target={{.Form.TargetBranch}} -o merge_request.description=\"${DESC}\" -o merge_request.assign={{.Form.Assignee}}; else uv run --frozen -- git push -u origin HEAD -o merge_request.create -o merge_request.label=backend -o merge_request.target={{.Form.TargetBranch}} -o merge_request.assign={{.Form.Assignee}}; fi"
     output: "popup"
     loadingText: "Making Merge Request, you lazy b..."
