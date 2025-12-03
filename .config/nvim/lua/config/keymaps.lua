@@ -42,6 +42,30 @@ function M.set_user_var(key, value)
   io.write(string.format("\027]1337;SetUserVar=%s=%s\a", key, M.base64(value)))
 end
 
+function M.save_jira_description()
+  local start_line = vim.fn.line("'<")
+  local end_line = vim.fn.line("'>")
+  local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+
+  -- Replace empty lines with \
+  for i, line in ipairs(lines) do
+    if line:match("^%s*$") then
+      lines[i] = "\\"
+    end
+  end
+
+  -- Write to file
+  local path = vim.fn.expand("~/tmp/jira/issue-description.md")
+  local file = io.open(path, "w")
+  if file then
+    file:write(table.concat(lines, "\n"))
+    file:close()
+    vim.notify("Saved Jira task description")
+  else
+    vim.notify("Error: Could not write to " .. path, vim.log.levels.ERROR)
+  end
+end
+
 M.set_user_var("IS_NVIM", true)
 
 -- replace current word with Ctrl+c
@@ -49,7 +73,7 @@ map("n", "<C-c>", "<cmd>normal! ciw<cr>a", { desc = "Replace current word" })
 map("n", "<leader>ww", "<cmd>:w<cr>", { desc = "Save file" })
 
 map("v", "<leader>js", ":w! ~/tmp/jira/issue-summary.txt<cr>", { desc = "Save Jira task summary" })
-map("v", "<leader>jd", ":w! ~/tmp/jira/issue-description.md<cr>", { desc = "Save Jira task description" })
+map("v", "<leader>jd", ":<C-u>lua require('config.keymaps').save_jira_description()<CR>", { desc = "Save Jira task description" })
 map(
   "v",
   "<leader>jc",
@@ -58,3 +82,5 @@ map(
 )
 map("n", "<leader>yfc", ":%y", { desc = "Yank file contents" })
 map("n", "YY", ":%y", { desc = "Yank file contents" })
+
+return M
