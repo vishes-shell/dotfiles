@@ -5,6 +5,9 @@ wezterm.log_info("reloading")
 
 -- base
 config.front_end = "WebGpu"
+config.send_composed_key_when_left_alt_is_pressed = false
+config.send_composed_key_when_right_alt_is_pressed = false
+config.use_ime = false
 config.webgpu_power_preference = "HighPerformance"
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
@@ -247,6 +250,17 @@ config.keys = {
 	{ mods = keys_M.mod, key = "p", action = act.ActivateCommandPalette },
 	{ mods = keys_M.mod, key = "d", action = act.ShowDebugOverlay },
 	{ mods = keys_M.mod, key = "w", action = act.CloseCurrentTab({ confirm = true }) },
+	-- Zellij keybindings (Cmd -> Alt+Fkey mapping)
+	{ mods = "SUPER", key = "f", action = act.SendKey({ mods = "ALT", key = "F12" }) }, -- Toggle floating panes
+	{ mods = "SUPER", key = "d", action = act.SendKey({ mods = "ALT", key = "F11" }) }, -- Next tab
+	{
+		mods = "SUPER",
+		key = "q",
+		action = act.Multiple({
+			act.SendKey({ mods = "CTRL", key = "q" }),
+			act.SendKey({ key = "y" }),
+		}),
+	}, -- Quit zellij and confirm
 	-- Resize
 	{ mods = "SUPER", key = "-", action = act.DecreaseFontSize },
 	{ mods = "SUPER", key = "+", action = act.IncreaseFontSize },
@@ -295,7 +309,7 @@ config.keys = {
 	-- keys_M.split_nav("move", "CTRL", "l", "Right"),
 }
 
-config.default_prog = { "/Users/aleksei.shalynin/.cargo/bin/zellij" }
+config.default_prog = { "/opt/homebrew/bin/fish" }
 config.default_cwd = wezterm.home_dir
 
 -- config.color_scheme = "Tokyo Night Moon"

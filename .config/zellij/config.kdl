@@ -1,6 +1,8 @@
 keybinds clear-defaults=true {
     shared {
-        bind "Alt f" { ToggleFloatingPanes; }
+        // Cmd+f and Cmd+d are handled via WezTerm SendKey
+        bind "Alt F12" { ToggleFloatingPanes; }
+        bind "Alt F11" { GoToNextTab; }
         bind "Alt s" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
                 floating true
@@ -11,6 +13,8 @@ keybinds clear-defaults=true {
     }
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }
+        bind "Alt F12" { ToggleFloatingPanes; }
+        bind "Alt F11" { GoToNextTab; }
     }
     pane {
         bind "left" { MoveFocus "left"; }
@@ -541,6 +545,10 @@ copy_command "pbcopy"                     // osx
 // Default: true
 // 
 show_startup_tips false
+
+// Disable session management
+session_serialization false
+disable_session_metadata true
  
 // Whether to show release notes on first version run
 // Default: true

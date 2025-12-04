@@ -3,17 +3,12 @@ layout {
         children
         pane size=1 borderless=true {
             plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-                // Layout sections
                 format_left   "{mode} #[fg=#1e66f5,bold]{session}"
                 format_center "{tabs}"
                 format_right  "{command_git_branch} {datetime}"
-
-                // General options
                 hide_frame_for_single_pane "true"
                 border_enabled  "false"
                 border_char     "─"
-
-                // Mode styling - Catppuccin Latte colors
                 mode_normal        "#[bg=#1e66f5,fg=#eff1f5,bold] NORMAL "
                 mode_locked        "#[bg=#dc8a78,fg=#eff1f5,bold] LOCKED "
                 mode_resize        "#[bg=#40a02b,fg=#eff1f5,bold] RESIZE "
@@ -28,22 +23,28 @@ layout {
                 mode_move          "#[bg=#8839ef,fg=#eff1f5,bold] MOVE "
                 mode_prompt        "#[bg=#fe640b,fg=#eff1f5,bold] PROMPT "
                 mode_tmux          "#[bg=#df8e1d,fg=#eff1f5,bold] TMUX "
-
-                // Tab styling - Catppuccin Latte colors
                 tab_normal   "#[fg=#6c6f85] {name} "
                 tab_active   "#[fg=#1e66f5,bold,italic] {name} "
-
-                // Datetime widget
                 datetime        "#[fg=#4c4f69,bold] {format} "
                 datetime_format "%A, %d %b %Y %H:%M"
                 datetime_timezone "Europe/Moscow"
-
-                // Command widgets (git branch)
                 command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
                 command_git_branch_format      "#[fg=#1e66f5,bold] {stdout} "
                 command_git_branch_interval    "10"
                 command_git_branch_rendermode  "static"
             }
+        }
+    }
+
+    tab name="nvim" focus=true {
+        pane command="fish" {
+            args "-c" "test -f .venv/bin/activate.fish && source .venv/bin/activate.fish; nvim"
+        }
+    }
+
+    tab name="claude" {
+        pane start_suspended=true command="fish" {
+            args "-c" "test -f .venv/bin/activate.fish && source .venv/bin/activate.fish; claude"
         }
     }
 }
