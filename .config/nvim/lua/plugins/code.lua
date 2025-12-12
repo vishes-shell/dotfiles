@@ -75,6 +75,33 @@ return {
     ft = "python",
     keys = {
       { "<leader>yr", "<cmd>PythonCopyReferencePytest<cr>", desc = "Yank Python Reference" },
+      { "<leader>yi", "<cmd>PythonCopyReferenceImport<cr>", desc = "Yank Python Import" },
+      {
+        "<leader>ar",
+        function()
+          local reference = vim.fn["python_copy_reference#_get_reference"]("pytest")
+          local filename, ref = reference:match("^([^:]+)::(.+)$")
+          local result
+          if filename and ref then
+            result = "`" .. ref .. "` @" .. filename
+          else
+            result = "@" .. reference
+          end
+          vim.fn.setreg("+", result)
+          vim.notify("Copied: " .. result)
+        end,
+        desc = "Copy Claude Code reference",
+      },
+      {
+        "<leader>af",
+        function()
+          local filename = vim.fn.expand("%:p:.")
+          local result = "@" .. filename
+          vim.fn.setreg("+", result)
+          vim.notify("Copied: " .. result)
+        end,
+        desc = "Copy Claude Code file reference",
+      },
     },
   },
   {
