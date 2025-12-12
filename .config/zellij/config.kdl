@@ -157,7 +157,6 @@ keybinds clear-defaults=true {
         bind "Alt =" { Resize "Increase"; }
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
-        bind "Ctrl g" { SwitchToMode "locked"; }
         bind "Alt h" { MoveFocusOrTab "left"; }
         bind "Alt i" { MoveTab "left"; }
         bind "Alt j" { MoveFocus "down"; }
@@ -297,7 +296,7 @@ plugins {
     }
     autolock location="file:~/.config/zellij/plugins/zellij-autolock.wasm" {
         is_enabled true
-        triggers "nvim|vim|git|fzf|zoxide|atuin|helix|lazygit|gh"
+        triggers "nvim|vim|git|fzf|zoxide|atuin|helix|lazygit|gh|claude"
         reaction_seconds "0.3"
         print_to_log false
     }
