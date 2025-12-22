@@ -17,8 +17,8 @@ opt.conceallevel = 0
 
 opt.spelllang = { "en_us", "ru" }
 
-vim.g.python3_host_prog = "/opt/homebrew/bin/python3.11"
+vim.g.python3_host_prog = "/opt/homebrew/bin/python3.12"
 vim.opt.shell = "/usr/local/bin/fish"
 
 vim.g.lazyvim_picker = "snacks"
-vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.lazyvim_python_lsp = "ty"
