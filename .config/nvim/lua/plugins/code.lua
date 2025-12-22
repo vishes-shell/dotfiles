@@ -5,24 +5,13 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
-        basedpyright = {
+        ty = {
           settings = {
-            basedpyright = {
-              analysis = {
-                diagnosticMode = "openFilesOnly",
-                autoImportCompletions = true,
-                autoSearchPaths = true,
-                typeCheckingMode = "off",
-                useLibraryCodeForTypes = true,
-                inlayHints = {
-                  variableTypes = false,
-                  callArgumentNames = false,
-                  functionReturnTypes = false,
-                  genericTypes = false,
-                },
+            ty = {
+              inlayHints = {
+                variableTypes = false,
+                callArgumentNames = false,
               },
-              disableOrganizeImports = true,
-              disableTaggedHints = true,
             },
           },
         },
@@ -55,7 +44,7 @@ return {
     "mason-org/mason-lspconfig.nvim",
     opts = {
       ensure_installed = {
-        "basedpyright",
+        "ty",
         "marksman",
         "ts_ls",
         "html",
