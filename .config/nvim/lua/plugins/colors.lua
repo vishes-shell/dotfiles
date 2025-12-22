@@ -13,12 +13,14 @@ return {
     name = "catppuccin",
     opts = {
       flavour = "latte",
-      integrations = {
-        blink_cmp = true,
-        which_key = true,
-        snacks = { enabled = true },
-        flash = true,
-      },
+      auto_integrations = true,
+      custom_highlights = function(colors)
+        return {
+          FlashLabel = { fg = colors.base, bg = colors.red, style = { "bold" } },
+          FlashMatch = { fg = colors.text, bg = colors.surface1 },
+          FlashCurrent = { fg = colors.base, bg = colors.peach, style = { "bold" } },
+        }
+      end,
     },
   },
   { "folke/twilight.nvim" },
