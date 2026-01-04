@@ -207,4 +207,38 @@ return {
       })
     end,
   },
+  {
+    "lewis6991/hover.nvim",
+    config = function()
+      require("hover").setup({
+        init = function()
+          -- LSP provider
+          require("hover.providers.lsp")
+          -- Diagnostic provider
+          require("hover.providers.diagnostic")
+          -- DAP provider
+          require("hover.providers.dap")
+          -- Jira provider
+          require("hover.providers.jira")
+        end,
+        preview_opts = {
+          border = "single",
+        },
+        preview_window = false,
+        title = true,
+        mouse_providers = {}, -- Disable mouse support as requested
+        mouse_delay = 1000,
+      })
+
+      -- Setup keymaps
+      vim.keymap.set("n", "K", require("hover").open, { desc = "hover.nvim" })
+      vim.keymap.set("n", "gK", require("hover").select, { desc = "hover.nvim (select)" })
+      vim.keymap.set("n", "<C-p>", function()
+        require("hover").switch("previous")
+      end, { desc = "hover.nvim (previous source)" })
+      vim.keymap.set("n", "<C-n>", function()
+        require("hover").switch("next")
+      end, { desc = "hover.nvim (next source)" })
+    end,
+  },
 }
