@@ -1,38 +1,25 @@
 return {
   {
-    "tpope/vim-fugitive",
+    'esmuellert/vscode-diff.nvim',
+    branch = 'next',
+    cmd = { 'CodeDiff' },
     keys = {
+      { '<leader>gdo', '<cmd>CodeDiff<cr>', desc = 'Open diff view' },
+      { '<leader>gdf', '<cmd>CodeDiff file HEAD<cr>', desc = 'File git history' },
       {
-        "<leader>gb",
-        "<cmd>Git blame<cr>",
-        desc = "Git blame",
-      },
-    },
-  },
-  {
-    "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewFileHistory" },
-    keys = {
-      { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Open diff view" },
-      { "<leader>gdx", "<cmd>DiffviewClose<cr>", desc = "Close diff view" },
-      { "<leader>gdf", "<cmd>DiffviewFileHistory %<cr>", desc = "File git history" },
-      {
-        "<leader>gdr",
+        '<leader>gdr',
         function()
-          vim.ui.input({ prompt = "Target branch" }, function(branch)
+          vim.ui.input({ prompt = 'Target branch' }, function(branch)
             if branch then
-              vim.cmd({
-                cmd = "DiffviewOpen",
-                args = {
-                  branch .. "...",
-                  "--imply-local",
-                },
-              })
+              vim.cmd('CodeDiff ' .. branch)
             end
           end)
         end,
-        desc = "Review changes with target branch",
+        desc = 'Review changes with target branch',
       },
     },
+    config = function()
+      require('vscode-diff').setup({})
+    end,
   },
 }
