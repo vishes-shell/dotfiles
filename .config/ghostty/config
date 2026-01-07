@@ -29,7 +29,6 @@ window-decoration = auto
 window-width = 160
 window-height = 50
 window-save-state = always
-macos-titlebar-style = tabs
 working-directory = home
 
 # Scrollback
@@ -51,11 +50,18 @@ image-storage-limit = 320000000
 macos-option-as-alt = true
 macos-non-native-fullscreen = true
 confirm-close-surface = false
-macos-titlebar-style = transparent
+macos-titlebar-style = tabs
 
-# Quick terminal (global hotkey - Hyper+.)
-keybind = global:ctrl+alt+super+.=toggle_quick_terminal
+# Quick terminal (global hotkey - Hyper+,)
+keybind = global:ctrl+alt+super+,=toggle_quick_terminal
 quick-terminal-position = top
 quick-terminal-screen = main
 quick-terminal-animation-duration = 0.1
 
+
+keybind = super+shift+t=unbind
+keybind = super+shift+t=new_tab
+keybind = super+t=new_tab
+
+# Disable float on top keybinds
+keybind = ctrl+shift+super+f=unbind
