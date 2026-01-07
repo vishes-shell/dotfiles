@@ -8,13 +8,13 @@ shell-integration = fish
 shell-integration-features = cursor,sudo,title
 
 # Font settings
-font-family = JetBrains Mono Light
-font-family-bold = JetBrains Mono
-font-size = 12
+font-family = Maple Mono NF
+# font-family-bold = Maple Mono NF
+font-size = 13
 font-thicken = false
-font-style-italic = VictorMono Nerd Font Italic
-font-style-bold-italic = VictorMono Nerd Font Bold Italic
-bold-is-bright = true
+# font-style-italic = VictorMono Nerd Font Italic
+# font-style-bold-italic = VictorMono Nerd Font Bold Italic
+# bold-is-bright = true
 font-feature = calt
 font-feature = liga
 
