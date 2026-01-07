@@ -1,0 +1,61 @@
+# Icon and theme
+macos-icon = paper
+theme = Catppuccin Latte
+
+# Shell
+command = /opt/homebrew/bin/fish
+shell-integration = fish
+shell-integration-features = cursor,sudo,title
+
+# Font settings
+font-family = JetBrains Mono Light
+font-family-bold = JetBrains Mono
+font-size = 12
+font-thicken = false
+font-style-italic = VictorMono Nerd Font Italic
+font-style-bold-italic = VictorMono Nerd Font Bold Italic
+bold-is-bright = true
+font-feature = calt
+font-feature = liga
+
+# Cursor (changes shape with fish vi mode)
+cursor-style = bar
+cursor-style-blink = true
+
+# Window
+window-padding-x = 0
+window-padding-y = 0
+window-decoration = auto
+window-width = 160
+window-height = 50
+window-save-state = always
+macos-titlebar-style = tabs
+working-directory = home
+
+# Scrollback
+scrollback-limit = 10000
+
+# Clipboard (OSC 52 for neovim remote yank)
+copy-on-select = clipboard
+clipboard-read = allow
+clipboard-write = allow
+clipboard-paste-protection = false
+
+# Links
+link-url = true
+
+# Image protocol (for image.nvim, viu, etc)
+image-storage-limit = 320000000
+
+# macOS specific
+macos-option-as-alt = true
+macos-non-native-fullscreen = true
+confirm-close-surface = false
+macos-titlebar-style = transparent
+
+# Quick terminal (global hotkey - Hyper+.)
+keybind = global:ctrl+alt+super+.=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0.1
+
