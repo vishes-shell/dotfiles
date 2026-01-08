@@ -96,4 +96,5 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "codecompanion" },
   },
+  "sphamba/smear-cursor.nvim",
 }
