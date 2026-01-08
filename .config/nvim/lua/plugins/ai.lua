@@ -1,48 +1,29 @@
 return {
   {
-    "olimorris/codecompanion.nvim",
-    enabled = false,
+    "greggh/claude-code.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
     },
-    lazy = false,
     config = function()
-      require("codecompanion").setup({
-        adapters = {
-          anthropic = function()
-            return require("codecompanion.adapters").extend("anthropic", {
-              url = "https://api.proxyapi.ru/anthropic/v1/messages",
-              env = {
-                api_key = "CODE_COMPANION_ANTHROPIC_API_KEY",
-              },
-            })
-          end,
-          openai = function()
-            return require("codecompanion.adapters").extend("openai", {
-              url = "https://api.proxyapi.ru/openai/v1/chat/completions",
-              env = {
-                api_key = "CODE_COMPANION_OPENAI_API_KEY",
-              },
-              schema = { model = { default = "gpt-4o-mini" } },
-            })
-          end,
-          deepseek = function()
-            return require("codecompanion.adapters").extend("deepseek", {
-              url = "https://api.deepseek.com/v1/chat/completions",
-              env = {
-                api_key = "CODE_COMPANION_DEEPSEEK_API_KEY",
-              },
-              schema = { model = { default = "deepseek-chat" } },
-            })
-          end,
+      require("claude-code").setup({
+        window = {
+          position = "float",
+          float = {
+            width = "93%",
+            height = "93%",
+            border = "rounded",
+          },
         },
-        strategies = {
-          chat = { adapter = "deepseek" },
-          inline = { adapter = "deepseek" },
+        keymaps = {
+          toggle = {
+            normal = "<D-a>",
+            terminal = "<D-a>",
+          },
         },
       })
     end,
-    keys = { { "<leader>cc", "<Cmd>CodeCompanionChat Toggle<CR>", desc = "Code Companion Chat" } },
+    keys = {
+      { "<D-a>", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude Code" },
+    },
   },
 }
