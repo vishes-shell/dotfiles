@@ -28,7 +28,7 @@ window-padding-y = 0
 window-decoration = auto
 window-width = 160
 window-height = 50
-window-save-state = always
+window-save-state = never
 working-directory = home
 
 # Scrollback
@@ -65,3 +65,6 @@ keybind = super+t=new_tab
 
 # Disable float on top keybinds
 keybind = ctrl+shift+super+f=unbind
+
+# Pass super+a to Neovim for Claude Code toggle
+keybind = super+a=unbind
