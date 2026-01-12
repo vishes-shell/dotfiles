@@ -17,6 +17,7 @@ font-thicken = false
 # bold-is-bright = true
 font-feature = calt
 font-feature = liga
+font-feature = -cv01
 font-variation = wght=100
 
 # Cursor (changes shape with fish vi mode)
@@ -69,3 +70,15 @@ keybind = ctrl+shift+super+f=unbind
 
 # Pass super+a to Neovim for Claude Code toggle
 keybind = super+a=unbind
+
+# New split keybinds (cmd+hjkl)
+keybind = super+h=new_split:left
+keybind = super+j=new_split:down
+keybind = super+k=new_split:up
+keybind = super+l=new_split:right
+
+# Move to split keybinds (cmd+shift+hjkl)
+keybind = super+shift+h=goto_split:left
+keybind = super+shift+j=goto_split:down
+keybind = super+shift+k=goto_split:up
+keybind = super+shift+l=goto_split:right
