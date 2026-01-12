@@ -1,5 +1,5 @@
 # Icon and theme
-macos-icon = paper
+macos-icon = blueprint
 theme = Catppuccin Latte
 
 # Shell
@@ -8,8 +8,9 @@ shell-integration = fish
 shell-integration-features = cursor,sudo,title
 
 # Font settings
-font-family = Maple Mono NF
-# font-family-bold = Maple Mono NF
+font-family = "Maple Mono NF"
+font-family-bold = "Maple Mono NF"
+font-family-bold-italic = "Maple Mono NF"
 font-size = 13
 font-thicken = false
 # font-style-italic = VictorMono Nerd Font Italic
@@ -17,6 +18,7 @@ font-thicken = false
 # bold-is-bright = true
 font-feature = calt
 font-feature = liga
+font-variation = wght=100
 
 # Cursor (changes shape with fish vi mode)
 cursor-style = bar
