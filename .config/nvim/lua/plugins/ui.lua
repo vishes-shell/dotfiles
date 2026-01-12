@@ -96,5 +96,7 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "codecompanion" },
   },
-  "sphamba/smear-cursor.nvim",
+  { "sphamba/smear-cursor.nvim", opts = {
+    enabled = true,
+  } },
 }
